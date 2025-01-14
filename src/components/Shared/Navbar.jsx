@@ -2,12 +2,15 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import logo from "../../assets/mc2.png"
+import useAdmin from "../../hooks/useAdmin";
 
 
 const Navbar = () => {
     const { user, signOutUser } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
+
+    const [isAdmin] = useAdmin();
 
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => {
@@ -104,7 +107,7 @@ const Navbar = () => {
 
                                             {/* Dashboard Link..... */}
                                             <Link
-                                                to="/signup"
+                                                to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
                                                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
                                             >
                                                 Dashboard

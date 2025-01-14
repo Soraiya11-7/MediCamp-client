@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import SocialLogin from "./SocialLogin";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const SignUp = () => {
@@ -14,6 +15,7 @@ const SignUp = () => {
     const { createUser, updateUserProfile, setUser } = useAuth();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
+    const [showSecretKey, setShowSecretKey] = useState(false);
 
     const onSubmit = data => {
         console.log(data);
@@ -35,20 +37,20 @@ const SignUp = () => {
                         }
 
                         axiosPublic.post('/users', userInfo)
-                        .then(res => {
-                            if (res.data.insertedId) {
-                                console.log('user added to the database')
-                                reset();
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'User created successfully.',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                navigate('/');
-                            }
-                        })
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database')
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
 
                     })
                     .catch(error => console.log(error))
@@ -57,20 +59,20 @@ const SignUp = () => {
 
     return (
         <>
-           
+
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Sign up now!</h1>
-                        
+
                     </div>
 
                     {/* form.............. */}
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                        <h1 className="text-2xl font-bold my-5 text-center">Sign up now!</h1>
+                            <h1 className="text-2xl font-bold my-5 text-center">Sign up now!</h1>
 
-                        {/* Name................... */}
+                            {/* Name................... */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -79,7 +81,7 @@ const SignUp = () => {
                                 {errors.name && <span className="text-red-600">Name is required</span>}
                             </div>
 
-                             {/* Image................... */}
+                            {/* Image................... */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
@@ -87,7 +89,7 @@ const SignUp = () => {
                                 <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
                                 {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             </div>
-                             {/* Email................... */}
+                            {/* Email................... */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -96,22 +98,28 @@ const SignUp = () => {
                                 {errors.email && <span className="text-red-600">Email is required</span>}
                             </div>
 
-                             {/* Password................... */}
-                            <div className="form-control">
+                            {/* Password................... */}
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password"  {...register("password", {
+                                <input type={showSecretKey ? 'text' : 'password'}  {...register("password", {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 20,
                                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
                                 })} placeholder="password" className="input input-bordered" />
+
+                                <button type="button" onClick={() => setShowSecretKey(!showSecretKey)} className="absolute btn btn-xs top-12 right-2">
+                                    {
+                                        showSecretKey ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                                    }
+                                </button>
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
-                               
+
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
@@ -119,7 +127,7 @@ const SignUp = () => {
                         </form>
                         <SocialLogin></SocialLogin>
                         <h2 className='text-sm sm:text-base text-center mb-5'>Already have an account? <Link to='/login' className='text-blue-500'>Login Now</Link></h2>
-                       
+
                     </div>
                 </div>
             </div>
