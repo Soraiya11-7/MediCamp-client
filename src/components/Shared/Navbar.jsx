@@ -124,7 +124,7 @@ const Navbar = () => {
                             </div>
 
                             :
-                            (<Link to='/signup' className="bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl">Join Us</Link>)
+                            (<Link to='/login' className="bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl">Join Us</Link>)
                     }
 
                 </div>
