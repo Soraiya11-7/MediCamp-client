@@ -1,18 +1,20 @@
-import { Link, NavLink, useLoaderData, useLocation, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { Tooltip } from "react-tooltip";
-import { AuthProviderContext } from "../Provider/AuthProvider";
-import logo from "../assets/bl2.png"
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import logo from "../../assets/mc2.png"
 
 
 const Navbar = () => {
-    const { user, signOutUser } = useContext(AuthProviderContext);
-
+    const { user, signOutUser } = useAuth();
     const location = useLocation();
-    const [showTooltip, setShowTooltip] = useState(false);
-    // const location = useLoaderData();
     const navigate = useNavigate();
-    
+
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+
+
 
     const links = <>
 
@@ -22,52 +24,24 @@ const Navbar = () => {
             }>Home</NavLink></li>
         <li><NavLink className={({ isActive }) =>
             `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-400 font-bold' : 'text-white'}`
-        } to='/blogs'>All Blogs</NavLink></li>
-
-        {
-            user && (
-                <li>
-                    <NavLink
-                        className={({ isActive }) =>
-                            `flex items-center ${isActive ? 'text-yellow-400 font-bold' : 'text-white'}`
-                        }
-                        to='/addBlog'
-                    >
-                        Add Blog
-                    </NavLink>
-                </li>
-            )
-                
-        }
-        <li><NavLink className={({ isActive }) =>
-            `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-400 font-bold' : 'text-white'}`
-        } to='/featuredBlogs'>Featured Blogs</NavLink></li>
-        {
-            user && <>
-                <li> <NavLink className={({ isActive }) =>
-                    `flex items-center gap-0 ${isActive ? 'text-yellow-400 font-bold' : 'text-white'}`
-                } to='/wishlist'> WishList</NavLink></li>
-            </>
-        }
-
-
+        } to='/blogs'>Available Camps</NavLink></li>
     </>
 
     const handleLogOut = () => {
         signOutUser()
-        .then(() => {
-            navigate('/')
-        })
-        .catch((err) => {
-            const error = err.message;
-        })
-      
+            .then(() => {
+                navigate('/')
+            })
+            .catch((err) => {
+                const error = err.message;
+            })
+
     }
     return (
-        <div className={`navbar bg-sky-500  w-[80%] mx-auto p-2 md:p-4`}>
+        <div className={`navbar bg-sky-500  w-full mx-auto p-2 md:p-4`}>
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 lg:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 md:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -87,15 +61,18 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                {/* <div className="avatar w-12 h-8 md:w-20 md:h-14">
-                    <img className="w-full h-full overflow-hidden rounded-xl object-cover" src={logo} alt="" />
-                </div> */}
-                
-                <div className=" w-12 h-8 md:w-20 md:h-14"><img className="w-full h-full overflow-hidden rounded-xl object-cover" src={logo} alt="" /></div>
-            
+               
+                <div className="flex gap-1 items-center">
+                    <div className=" w-10 h-10 md:w-12 md:h-12">
+                        <img className="w-full h-full overflow-hidden rounded-full object-cover" src={logo} alt="" />
+
+                    </div>
+                    <h2 className="text-2xl font-bold">MediCamp</h2>
+                </div>
+
 
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden md:flex">
                 <ul className="menu menu-horizontal px-1 -space-x-1">
                     {links}
 
@@ -106,32 +83,50 @@ const Navbar = () => {
                     {
                         user ?
                             <div className="flex items-center">
-                                <div className="h-10 w-12 md:h-12 md:w-14 rounded-full px-1 relative" id='click' onMouseEnter={() => setShowTooltip(true)}
-                                    onMouseLeave={() => setShowTooltip(false)}>
-                                    <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={user?.photoURL}
-                                        alt="Avatar image"
-                                    />
-                                    <Tooltip className="z-10" anchorSelect="#click" clickable>
-                                        <button> {user?.displayName}</button>
-                                    </Tooltip>
+                                <div className="h-10 w-12 md:h-12 md:w-14  rounded-full px-1 " >
+                                    <button onClick={toggleDropdown}
+                                        className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border border-gray-300">
+                                        <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={user?.photoURL}
+                                            alt="image"
+                                        />
+                                    </button>
 
                                 </div>
-                               
+                                {/* Dropdown Menu ............*/}
+                                {isOpen && (
+                                    <div className=" absolute right-5 mt-44 w-40 bg-white rounded-md shadow-lg z-10">
+                                        <div className="py-2">
+                                            {/* User Name............ */}
+                                            <div className="px-4 py-2 text-gray-700 font-medium">
+                                                {user?.displayName?.split(" ")[0]}
+                                            </div>
+                                            <hr className="border-gray-500" />
+
+                                            {/* Dashboard Link..... */}
+                                            <Link
+                                                to="/signup"
+                                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+                                            >
+                                                Dashboard
+                                            </Link>
+
+                                            {/* Logout Button......... */}
+                                            <button
+                                                onClick={handleLogOut}
+                                                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+                                            >
+                                                Logout
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
 
                             </div>
-                            :
 
-                            (<Link to='/auth/login' className="bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl">Login</Link>)
+                            :
+                            (<Link to='/signup' className="bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl">Join Us</Link>)
                     }
 
-                </div>
-                <div>
-                    {
-                        user && user?.email ?
-                            (<button onClick={handleLogOut} className="bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl ">LogOut</button>)
-                            :
-                            (<Link to='/auth/register' className=" bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl ">Register</Link>)
-                    }
                 </div>
 
             </div>
