@@ -9,7 +9,7 @@ const AdminRoute = ({children}) => {
     const [isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
 
-    if(loading){
+    if(loading || isAdminLoading){
         return <div className="flex items-center min-h-screen justify-center">
             <Skeleton count={3} height={120} width={200} />
         </div>

@@ -95,15 +95,15 @@ const Login = () => {
                                     className="input input-bordered"
                                 />
                             </div>
-                            <button type="button" className="bg-orange-500 w-32 btn">verify Captcha</button>
+                            <button type="button" className="bg-orange-500 w-32 btn">verify Captcha</button> */}
                             <div className="form-control mt-6">
                                 <input
-                                    disabled={disabled}
+                                    
                                     className="btn btn-primary"
                                     type="submit"
                                     value="Login"
                                 />
-                            </div> */}
+                            </div> 
                         </form>
                        
                 <SocialLogin></SocialLogin>
