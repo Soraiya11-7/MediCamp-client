@@ -1,5 +1,5 @@
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 import { FcGoogle } from "react-icons/fc";
@@ -11,6 +11,8 @@ const SocialLogin = () => {
     const { signInWithGoogle } = useAuth();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleGoogleSignIn = () =>{
         signInWithGoogle()
@@ -23,7 +25,7 @@ const SocialLogin = () => {
             axiosPublic.post('/users', userInfo)
             .then(res =>{
                 // console.log(res.data);
-                navigate('/');
+                navigate(from, { replace: true });
             })
         })
     }

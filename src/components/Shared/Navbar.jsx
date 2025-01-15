@@ -27,7 +27,7 @@ const Navbar = () => {
             }>Home</NavLink></li>
         <li><NavLink className={({ isActive }) =>
             `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-400 font-bold' : 'text-white'}`
-        } to='/blogs'>Available Camps</NavLink></li>
+        } to='/allCamps'>Available Camps</NavLink></li>
     </>
 
     const handleLogOut = () => {

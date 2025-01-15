@@ -11,6 +11,8 @@ import AdminRoute from "./AdminRoute";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
 import AddCamp from "../Pages/Dashboard/Admin/AddCamp";
 import ManageCamps from "../Pages/Dashboard/Admin/ManageCamps";
+import AvailableCamps from "../Pages/AvailableCamps";
+import CampDetails from "../Pages/CampDetails";
 
 
 
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
           element:<Home></Home>,   
         },
         {
+          path: 'allCamps',
+          element: <AvailableCamps></AvailableCamps>
+        },
+        {
+          path:'/camp-details/:campId',
+          element:<PrivateRoute><CampDetails></CampDetails></PrivateRoute> 
+        },
+        {
           path: 'login',
           element: <Login></Login>
         },
@@ -33,8 +43,6 @@ const router = createBrowserRouter([
           path: 'signup',
           element: <SignUp></SignUp>
         },
-        
-
       ]
     },
 
