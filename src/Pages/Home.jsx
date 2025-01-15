@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../assets/mc2.png"
 import Button from "../components/Shared/Button";
+import PopularCamps from "../components/Home/popularCamps";
 
 
 const Home = () => {
@@ -30,6 +31,8 @@ const Home = () => {
                 <Button btnText={"Read More"} center={false}></Button>
             </div>
         </div>
+
+        <PopularCamps></PopularCamps>
         
         </div>
     );
