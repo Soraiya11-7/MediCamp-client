@@ -14,12 +14,12 @@ const OrganizerMenuItems = () => {
                     Organizer Profile</NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/addItems" className='text-xs lg:text-sm'>
+                <NavLink to="/dashboard/addCamp" className='text-xs lg:text-sm'>
                     <GiForestCamp />
                     Add A Camp</NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/manageItems" className='text-xs lg:text-sm'>
+                <NavLink to="/dashboard/manageCamps" className='text-xs lg:text-sm'>
                     <FaList></FaList>
                     Manage Camps</NavLink>
             </li>

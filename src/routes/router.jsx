@@ -9,6 +9,8 @@ import Dashboard from "../Layout/Dashboard";
 import UserHome from "../Pages/Dashboard/User/UserHome";
 import AdminRoute from "./AdminRoute";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome";
+import AddCamp from "../Pages/Dashboard/Admin/AddCamp";
+import ManageCamps from "../Pages/Dashboard/Admin/ManageCamps";
 
 
 
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
           {
             path: 'adminHome',
             element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+          },
+          {
+            path: 'addCamp',
+            element: <AdminRoute><AddCamp></AddCamp></AdminRoute>
+          },
+          {
+            path: 'manageCamps',
+            element: <AdminRoute><ManageCamps></ManageCamps></AdminRoute>
           },
       ]
     }

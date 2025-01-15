@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/mc2.png"
 import Button from "../components/Shared/Button";
 
+
 const Home = () => {
     return (
         <div className="">
@@ -29,6 +30,7 @@ const Home = () => {
                 <Button btnText={"Read More"} center={false}></Button>
             </div>
         </div>
+        
         </div>
     );
 };
