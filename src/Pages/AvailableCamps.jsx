@@ -7,8 +7,12 @@ const AvailableCamps = () => {
     const [sort, setSort] = useState('');
 
     const [camps, , refetch] = useCamp(search, sort);
-   
-   
+    const [isTwoColumn, setIsTwoColumn] = useState(false);
+
+    const toggleLayout = () => {
+      setIsTwoColumn(!isTwoColumn);
+    };
+  
 
     return (
         <div className="container mx-auto px-4">
@@ -38,7 +42,19 @@ const AvailableCamps = () => {
                     <option value="alphabetical">Alphabetical Order</option>
                 </select>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            {/* Toggle Button */}
+            <div className=" flex justify-end my-10">
+                <button
+                    onClick={toggleLayout}
+                    className="px-4 py-2 bg-green-900 text-white font-semibold rounded hover:bg-green-800 transition duration-200"
+                >
+                    {isTwoColumn ? "Switch to 3 Columns" : "Switch to 2 Columns"}
+                </button>
+            </div>
+
+            <div className={`grid gap-4 ${isTwoColumn ? "grid-cols-2" : "grid-cols-3"
+                } transition-all duration-300`}>
                 {camps.map((camp) => (
                     <div
                         key={camp._id}

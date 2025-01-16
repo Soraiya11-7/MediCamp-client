@@ -1,42 +1,65 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import useCamp from "../hooks/useCamp";
-import { FaMapMarkerAlt, FaCalendarAlt, FaUserMd, FaRegClock, FaDollarSign, FaUsers } from "react-icons/fa"; // Additional icons for fees and participants
+
+import { FaMapMarkerAlt,  FaUserMd, FaRegClock, FaDollarSign, FaUsers } from "react-icons/fa"; // Additional icons for fees and participants
 import useAuth from "../hooks/useAuth";
 import JoinCampModal from "../components/Modal/JoinCampModal";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import Skeleton from "react-loading-skeleton";
 
 const CampDetails = () => {
     const { campId } = useParams();
-    const {user} = useAuth();
-    const [camps, , refetch] = useCamp();
+    const { user } = useAuth();
+    const axiosPublic = useAxiosPublic();
     const [isModalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
 
-    const campData = camps.find((camp) => camp._id === campId);
+    const {
+      data: camp = {},
+      isLoading,
+      refetch,
+    } = useQuery({
+      queryKey: ['camp', campId],
+      queryFn: async () => {
+        const { data } = await axiosPublic(`/camps/${campId}`)
+        return data
+      },
+    })
+
+    console.log(camp);
+    const { campName, image, dateTime, fees, location, healthcareProfessional, participants, description } = camp || {}
+ 
+   
+       if(isLoading){
+           return <div className="flex items-center min-h-screen justify-center">
+               <Skeleton count={3} height={120} width={200} />
+           </div>
+       }
 
     return (
         <div className="container mx-auto px-4 py-8">
-            {campData ? (
+            {camp? (
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                     {/* Camp Image */}
                     <img
-                        src={campData.image}
-                        alt={campData.campName}
+                        src={image}
+                        alt={campName}
                         className="w-full h-80 object-cover"
                     />
 
                     {/* Camp Details */}
                     <div className="p-6">
                         {/* Camp Name */}
-                        <h2 className="text-3xl font-bold text-gray-800">{campData.campName}</h2>
+                        <h2 className="text-3xl font-bold text-gray-800">{campName}</h2>
 
                         {/* Camp Fees */}
                         <div className="text-lg text-gray-600 mt-3 flex items-center">
                             <FaDollarSign className="text-xl text-gray-500 mr-2" />
                             <span>
-                                <strong>Camp Fees:</strong> ${campData.fees}
+                                <strong>Camp Fees:</strong> ${fees}
                             </span>
                         </div>
 
@@ -44,7 +67,7 @@ const CampDetails = () => {
                         <div className="text-lg text-gray-600 mt-2 flex items-center">
                             <FaRegClock className="text-xl text-gray-500 mr-2" />
                             <span>
-                                <strong>Date & Time:</strong> {campData.dateTime}
+                                <strong>Date & Time:</strong> {dateTime}
                             </span>
                         </div>
 
@@ -52,7 +75,7 @@ const CampDetails = () => {
                         <div className="text-lg text-gray-600 mt-2 flex items-center">
                             <FaMapMarkerAlt className="text-xl text-gray-500 mr-2" />
                             <span>
-                                <strong>Location:</strong> {campData.location}
+                                <strong>Location:</strong> {location}
                             </span>
                         </div>
 
@@ -60,7 +83,7 @@ const CampDetails = () => {
                         <div className="text-lg text-gray-600 mt-2 flex items-center">
                             <FaUserMd className="text-xl text-gray-500 mr-2" />
                             <span>
-                                <strong>Healthcare Professional:</strong> {campData.healthcareProfessional}
+                                <strong>Healthcare Professional:</strong> {healthcareProfessional}
                             </span>
                         </div>
 
@@ -68,16 +91,16 @@ const CampDetails = () => {
                         <div className="text-lg text-gray-600 mt-2 flex items-center">
                             <FaUsers className="text-xl text-gray-500 mr-2" />
                             <span>
-                                <strong>Participants:</strong> {campData.participants}
+                                <strong>Participants:</strong> {participants}
                             </span>
                         </div>
 
                         {/* Description */}
-                        <p className="text-md text-gray-700 mt-3">{campData.description}</p>
+                        <p className="text-md text-gray-700 mt-3">{description}</p>
 
                         {/* Button to Join Camp */}
                         <div className="mt-6 text-center">
-                            
+
                             <button onClick={openModal} className="btn bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300">
                                 Join Camp
                             </button>
@@ -85,7 +108,7 @@ const CampDetails = () => {
                             <JoinCampModal
                                 isOpen={isModalOpen}
                                 closeModal={closeModal}
-                                campData={campData}
+                                camp= {camp}
                                 user={user}
                                 refetch={refetch}
                             />

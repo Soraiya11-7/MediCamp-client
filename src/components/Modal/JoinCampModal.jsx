@@ -3,14 +3,14 @@ import { Fragment, useState } from 'react';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 
-const JoinCampModal = ({ isOpen, closeModal, campData, user, refetch }) => {
+const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
     const axiosPublic = useAxiosPublic();
     const [participantData, setParticipantData] = useState({
-        campId: campData._id,
-        campName: campData.campName,
-        campFees: campData.fees,
-        location: campData.location,
-        healthcareProfessional: campData.healthcareProfessional,
+        campId: camp._id,
+        campName: camp.campName,
+        campFees: camp.fees,
+        location: camp.location,
+        healthcareProfessional: camp.healthcareProfessional,
         participantName: user?.displayName,
         participantEmail: user?.email,
         age: '',
