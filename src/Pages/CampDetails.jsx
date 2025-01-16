@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { FaMapMarkerAlt,  FaUserMd, FaRegClock, FaDollarSign, FaUsers } from "react-icons/fa"; // Additional icons for fees and participants
+import { FaMapMarkerAlt,  FaUserMd, FaRegClock, FaDollarSign, FaUsers } from "react-icons/fa"; 
 import useAuth from "../hooks/useAuth";
 import JoinCampModal from "../components/Modal/JoinCampModal";
 import { useQuery } from "@tanstack/react-query";
@@ -50,7 +50,7 @@ const CampDetails = () => {
                         className="w-full h-80 object-cover"
                     />
 
-                    {/* Camp Details */}
+                    {/* Camp Details....................... */}
                     <div className="p-6">
                         {/* Camp Name */}
                         <h2 className="text-3xl font-bold text-gray-800">{campName}</h2>

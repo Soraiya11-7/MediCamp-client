@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useCamp from "../hooks/useCamp";
+import SearchBar from "../components/Shared/SearchBar";
 
 const AvailableCamps = () => {
     const [search, setSearch] = useState('');
@@ -10,9 +11,9 @@ const AvailableCamps = () => {
     const [isTwoColumn, setIsTwoColumn] = useState(false);
 
     const toggleLayout = () => {
-      setIsTwoColumn(!isTwoColumn);
+        setIsTwoColumn(!isTwoColumn);
     };
-  
+
 
     return (
         <div className="container mx-auto px-4">
@@ -21,12 +22,10 @@ const AvailableCamps = () => {
             {/* Search and Sort Controls................ */}
             <div className="flex flex-col sm:flex-row gap-y-3 sm:gap-y-0 items-start sm:items-center justify-between mt-10 mb-14">
                 {/* Search Input,,,,,,,,,,,,,,,, */}
-                <input
-                    type="text"
+                <SearchBar
                     placeholder="Search camps..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="p-2 border"
+                    searchTerm={search}
+                    setSearchTerm={setSearch}
                 />
 
                 {/* Sort Dropdown...................... */}
