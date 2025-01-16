@@ -3,11 +3,41 @@ import { Link } from "react-router-dom";
 import useCamp from "../hooks/useCamp";
 
 const AvailableCamps = () => {
-    const [camps, , refetch] = useCamp();
+    const [search, setSearch] = useState('');
+    const [sort, setSort] = useState('');
+
+    const [camps, , refetch] = useCamp(search, sort);
+   
+   
 
     return (
         <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center my-8">Available Camps</h2>
+
+            {/* Search and Sort Controls................ */}
+            <div className="flex flex-col sm:flex-row gap-y-3 sm:gap-y-0 items-start sm:items-center justify-between mt-10 mb-14">
+                {/* Search Input,,,,,,,,,,,,,,,, */}
+                <input
+                    type="text"
+                    placeholder="Search camps..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="p-2 border"
+                />
+
+                {/* Sort Dropdown...................... */}
+                <select
+                    value={sort}
+                    id={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                    className="p-2 border"
+                >
+                    <option value="">Sort By</option>
+                    <option value="most-registered">Most Registered</option>
+                    <option value="camp-fees">Camp Fees</option>
+                    <option value="alphabetical">Alphabetical Order</option>
+                </select>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {camps.map((camp) => (
                     <div
