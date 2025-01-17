@@ -13,6 +13,7 @@ import AddCamp from "../Pages/Dashboard/Admin/AddCamp";
 import ManageCamps from "../Pages/Dashboard/Admin/ManageCamps";
 import AvailableCamps from "../Pages/AvailableCamps";
 import CampDetails from "../Pages/CampDetails";
+import UpdateCamp from "../Pages/Dashboard/Admin/UpdateCamp";
 
 
 
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
           {
             path: 'manageCamps',
             element: <AdminRoute><ManageCamps></ManageCamps></AdminRoute>
+          },
+          {
+            path: 'update-camp/:campId',
+            element: <AdminRoute><UpdateCamp></UpdateCamp></AdminRoute>,
           },
       ]
     }

@@ -77,7 +77,7 @@ const ManageCamps = () => {
                 <td className="py-3 px-4">
                   <div className="flex justify-center gap-2">
                     {/* Update Button..................... */}
-                    <Link to={`/update-camp/${camp._id}`}>
+                    <Link to={`/dashboard/update-camp/${camp._id}`}>
                       <button className="btn btn-ghost btn-lg text-blue-600 hover:bg-blue-200 rounded-md transition-all">
                         <FaEdit />
                       </button>

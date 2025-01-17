@@ -4,30 +4,17 @@ import { useParams } from "react-router-dom";
 import { FaMapMarkerAlt,  FaUserMd, FaRegClock, FaDollarSign, FaUsers } from "react-icons/fa"; 
 import useAuth from "../hooks/useAuth";
 import JoinCampModal from "../components/Modal/JoinCampModal";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import Skeleton from "react-loading-skeleton";
+import useCampById from "../hooks/useCampById";
 
 const CampDetails = () => {
     const { campId } = useParams();
     const { user } = useAuth();
-    const axiosPublic = useAxiosPublic();
     const [isModalOpen, setModalOpen] = useState(false);
+    const [camp, isLoading, refetch] = useCampById(campId)
 
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
-
-    const {
-      data: camp = {},
-      isLoading,
-      refetch,
-    } = useQuery({
-      queryKey: ['camp', campId],
-      queryFn: async () => {
-        const { data } = await axiosPublic(`/camps/${campId}`)
-        return data
-      },
-    })
 
     console.log(camp);
     const { campName, image, dateTime, fees, location, healthcareProfessional, participants, description } = camp || {}
