@@ -24,7 +24,7 @@ const OrganizerMenuItems = () => {
                     Manage Camps</NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/bookings" className='text-xs lg:text-sm'>
+                <NavLink to="/dashboard/manageRegisteredCamps" className='text-xs lg:text-sm'>
                     <SiManageiq />
                     Manage Registered Camps</NavLink>
             </li>

@@ -14,6 +14,7 @@ import ManageCamps from "../Pages/Dashboard/Admin/ManageCamps";
 import AvailableCamps from "../Pages/AvailableCamps";
 import CampDetails from "../Pages/CampDetails";
 import UpdateCamp from "../Pages/Dashboard/Admin/UpdateCamp";
+import ManageRegisteredCamps from "../Pages/Dashboard/Admin/ManageRegisteredCamps";
 
 
 
@@ -68,6 +69,11 @@ const router = createBrowserRouter([
           {
             path: 'manageCamps',
             element: <AdminRoute><ManageCamps></ManageCamps></AdminRoute>
+          },
+          {
+           
+            path: 'manageRegisteredCamps',
+            element: <AdminRoute><ManageRegisteredCamps></ManageRegisteredCamps></AdminRoute>
           },
           {
             path: 'update-camp/:campId',
