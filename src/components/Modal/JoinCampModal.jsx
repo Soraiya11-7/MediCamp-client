@@ -57,27 +57,6 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                 closeModal();
             }
 
-            // if (data.insertedId) {
-            //     refetch();
-            //     closeModal();
-            //     Swal.fire({
-            //         position: "top-end",
-            //         icon: "success",
-            //         title: `${participantData.participantName} Successfully registered for the camp!`,
-            //         showConfirmButton: false,
-            //         timer: 1500,
-            //     });
-
-            // }
-
-            // if (data.message === "Participant already joined this camp") {
-            //     Swal.fire({
-            //         icon: "warning",
-            //         title: "Already Registered",
-            //         text: `${data.message}`,
-            //     });
-            //     return;
-            // }
 
         } catch (error) {
             console.error("Error:", error);
