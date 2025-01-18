@@ -15,6 +15,7 @@ import AvailableCamps from "../Pages/AvailableCamps";
 import CampDetails from "../Pages/CampDetails";
 import UpdateCamp from "../Pages/Dashboard/Admin/UpdateCamp";
 import ManageRegisteredCamps from "../Pages/Dashboard/Admin/ManageRegisteredCamps";
+import RegisteredCamps from "../Pages/Dashboard/User/RegisteredCamps";
 
 
 
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
           {
             path: 'userHome',
             element: <UserHome></UserHome>
+          },
+          {
+            path: 'userRegisteredCamps',
+            element: <RegisteredCamps></RegisteredCamps>
           },
           // admin only routes
           {

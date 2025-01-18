@@ -16,7 +16,7 @@ const UserMenuItems = () => {
                     Participant Profile</NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/review" className='text-xs lg:text-sm'>
+                <NavLink to="/dashboard/userRegisteredCamps" className='text-xs lg:text-sm'>
                     <FaAd></FaAd>
                     Registered Camps</NavLink>
             </li>

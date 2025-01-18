@@ -38,6 +38,7 @@ const Navbar = () => {
             .catch((err) => {
                 const error = err.message;
             })
+            setIsOpen(false)
 
     }
     return (
