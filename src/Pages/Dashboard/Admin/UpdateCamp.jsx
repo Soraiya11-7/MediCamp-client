@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import Skeleton from "react-loading-skeleton";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useCampById from "../../../hooks/useCampById";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -13,6 +14,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const UpdateCamp = () => {
     const { campId } = useParams();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [camp, isLoading, refetch] = useCampById(campId)
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
@@ -60,7 +62,7 @@ const UpdateCamp = () => {
                 image: updatedImage,
             };
 
-            const dbResponse = await axiosPublic.patch(`/update-camp/${_id}`, updatedCampDetails);
+            const dbResponse = await axiosSecure.patch(`/update-camp/${_id}`, updatedCampDetails);
             if (dbResponse.data.modifiedCount > 0) {
                 refetch();
                 Swal.fire({

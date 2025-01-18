@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosSecure from "./useAxiosSecure";
 
 
 const useRegisteredCamps = (search) => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
   
     const {data: registeredCamps = [], isPending: loading, refetch} = useQuery({
         queryKey: ['registeredCamps', search], 
         queryFn: async() =>{
-            const res = await axiosPublic.get(`/register-participant?search=${search}`);
+            const res = await axiosSecure.get(`/register-participant?search=${search}`);
             return res.data;
         }
     })

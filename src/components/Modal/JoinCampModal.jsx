@@ -1,10 +1,10 @@
 import { Dialog, Transition, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import Swal from 'sweetalert2';
-import useAxiosPublic from '../../hooks/useAxiosPublic';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [participantData, setParticipantData] = useState({
         campId: camp._id,
         campName: camp.campName,
@@ -36,7 +36,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
         console.log(participantData);
         closeModal();
         try {
-            const {data} = await axiosPublic.post("/register-participant", participantData);
+            const {data} = await axiosSecure.post("/register-participant", participantData);
             console.log(data);
 
             if (data.message) {

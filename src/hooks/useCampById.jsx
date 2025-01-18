@@ -1,9 +1,11 @@
 
-import useAxiosPublic from './useAxiosPublic';
+// import useAxiosPublic from './useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from './useAxiosSecure';
 
 const useCampById = (campId) => {
-    const axiosPublic = useAxiosPublic();
+    // const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
   
     const {
         data: camp = {},
@@ -12,7 +14,7 @@ const useCampById = (campId) => {
       } = useQuery({
         queryKey: ['camp', campId],
         queryFn: async () => {
-          const { data } = await axiosPublic(`/camps/${campId}`)
+          const { data } = await axiosSecure(`/camps/${campId}`)
           return data
         },
       })

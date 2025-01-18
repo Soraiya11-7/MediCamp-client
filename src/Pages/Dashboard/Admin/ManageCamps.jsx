@@ -1,15 +1,15 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useCamp from "../../../hooks/useCamp";
 import { useState } from "react";
 import SearchBar from "../../../components/Shared/SearchBar";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageCamps = () => {
   const [search, setSearch] = useState('');
   const [camps, , refetch] = useCamp(search);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const handleDeleteCamp = (camp) => {
 
@@ -23,7 +23,7 @@ const ManageCamps = () => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await axiosPublic.delete(`/delete-camp/${camp._id}`);
+        const res = await axiosSecure.delete(`/delete-camp/${camp._id}`);
         if (res.data.deletedCount > 0) {
           refetch();
           Swal.fire({

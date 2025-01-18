@@ -1,16 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+// import useAxiosPublic from "./useAxiosPublic";
 import useAuth from "./useAuth";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useRegisteredCampByEmail = (search) => {
-    // const axiosSecure = useAxiosSecure();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
+  
 
    const {user} = useAuth()
     const {data: camps = [], isPending: loading, refetch} = useQuery({
         queryKey: ['cart', user?.email, search],
         queryFn: async() => {
-            const res = await axiosPublic.get(`/register-camps?email=${user?.email}&search=${search}`);
+            const res = await axiosSecure.get(`/register-camps?email=${user?.email}&search=${search}`);
             return res.data;
         }
     })

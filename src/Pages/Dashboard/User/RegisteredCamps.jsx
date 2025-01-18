@@ -4,16 +4,13 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { FaTrashAlt } from 'react-icons/fa';
 import SearchBar from '../../../components/Shared/SearchBar';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const RegisteredCamps = () => {
     const [search, setSearch] = useState('');
     const [camps, , refetch] = useRegisteredCampByEmail(search);
-    const axiosPublic = useAxiosPublic();
-
-
-    const handlePay = async (camp) => {
-        
-    };
+    const axiosSecure = useAxiosSecure();
 
     const handleFeedback = (camp) => {
         
@@ -32,7 +29,7 @@ const RegisteredCamps = () => {
               confirmButtonText: "Yes, delete it!",
             }).then(async (result) => {
               if (result.isConfirmed) {
-                const res = await axiosPublic.delete(`/delete-registered-camp/${camp._id}`);
+                const res = await axiosSecure.delete(`/delete-registered-camp/${camp._id}`);
                 if (res.data.deletedCount > 0) {
                   refetch();
                   Swal.fire({
@@ -88,13 +85,15 @@ const RegisteredCamps = () => {
                                     {camp.paymentStatus === 'Paid' ? (
                                         <span className="text-green-600">Paid</span>
                                     ) : (
+                                       <Link to={`/dashboard/payment/${camp._id}`}>
                                         <button
-                                            onClick={() => handlePay(camp)}
                                             className="btn btn-ghost btn-lg text-blue-600 hover:bg-blue-200 rounded-md transition-all"
                                         >
                                             Pay
                                         </button>
+                                        </Link>
                                     )}
+                                       
                                 </td>
                                
                                 <td className="py-3 px-4">

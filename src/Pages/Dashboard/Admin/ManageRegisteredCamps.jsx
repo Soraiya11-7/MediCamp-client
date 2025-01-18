@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useRegisteredCamps from '../../../hooks/useRegisteredCamps';
 import SearchBar from '../../../components/Shared/SearchBar';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ManageRegisteredCamps = () => {
     const [search, setSearch] = useState('');
     const [registeredCamps, , refetch] = useRegisteredCamps(search);
-    const axiosPublic = useAxiosPublic();
+   
+    const axiosSecure = useAxiosSecure();
 
     const handleConfirmStatus = async (camp) => {
        
@@ -39,7 +40,7 @@ const ManageRegisteredCamps = () => {
               confirmButtonText: "Yes, delete it!",
             }).then(async (result) => {
               if (result.isConfirmed) {
-                const res = await axiosPublic.delete(`/delete-registered-camp/${camp._id}`);
+                const res = await axiosSecure.delete(`/delete-registered-camp/${camp._id}`);
                 if (res.data.deletedCount > 0) {
                   refetch();
                   Swal.fire({
