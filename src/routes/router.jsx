@@ -19,6 +19,8 @@ import RegisteredCamps from "../Pages/Dashboard/User/RegisteredCamps";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
 import FeedbackForm from "../Pages/Dashboard/User/FeedbackForm";
+import OrganizerProfile from "../Pages/Dashboard/Admin/OrganizerProfile";
+import UserProfile from "../Pages/Dashboard/User/UserProfile";
 
 
 
@@ -60,6 +62,10 @@ const router = createBrowserRouter([
           {
             path: 'userHome',
             element: <UserHome></UserHome>
+          },
+          {
+            path:'userProfile',
+            element:<UserProfile></UserProfile>
           },
           
           {

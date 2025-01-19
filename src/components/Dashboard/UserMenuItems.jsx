@@ -11,7 +11,7 @@ const UserMenuItems = () => {
                     Analytics</NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/history" className='text-xs lg:text-sm'>
+                <NavLink to="/dashboard/userProfile" className='text-xs lg:text-sm'>
                     <FaCalendar></FaCalendar>
                     Participant Profile</NavLink>
             </li>

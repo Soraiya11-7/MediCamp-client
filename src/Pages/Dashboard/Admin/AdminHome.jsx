@@ -1,5 +1,6 @@
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
+import OrganizerProfile from './OrganizerProfile';
 
 const AdminHome = () => {
     const {user} = useAuth();
@@ -11,6 +12,8 @@ const AdminHome = () => {
                     user?.displayName ? user.displayName : 'Back'
                 }
             </h2>
+
+            <OrganizerProfile></OrganizerProfile>
         </div>
     );
 };

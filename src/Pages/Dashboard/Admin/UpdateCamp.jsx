@@ -1,6 +1,6 @@
 import {useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Skeleton from "react-loading-skeleton";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
@@ -16,14 +16,23 @@ const UpdateCamp = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [camp, isLoading, refetch] = useCampById(campId)
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const navigate = useNavigate()
+
 
     console.log(camp);
     const { _id, campName, image, dateTime, fees, location, healthcareProfessional, description } = camp || {};
     // console.log(dateTime);
 
-    const [preview, setPreview] = useState(image);
+    const [preview, setPreview] = useState('');
+      useEffect(() => {
+        if (camp?.image) {
+          setPreview(camp.image);
+        } else {
+          setPreview('');
+        }
+      }, [userInfo]);
+
     const formattedDate = dateTime
         ? new Date(dateTime.split(" | ")[0]).toISOString().slice(0, 10)
         : "";
@@ -114,6 +123,7 @@ const UpdateCamp = () => {
                                 {...register("campName", { required: true })}
                                 className="input input-bordered w-full text-sm sm:text-base"
                             />
+                            {errors.campName && <p className="text-red-500 text-sm">Camp Name is required </p>}
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
@@ -125,6 +135,7 @@ const UpdateCamp = () => {
                                 {...register("location", { required: true })}
                                 className="input input-bordered w-full"
                             />
+                            {errors.location && <p className="text-red-500 text-sm">Location is required </p>}
                         </div>
                     </div>
 
@@ -139,6 +150,7 @@ const UpdateCamp = () => {
                                 {...register("healthcareProfessional", { required: true })}
                                 className="input input-bordered w-full"
                             />
+                             {errors.healthcareProfessional && <p className="text-red-500 text-sm">HealthcareProfessional Name is required </p>}
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
@@ -150,6 +162,7 @@ const UpdateCamp = () => {
                                 {...register("fees", { required: true })}
                                 className="input input-bordered w-full text-sm sm:text-base"
                             />
+                            {errors.fees && <p className="text-red-500 text-sm">Fees are required </p>}
                         </div>
                     </div>
 
@@ -165,6 +178,7 @@ const UpdateCamp = () => {
                                 className="file-input w-full text-sm sm:text-base"
                                 onChange={handleFileChange}
                             />
+                             {errors.image && <p className="text-red-500 text-sm">Image is required </p>}
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
@@ -176,6 +190,7 @@ const UpdateCamp = () => {
                                 {...register("date", { required: true })}
                                 className="input input-bordered w-full"
                             />
+                            {errors.date && <p className="text-red-500 text-sm">Date is required </p>}
                         </div>
                     </div>
 
@@ -190,6 +205,7 @@ const UpdateCamp = () => {
                                 {...register("startTime", { required: true })}
                                 className="input input-bordered w-full"
                             />
+                            {errors.startTime && <p className="text-red-500 text-sm">startTime is required </p>}
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
@@ -201,6 +217,7 @@ const UpdateCamp = () => {
                                 {...register("endTime", { required: true })}
                                 className="input input-bordered w-full"
                             />
+                             {errors.endTime && <p className="text-red-500 text-sm">End Time is required </p>}
                         </div>
                     </div>
 
@@ -213,6 +230,7 @@ const UpdateCamp = () => {
                             {...register("description", { required: true })}
                             className="textarea textarea-bordered h-24"
                         ></textarea>
+                        {errors.description && <p className="text-red-500 text-sm">Description is required </p>}
                     </div>
 
                     <button className="btn bg-green-900 hover:bg-green-300 text-white w-full mb-5">
