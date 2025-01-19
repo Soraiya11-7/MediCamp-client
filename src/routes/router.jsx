@@ -61,6 +61,7 @@ const router = createBrowserRouter([
             path: 'userHome',
             element: <UserHome></UserHome>
           },
+          
           {
             path: 'userRegisteredCamps',
             element: <RegisteredCamps></RegisteredCamps>

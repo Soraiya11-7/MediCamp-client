@@ -1,16 +1,14 @@
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
+import Analytics from './Analytics';
 
 const UserHome = () => {
     const {user} = useAuth();
     return (
-        <div>
-            <h2 className="text-3xl">
-                <span>Hi User, Welcome!</span>
-                {
-                    user?.displayName ? user.displayName : 'Back'
-                }
-            </h2>
+        <div className='w-full'>
+          
+            <Analytics></Analytics>
+
         </div>
     );
 };
