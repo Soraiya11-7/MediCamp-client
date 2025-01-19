@@ -9,7 +9,7 @@ const useRegisteredCampByEmail = (search) => {
 
    const {user} = useAuth()
     const {data: camps = [], isPending: loading, refetch} = useQuery({
-        queryKey: ['cart', user?.email, search],
+        queryKey: ['camps', user?.email, search],
         queryFn: async() => {
             const res = await axiosSecure.get(`/register-camps?email=${user?.email}&search=${search}`);
             return res.data;

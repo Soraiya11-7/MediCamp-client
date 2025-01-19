@@ -56,7 +56,7 @@ const RegisteredCamps = () => {
                 />
             </div>
 
-            <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
+            <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg max-w-5xl mx-auto">
                 <table className="table w-full table-auto">
                     <thead className="bg-gray-800 text-white">
                         <tr className="text-center">

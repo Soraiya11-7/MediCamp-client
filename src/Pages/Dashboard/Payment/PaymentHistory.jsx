@@ -2,32 +2,42 @@ import React, { useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
-// import SearchBar from '../../../components/Shared/SearchBar';
+import SearchBar from '../../../components/Shared/SearchBar';
+import Skeleton from 'react-loading-skeleton';
 
 const PaymentHistory = () => {
     const { user } = useAuth();
+
     const axiosSecure = useAxiosSecure();
-    //  const [search, setSearch] = useState('');
-    const { data: payments = [] } = useQuery({
-        queryKey: ['payments', user?.email],
+     const [search, setSearch] = useState('');
+    const { data: payments = [] ,isPending: loading } = useQuery({
+        queryKey: ['payments', user?.email,search],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/payments/${user?.email}`)
+            const res = await axiosSecure.get(`/payments/${user?.email}?search=${search}`)
             return res.data;
         }
     })
+
+       if(loading){
+               return <div className="flex items-center min-h-screen justify-center">
+                   <Skeleton count={3} height={120} width={200} />
+               </div>
+           }
+
+    console.log(payments);
 
     return (
         <div>
             <h2 className="text-4xl font-bold text-center my-8">Manage Registered Camps</h2>
 
             {/* SearchBar Reusable Component..................... */}
-            {/* <div className="flex justify-end mt-10 mb-8">
+            <div className="flex justify-end mt-10 mb-8">
                 <SearchBar
                     placeholder="Search history..."
                     searchTerm={search}
                     setSearchTerm={setSearch}
                 />
-            </div> */}
+            </div>
 
             <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
                 <table className="table w-full table-auto">

@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import useRegisteredCampById from "../../../hooks/useRegisteredCampById";
 
 
-const CheckoutForm = ({id}) => {
+const CheckoutForm = ({ id }) => {
 
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('')
@@ -15,23 +16,10 @@ const CheckoutForm = ({id}) => {
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
-    const {
-        data: camp = {},
-        isLoading,
-        refetch,
-      } = useQuery({
-        queryKey: ['camp', id],
-        queryFn: async () => {
-          const { data } = await axiosSecure(`/registeredCamps/${id}`)
-          return data
-        },
-      })
+    const [camp, isLoading, refetch] = useRegisteredCampById(id);
+    console.log(camp);
 
-      console.log(camp);
-  
-   
     const { user } = useAuth();
-
     const navigate = useNavigate();
 
     const totalPrice = camp.campFees;
@@ -128,7 +116,7 @@ const CheckoutForm = ({id}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-        
+
             <div className="border border-gray-300 rounded-lg p-3 hover:border-blue-500 focus-within:border-blue-500 transition duration-150">
                 <CardElement
                     options={{

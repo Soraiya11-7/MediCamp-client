@@ -12,20 +12,15 @@ const ManageRegisteredCamps = () => {
     const axiosSecure = useAxiosSecure();
 
     const handleConfirmStatus = async (camp) => {
-       
-        // if (camp.paymentStatus !== 'Paid') {
-        //     alert('The payment must be completed before confirmation.');
-        //     return;
-        // }
-
-        // try {
-        //     // Update confirmation status to "Confirmed"
-        //     await axiosPublic.patch(`/register-participant/${camp._id}`, { confirmationStatus: 'Confirmed' });
-        //     refetch(); 
-        //     alert('Registration confirmed!');
-        // } catch (error) {
-        //     console.error('Error confirming registration:', error);
-        // }
+    
+        try {
+            // Update confirmation status to "Confirmed"
+            await axiosSecure.patch(`/register-participant/${camp._id}`);
+            refetch(); 
+            alert('Registration confirmed!');
+        } catch (error) {
+            console.error('Error confirming registration:', error);
+        }
     };
 
     const handleDeleteCamp = async (camp) => {
@@ -55,7 +50,7 @@ const ManageRegisteredCamps = () => {
             });
     };
     return (
-        <div>
+        <div className='border border-red-200'>
             <h2 className="text-4xl font-bold text-center my-8">Manage Registered Camps</h2>
 
             {/* SearchBar Reusable Component..................... */}
@@ -67,7 +62,7 @@ const ManageRegisteredCamps = () => {
                 />
             </div>
 
-            <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
+            <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg ">
                 <table className="table w-full table-auto">
                     <thead className="bg-gray-800 text-white">
                         <tr className="text-center">
@@ -96,6 +91,7 @@ const ManageRegisteredCamps = () => {
                                     <div className="flex justify-center items-center">
                                         {camp.confirmationStatus === 'Pending' ? (
                                             <button
+                                                disabled={camp.paymentStatus === 'Unpaid'}
                                                 onClick={() => handleConfirmStatus(camp)}
                                                 className="btn btn-ghost btn-lg text-green-600 hover:bg-green-200 rounded-md transition-all"
                                             >
