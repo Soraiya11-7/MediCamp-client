@@ -8,7 +8,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddCamp = () => {
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
@@ -91,6 +91,7 @@ const AddCamp = () => {
                             {...register("campName", { required: true })}
                             className="input input-bordered w-full text-sm sm:text-base"
                         />
+                        {errors.campName && <p className="text-red-500 text-sm">Camp Name is required </p>}
                     </div>
 
                     {/* Location */}
@@ -104,6 +105,7 @@ const AddCamp = () => {
                             {...register("location", { required: true })}
                             className="input input-bordered w-full"
                         />
+                         {errors.location && <p className="text-red-500 text-sm">Location is required </p>}
                     </div>
                 </div>
 
@@ -122,6 +124,7 @@ const AddCamp = () => {
                             {...register("healthcareProfessional", { required: true })}
                             className="input input-bordered w-full"
                         />
+                         {errors.healthcareProfessional && <p className="text-red-500 text-sm">HealthcareProfessional Name is required </p>}
                     </div>
 
                       {/* Camp Fees */}
@@ -135,6 +138,7 @@ const AddCamp = () => {
                             {...register("fees", { required: true })}
                             className="input input-bordered w-full text-sm sm:text-base"
                         />
+                        {errors.fees && <p className="text-red-500 text-sm">Fees are required </p>}
                     </div>
                 </div>
 
@@ -151,6 +155,7 @@ const AddCamp = () => {
                                 {...register("image", { required: true })}
                                 className="file-input w-full text-sm sm:text-base "
                             />
+                            {errors.image && <p className="text-red-500 text-sm">Image is required </p>}
                            </div>
                         </div>
 
@@ -164,6 +169,7 @@ const AddCamp = () => {
                                 {...register("date", { required: true })}
                                 className="input input-bordered w-full"
                             />
+                            {errors.date && <p className="text-red-500 text-sm">Date is required </p>}
                         </div>
                     </div>
 
@@ -179,6 +185,7 @@ const AddCamp = () => {
                                 {...register("startTime", { required: true })}
                                 className="input input-bordered w-full"
                             />
+                            {errors.startTime && <p className="text-red-500 text-sm">startTime is required </p>}
                         </div>
 
                         <div className="form-control md:w-1/2 md:ml-4">
@@ -191,6 +198,7 @@ const AddCamp = () => {
                                     {...register("endTime", { required: true })}
                                     className="input input-bordered w-full"
                                 />
+                                {errors.endTime && <p className="text-red-500 text-sm">End Time is required </p>}
                             </div>
                         </div>
 
@@ -206,6 +214,7 @@ const AddCamp = () => {
                             {...register("description", { required: true })}
                             className="textarea textarea-bordered h-24"
                         ></textarea>
+                        {errors.description && <p className="text-red-500 text-sm">Description is required </p>}
                     </div>
 
                     {/* Submit Button */}

@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/mc2.png"
 import Button from "../components/Shared/Button";
 import PopularCamps from "../components/Home/popularCamps";
+import FeedbackRatings from "../components/Home/FeedbackRatings";
 
 
 const Home = () => {
@@ -33,6 +34,7 @@ const Home = () => {
         </div>
 
         <PopularCamps></PopularCamps>
+        <FeedbackRatings></FeedbackRatings>
         
         </div>
     );

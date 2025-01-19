@@ -18,6 +18,7 @@ import ManageRegisteredCamps from "../Pages/Dashboard/Admin/ManageRegisteredCamp
 import RegisteredCamps from "../Pages/Dashboard/User/RegisteredCamps";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
+import FeedbackForm from "../Pages/Dashboard/User/FeedbackForm";
 
 
 
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
           {
             path: 'paymentHistory',
             element: <PaymentHistory></PaymentHistory>
+          },
+          {
+            path: 'feedback/:id',
+            element: <FeedbackForm></FeedbackForm>
           },
           // admin only routes
           {

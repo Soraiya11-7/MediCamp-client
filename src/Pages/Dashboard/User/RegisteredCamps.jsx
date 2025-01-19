@@ -12,10 +12,6 @@ const RegisteredCamps = () => {
     const [camps, , refetch] = useRegisteredCampByEmail(search);
     const axiosSecure = useAxiosSecure();
 
-    const handleFeedback = (camp) => {
-        
-    };
-
 
     const handleDeleteCamp = async (camp) => {
 
@@ -115,12 +111,14 @@ const RegisteredCamps = () => {
                                     ) : (
                                         <>
                                             {camp.paymentStatus === 'Paid' && camp.confirmationStatus === 'Confirmed' ? (
+                                                <Link to={`/dashboard/feedback/${camp._id}`}>
                                                 <button
-                                                    onClick={() => handleFeedback(camp)}
+                                                    
                                                     className="btn btn-ghost btn-lg text-purple-600 hover:bg-purple-200 rounded-md transition-all"
                                                 >
                                                     Feedback
                                                 </button>
+                                                </Link>
                                             ) : (
                                                 <span>N/A</span>
                                             )}
