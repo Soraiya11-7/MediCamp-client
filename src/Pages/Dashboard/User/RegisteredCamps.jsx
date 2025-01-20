@@ -6,11 +6,31 @@ import SearchBar from '../../../components/Shared/SearchBar';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Pagination from '../../../components/Shared/Pagination';
 
 const RegisteredCamps = () => {
     const [search, setSearch] = useState('');
     const [camps, , refetch] = useRegisteredCampByEmail(search);
     const axiosSecure = useAxiosSecure();
+
+    const handleSearch = (searchTerm) => {
+        setSearch(searchTerm);
+        setCurrentPage(1); // Reset to the first page on search
+    };
+    const rowsPerPage = 10;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const totalPages = Math.ceil(camps.length / rowsPerPage);
+
+    // Get data for the current page
+    const currentTableData = camps.slice(
+        (currentPage - 1) * rowsPerPage,
+        currentPage * rowsPerPage
+    );
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
 
     const handleDeleteCamp = async (camp) => {
@@ -48,7 +68,7 @@ const RegisteredCamps = () => {
                 <SearchBar
                     placeholder="Search camps..."
                     searchTerm={search}
-                    setSearchTerm={setSearch}
+                    setSearchTerm={handleSearch}
                 />
             </div>
 
@@ -68,7 +88,7 @@ const RegisteredCamps = () => {
                         </tr>
                     </thead>
                     <tbody className="text-center bg-slate-200">
-                        {camps.map((camp, index) => (
+                        {currentTableData.map((camp, index) => (
                             <tr
                                 key={camp._id}
                                 className="border-t hover:bg-gray-50 transition-all duration-300"
@@ -131,7 +151,15 @@ const RegisteredCamps = () => {
                         ))}
                     </tbody>
                 </table>
+
+               
             </div>
+             {/* Pagination Footer */}
+             <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                />
         </div>
     );
 };

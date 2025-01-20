@@ -4,19 +4,43 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import SearchBar from '../../../components/Shared/SearchBar';
 import Skeleton from 'react-loading-skeleton';
+import Pagination from '../../../components/Shared/Pagination';
 
 const PaymentHistory = () => {
     const { user } = useAuth();
 
     const axiosSecure = useAxiosSecure();
      const [search, setSearch] = useState('');
-    const { data: payments = [] ,isPending: loading } = useQuery({
+
+     const { data: payments = [] ,isPending: loading } = useQuery({
         queryKey: ['payments', user?.email,search],
         queryFn: async () => {
             const res = await axiosSecure.get(`/payments/${user?.email}?search=${search}`)
             return res.data;
         }
     })
+
+     const handleSearch = (searchTerm) => {
+             setSearch(searchTerm);
+             setCurrentPage(1); // Reset to the first page on search
+         };
+         const rowsPerPage = 10;
+         const [currentPage, setCurrentPage] = useState(1);
+     
+         const totalPages = Math.ceil(payments.length / rowsPerPage);
+     
+         // Get data for the current page
+         const currentTableData = payments.slice(
+             (currentPage - 1) * rowsPerPage,
+             currentPage * rowsPerPage
+         );
+     
+         const handlePageChange = (pageNumber) => {
+             setCurrentPage(pageNumber);
+         };
+     
+     
+   
 
        if(loading){
                return <div className="flex items-center min-h-screen justify-center">
@@ -35,7 +59,7 @@ const PaymentHistory = () => {
                 <SearchBar
                     placeholder="Search history..."
                     searchTerm={search}
-                    setSearchTerm={setSearch}
+                    setSearchTerm={handleSearch}
                 />
             </div>
 
@@ -51,7 +75,7 @@ const PaymentHistory = () => {
                         </tr>
                     </thead>
                     <tbody className="text-center bg-slate-200">
-                        {payments.map((camp, index) => (
+                        {currentTableData.map((camp, index) => (
                             <tr
                                 key={camp._id}
                                 className="border-t hover:bg-gray-50 transition-all duration-300"
@@ -66,6 +90,12 @@ const PaymentHistory = () => {
                     </tbody>
                 </table>
             </div>
+             {/* Pagination Footer */}
+             <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                />
         </div>
     );
 };
