@@ -234,8 +234,7 @@ const OrganizerProfile = () => {
               Cancel
             </button>
             <button
-              type="submit"
-              className="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-full transition duration-200 shadow-md"
+              className="btn bg-green-900 hover:bg-green-300 text-white w-full mb-5 px-6 py-2 rounded-full transition duration-200 shadow-md"
             >
               Save
             </button>

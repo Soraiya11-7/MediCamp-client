@@ -1,45 +1,36 @@
-import { Dialog, Transition, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { useForm } from 'react-hook-form';
 
 const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
     const axiosSecure = useAxiosSecure();
-    const [participantData, setParticipantData] = useState({
-        campId: camp._id,
-        campName: camp.campName,
-        campFees: camp.fees,
-        location: camp.location,
-        healthcareProfessional: camp.healthcareProfessional,
-        participantName: user?.displayName,
-        participantEmail: user?.email,
-        age: '',
-        phoneNumber: '',
-        gender: '',
-        emergencyContact: '',
-        paymentStatus: 'Unpaid',
-        confirmationStatus: 'Pending',
-    });
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
+    const onSubmit = async (data) => {
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setParticipantData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        console.log(participantData);
-        closeModal();
+        const participantData = {
+            campId: camp._id,
+            campName: camp.campName,
+            campFees: camp.fees,
+            location: camp.location,
+            healthcareProfessional: camp.healthcareProfessional,
+            participantName: user?.displayName,
+            participantEmail: user?.email,
+            age: data.age,
+            phoneNumber: data.phoneNumber,
+            gender: data.gender,
+            emergencyContact: data.emergencyContact,
+            paymentStatus: 'Unpaid',
+            confirmationStatus: 'Pending',
+        }
         try {
-            const {data} = await axiosSecure.post("/register-participant", participantData);
-            console.log(data);
+            const { data } = await axiosSecure.post("/register-participant", participantData);
+            // console.log(data);
 
-            if (data.message) {
+            if (data.insertedId) {
+                reset();
                 // Show alert based on the server message
                 Swal.fire({
                     icon: data.insertedId ? "success" : "warning",
@@ -50,13 +41,9 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                     showConfirmButton: false,
                     timer: 3000,
                 });
-            }
-    
-            if (data.insertedId) {
                 refetch();
                 closeModal();
             }
-
 
         } catch (error) {
             console.error("Error:", error);
@@ -66,183 +53,176 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                 text: "Something went wrong. Please try again later.",
             });
         }
+
     };
 
     return (
-        <Transition appear show={isOpen} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={closeModal}>
-                <TransitionChild
-                    as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                >
-                    <div className="fixed inset-0 bg-black bg-opacity-25" />
-                </TransitionChild>
+        <div>
+            
+            {isOpen && <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+                <div className="relative w-[80%] max-w-2xl bg-gradient-to-br from-sky-500 to-green-700 rounded-3xl shadow-2xl overflow-y-auto max-h-[600px] p-6">
+                <h2 className='text-center text-xl my-6'>Register a Camp</h2>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-8">
+                    <div className="space-y-4">
 
-                <div className="fixed inset-0 overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4 text-center">
-                        <TransitionChild
-                            as={Fragment}
-                            enter="ease-out duration-300"
-                            enterFrom="opacity-0 scale-95"
-                            enterTo="opacity-100 scale-100"
-                            leave="ease-in duration-200"
-                            leaveFrom="opacity-100 scale-100"
-                            leaveTo="opacity-0 scale-95"
-                        >
-                            <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                <DialogTitle as="h3" className="text-lg font-medium text-center leading-6 text-gray-900">
-                                    Register for Camp
-                                </DialogTitle>
-                                <div className="mt-2">
-                                    <form onSubmit={handleSubmit}>
-                                        <div className="space-y-4">
-                                            <div>
-                                                <label className="block text-sm font-semibold">Camp Name</label>
-                                                <input
-                                                    type="text"
-                                                    name="campName"
-                                                    value={participantData.campName}
-                                                    readOnly
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                />
-                                            </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-white font-semibold">Camp Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                defaultValue={camp.campName}
+                                {...register("campName")}
+                                readOnly
+                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                            />
+                        </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Camp Fees</label>
-                                                <input
-                                                    type="number"
-                                                    name="campFees"
-                                                    value={participantData.campFees}
-                                                    readOnly
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                />
-                                            </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-white font-semibold">Camp Fees</span>
+                            </label>
+                            <input
+                                type="number"
+                                defaultValue={camp.fees}
+                                {...register("campFees")}
+                                readOnly
+                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                            />
+                        </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Location</label>
-                                                <input
-                                                    type="text"
-                                                    name="location"
-                                                    value={participantData.location}
-                                                    readOnly
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                />
-                                            </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-white font-semibold">Location</span>
+                            </label>
+                            <input
+                                type="text"
+                                defaultValue={camp.location}
+                                {...register("location")}
+                                readOnly
+                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                            />
+                        </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Healthcare Professional</label>
-                                                <input
-                                                    type="text"
-                                                    name="healthcareProfessionalName"
-                                                    value={participantData.healthcareProfessional}
-                                                    readOnly
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                />
-                                            </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-white font-semibold">Healthcare Professional</span>
+                            </label>
+                            <input
+                                type="text"
+                                defaultValue={camp.healthcareProfessional}
+                                {...register("healthcareProfessional")}
+                                readOnly
+                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                            />
+                        </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Participant Name</label>
-                                                <input
-                                                    type="text"
-                                                    name="participantName"
-                                                    value={participantData.participantName}
-                                                    readOnly
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                />
-                                            </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-white font-semibold">Participant Name</span>
+                            </label>
+                            <input
+                                type="text"
+                                defaultValue={user?.displayName}
+                                {...register("participantName")}
+                                readOnly
+                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                            />
+                        </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Participant Email</label>
-                                                <input
-                                                    type="email"
-                                                    name="participantEmail"
-                                                    value={participantData.participantEmail}
-                                                    readOnly
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                />
-                                            </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Age</label>
-                                                <input
-                                                    type="number"
-                                                    name="age"
-                                                  
-                                                    onChange={handleChange}
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                    required
-                                                />
-                                            </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-white font-semibold">Participant Email</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="participantEmail"
+                                defaultValue={user?.email}
+                                {...register("participantEmail")}
+                                readOnly
+                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                            />
+                        </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Phone Number</label>
-                                                <input
-                                                    type="tel"
-                                                    name="phoneNumber"
-                                                   
-                                                    onChange={handleChange}
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                    required
-                                                />
-                                            </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Age*</span>
+                            </label>
+                            <input
+                                type="number"
+                                placeholder="Enter your age"
+                                {...register("age", { required: true })}
+                                className="input input-bordered w-full"
+                            />
+                            {errors.age && <p className="text-red-500 text-sm">Age is required </p>}
+                        </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Gender</label>
-                                                <select
-                                                    name="gender"
-                                                    
-                                                    onChange={handleChange}
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                    required
-                                                >
-                                                    <option value="">Select Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-                                            </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Phone Number*</span>
+                            </label>
+                            <input
+                                type="tel"
+                                placeholder="Enter your Phone Number"
+                                {...register("phoneNumber", { required: true })}
+                                className="input input-bordered w-full"
+                            />
+                            {errors.phoneNumber && <p className="text-red-500 text-sm">Phone Number is required </p>}
+                        </div>
 
-                                            <div>
-                                                <label className="block text-sm font-semibold">Emergency Contact</label>
-                                                <input
-                                                    type="tel"
-                                                    name="emergencyContact"
-                                                 
-                                                    onChange={handleChange}
-                                                    className="w-full mt-1 p-2 border border-gray-300 rounded"
-                                                    required
-                                                />
-                                            </div>
 
-                                            <div className="flex justify-end space-x-4 mt-4">
-                                                <button
-                                                    type="button"
-                                                    onClick={closeModal}
-                                                    className="px-4 py-2 bg-gray-500 text-white rounded"
-                                                >
-                                                    Close
-                                                </button>
-                                                <button
-                                                    type="submit"
-                                                    className="px-4 py-2 bg-blue-500 text-white rounded"
-                                                >
-                                                    Register
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </DialogPanel>
-                        </TransitionChild>
+                        <div className='form-control'>
+                            <label className="label">
+                                <span className="label-text">Gender*</span>
+                            </label>
+                            <select
+
+                                {...register("gender", { required: true })}
+                                className="w-full mt-1 p-2 border border-gray-300 rounded"
+                                required
+                            >
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            {errors.gender && <p className="text-red-500 text-sm">Emergency Contact Number is required </p>}
+                        </div>
+
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">EmergencyContact*</span>
+                            </label>
+                            <input
+                                type="tel"
+                                placeholder="Enter your Emergency Contact"
+                                {...register("emergencyContact", { required: true })}
+                                className="input input-bordered w-full"
+                            />
+                            {errors.emergencyContact && <p className="text-red-500 text-sm">Emergency Contact Number is required </p>}
+                        </div>
+
+                        <div className="flex justify-end space-x-4 mt-4">
+                            <button
+                                onClick={closeModal}
+                                className="btn px-6 py-2 rounded-full transition duration-200 shadow-md bg-gray-500 text-white"
+                            >
+                                Close
+                            </button>
+                            <button
+                                className="btn bg-green-900 hover:bg-green-300 text-white w mb-5 px-6 py-2 rounded-full transition duration-200 shadow-md"
+                            >
+                                Register
+                            </button>
+                        </div>
                     </div>
+                </form>
                 </div>
-            </Dialog>
-        </Transition>
+            </div>}
+            
+        </div>
     );
 };
 

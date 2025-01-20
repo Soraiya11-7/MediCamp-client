@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useRegisteredCampByEmail from '../../../hooks/useRegisteredCampByEmail';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
+// import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { FaTrashAlt } from 'react-icons/fa';
 import SearchBar from '../../../components/Shared/SearchBar';
 import Swal from 'sweetalert2';
