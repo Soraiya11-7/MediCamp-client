@@ -31,7 +31,7 @@ const UpdateCamp = () => {
         } else {
           setPreview('');
         }
-      }, [userInfo]);
+      }, [camp]);
 
     const formattedDate = dateTime
         ? new Date(dateTime.split(" | ")[0]).toISOString().slice(0, 10)
