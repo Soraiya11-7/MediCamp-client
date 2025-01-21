@@ -14,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from || "/";
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
 
@@ -24,11 +24,11 @@ const Login = () => {
 
     const handleLogin = data => {
         const { email, password } = data;
-        console.log(email, password);
+        // console.log(email, password);
         loginUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 Swal.fire({
                     title: 'User Login Successful.',
                     showClass: {

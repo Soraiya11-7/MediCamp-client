@@ -58,7 +58,7 @@ const AddCamp = () => {
                 }
             }
         } catch (error) {
-            console.error("Error adding camp:", error);
+            // console.error("Error adding camp:", error);
             Swal.fire({
                 icon: "error",
                 title: "Error",

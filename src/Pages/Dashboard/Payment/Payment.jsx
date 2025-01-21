@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
     const { id } = useParams();
-    console.log(id);
+    // console.log(id);
    
     return (
         <div>

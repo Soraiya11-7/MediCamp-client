@@ -48,7 +48,7 @@ const PaymentHistory = () => {
                </div>
            }
 
-    console.log(payments);
+    // console.log(payments);
 
     return (
         <div>

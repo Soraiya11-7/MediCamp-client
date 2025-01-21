@@ -25,12 +25,16 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
             paymentStatus: 'Unpaid',
             confirmationStatus: 'Pending',
         }
+
+        // console.log(participantData);
         try {
             const { data } = await axiosSecure.post("/register-participant", participantData);
             // console.log(data);
 
-            if (data.insertedId) {
+            if (data.message) {
                 reset();
+                
+               
                 // Show alert based on the server message
                 Swal.fire({
                     icon: data.insertedId ? "success" : "warning",
@@ -41,12 +45,16 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                     showConfirmButton: false,
                     timer: 3000,
                 });
-                refetch();
-                closeModal();
+               
             }
+            if(data.insertedId){
+                refetch();
+                
+            }
+            closeModal();
 
         } catch (error) {
-            console.error("Error:", error);
+            // console.error("Error:", error);
             Swal.fire({
                 icon: "error",
                 title: "Error",

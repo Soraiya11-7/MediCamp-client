@@ -39,7 +39,7 @@ const ManageRegisteredCamps = () => {
             refetch(); 
             alert('Registration confirmed!');
         } catch (error) {
-            console.error('Error confirming registration:', error);
+            // console.error('Error confirming registration:', error);
         }
     };
 
@@ -83,7 +83,7 @@ const ManageRegisteredCamps = () => {
             </div>
 
             <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg ">
-                <table className="table w-full table-auto">
+                <table className="table-auto w-full ">
                     <thead className="bg-gray-800 text-white">
                         <tr className="text-center">
                             <th className="py-3 px-4 text-lg">#</th>

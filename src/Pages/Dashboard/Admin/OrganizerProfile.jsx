@@ -53,7 +53,7 @@ const OrganizerProfile = () => {
             updatedImage = imageResponse.data.data.display_url;
           }
         }
-       console.log(updatedImage);
+      //  console.log(updatedImage);
         const updatedProfile = {
           name: data.name,
           email: userInfo.email,
@@ -74,7 +74,7 @@ const OrganizerProfile = () => {
           });
         }
       } catch (error) {
-        console.error("Error updating profile:", error);
+        // console.error("Error updating profile:", error);
         Swal.fire({
           icon: "error",
           title: "Error",
@@ -226,18 +226,19 @@ const OrganizerProfile = () => {
   
           {/* Modal Actions ......................................*/}
           <div className="flex justify-end gap-4">
-            <button
-              type="button"
-              onClick={() => setIsModalOpen(false)}
-              className="px-6 py-2 text-white bg-gray-500 hover:bg-gray-600 rounded-full transition duration-200 shadow-md"
-            >
-              Cancel
-            </button>
-            <button
-              className="btn bg-green-900 hover:bg-green-300 text-white w-full mb-5 px-6 py-2 rounded-full transition duration-200 shadow-md"
-            >
-              Save
-            </button>
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(false)}
+            className="px-6 py-2 text-white bg-gray-500 hover:bg-gray-600 rounded-full transition duration-200 shadow-md"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-full transition duration-200 shadow-md"
+          >
+            Save
+          </button>
           </div>
         </form>
       </div>

@@ -18,11 +18,11 @@ const SignUp = () => {
     const [showSecretKey, setShowSecretKey] = useState(false);
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                // console.log(loggedUser);
                 updateUserProfile({ displayName: data.name, photoURL: data.photoURL })
                     .then(() => {
                         setUser({
@@ -40,7 +40,7 @@ const SignUp = () => {
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
-                                    console.log('user added to the database')
+                                    // console.log('user added to the database')
                                     reset();
                                     Swal.fire({
                                         position: 'top-end',
@@ -54,7 +54,9 @@ const SignUp = () => {
                             })
 
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => {
+                        // console.log(error)
+                    })
             })
     };
 

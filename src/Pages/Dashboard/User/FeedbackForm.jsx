@@ -21,7 +21,7 @@ const FeedbackForm = () => {
                 rating: parseInt(data.rating),
                 comment: data.comment
             }
-            console.log(feedbackInfo);
+            // console.log(feedbackInfo);
             const response = await axiosSecure.post('/feedbacks', feedbackInfo);
             if (response.data.insertedId) {
                 reset();

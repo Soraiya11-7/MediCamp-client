@@ -20,7 +20,7 @@ const UpdateCamp = () => {
     const navigate = useNavigate()
 
 
-    console.log(camp);
+    // console.log(camp);
     const { _id, campName, image, dateTime, fees, location, healthcareProfessional, description } = camp || {};
     // console.log(dateTime);
 
@@ -85,7 +85,7 @@ const UpdateCamp = () => {
                 navigate('/dashboard/manageCamps');
             }
         } catch (error) {
-            console.error("Error updating camp:", error);
+            // console.error("Error updating camp:", error);
             Swal.fire({
                 icon: "error",
                 title: "Error",

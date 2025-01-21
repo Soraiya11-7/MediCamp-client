@@ -53,7 +53,7 @@ const UserProfile = () => {
           updatedImage = imageResponse.data.data.display_url;
         }
       }
-     console.log(updatedImage);
+    //  console.log(updatedImage);
       const updatedProfile = {
         name: data.name,
         email: userInfo.email,
@@ -74,7 +74,7 @@ const UserProfile = () => {
         });
       }
     } catch (error) {
-      console.error("Error updating profile:", error);
+      // console.error("Error updating profile:", error);
       Swal.fire({
         icon: "error",
         title: "Error",

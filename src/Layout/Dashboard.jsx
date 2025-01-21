@@ -31,7 +31,7 @@ const Dashboard = () => {
     // }
 
     return (
-        <div className="flex">
+        <div className="flex overflow-x-hidden">
             {/* Sidebar........................ */}
             <div
                 className={`${open ? "w-64" : "w-20"
@@ -39,7 +39,7 @@ const Dashboard = () => {
             >
                 {/* Sidebar toggle button................. */}
                 <button
-                    className={`absolute -right-3 top-9   border-2 border-green-500 rounded-full bg-white flex items-center justify-center shadow-lg ${open ? "w-10 h-10" : "w-6 h-6 rotate-180"
+                    className={`absolute -right-3 top-9 border-2 border-green-500 rounded-full bg-white flex items-center justify-center shadow-lg ${open ? "w-10 h-10" : "w-6 h-6 rotate-180"
                         } transition-transform duration-300`}
                     onClick={() => setOpen(!open)}
                 >
@@ -89,7 +89,7 @@ const Dashboard = () => {
             </div>
 
             {/* Main Content.................................... */}
-            <div className="flex-1 p-8">
+            <div className="flex-1 p-8 overflow-x-auto">
                 <Outlet />
             </div>
         </div>

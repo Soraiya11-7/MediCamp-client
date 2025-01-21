@@ -1,34 +1,43 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { FaMapMarkerAlt,  FaUserMd, FaRegClock, FaDollarSign, FaUsers } from "react-icons/fa"; 
+import { FaMapMarkerAlt, FaUserMd, FaRegClock, FaDollarSign, FaUsers } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import JoinCampModal from "../components/Modal/JoinCampModal";
 import Skeleton from "react-loading-skeleton";
 import useCampById from "../hooks/useCampById";
+import Swal from "sweetalert2";
 
 const CampDetails = () => {
     const { campId } = useParams();
     const { user } = useAuth();
+    const navigate = useNavigate()
     const [isModalOpen, setModalOpen] = useState(false);
     const [camp, isLoading, refetch] = useCampById(campId)
+    const loc = useLocation();
+    // console.log(loc, campId);
 
-    const openModal = () => setModalOpen(true);
+    const openModal = () => {
+        if (!user) {
+            navigate('/login', { state: { from: loc.pathname } });
+        }
+        else { setModalOpen(true); }
+    }
     const closeModal = () => setModalOpen(false);
 
-    console.log(camp);
+    // console.log(camp);
     const { campName, image, dateTime, fees, location, healthcareProfessional, participants, description } = camp || {}
- 
-   
-       if(isLoading){
-           return <div className="flex items-center min-h-screen justify-center">
-               <Skeleton count={3} height={120} width={200} />
-           </div>
-       }
+
+
+    if (isLoading) {
+        return <div className="flex items-center min-h-screen justify-center">
+            <Skeleton count={3} height={120} width={200} />
+        </div>
+    }
 
     return (
         <div className="container mx-auto px-4 py-8">
-            {camp? (
+            {camp ? (
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                     {/* Camp Image */}
                     <img
@@ -95,7 +104,7 @@ const CampDetails = () => {
                             <JoinCampModal
                                 isOpen={isModalOpen}
                                 closeModal={closeModal}
-                                camp= {camp}
+                                camp={camp}
                                 user={user}
                                 refetch={refetch}
                             />
