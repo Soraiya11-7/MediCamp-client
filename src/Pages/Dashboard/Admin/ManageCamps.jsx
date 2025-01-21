@@ -12,24 +12,24 @@ const ManageCamps = () => {
   const [camps, , refetch] = useCamp(search);
   const axiosSecure = useAxiosSecure();
 
-    const handleSearch = (searchTerm) => {
-                   setSearch(searchTerm);
-                   setCurrentPage(1); // Reset to the first page on search
-               };
-               const rowsPerPage = 10;
-               const [currentPage, setCurrentPage] = useState(1);
-           
-               const totalPages = Math.ceil(camps.length / rowsPerPage);
-           
-               // Get data for the current page
-               const currentTableData = camps.slice(
-                   (currentPage - 1) * rowsPerPage,
-                   currentPage * rowsPerPage
-               );
-           
-               const handlePageChange = (pageNumber) => {
-                   setCurrentPage(pageNumber);
-               };
+  const handleSearch = (searchTerm) => {
+    setSearch(searchTerm);
+    setCurrentPage(1); // Reset to the first page on search
+  };
+  const rowsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(camps.length / rowsPerPage);
+
+  // Get data for the current page
+  const currentTableData = camps.slice(
+    (currentPage - 1) * rowsPerPage,
+    currentPage * rowsPerPage
+  );
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const handleDeleteCamp = (camp) => {
 
@@ -121,10 +121,10 @@ const ManageCamps = () => {
 
       {/* Pagination Footer */}
       <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
-                />
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

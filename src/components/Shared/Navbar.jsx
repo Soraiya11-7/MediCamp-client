@@ -42,7 +42,7 @@ const Navbar = () => {
 
     }
     return (
-        <div className={`navbar bg-sky-500  w-full mx-auto p-2 md:p-4`}>
+        <div className={`navbar bg-sky-500 w-[90%] mx-auto p-2 md:p-4`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 md:hidden">
@@ -83,7 +83,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end flex  items-center gap-0.5 md:gap-2">
-                <div className=" flex flex-col items-center">
+                <div className=" flex flex-col items-center relative">
                     {
                         user ?
                             <div className="flex items-center">
@@ -98,7 +98,7 @@ const Navbar = () => {
                                 </div>
                                 {/* Dropdown Menu ............*/}
                                 {isOpen && (
-                                    <div className=" absolute right-5 mt-44 w-40 bg-white rounded-md shadow-lg z-10">
+                                    <div className=" absolute right-0 mt-44 w-40 bg-white rounded-md shadow-lg z-10">
                                         <div className="py-2">
                                             {/* User Name............ */}
                                             <div className="px-4 py-2 text-gray-700 font-medium">

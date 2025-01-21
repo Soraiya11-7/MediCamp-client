@@ -3,12 +3,13 @@ import logo from "../assets/mc2.png"
 import Button from "../components/Shared/Button";
 import PopularCamps from "../components/Home/popularCamps";
 import FeedbackRatings from "../components/Home/FeedbackRatings";
+import Banner from "../components/Home/Banner";
 
 
 const Home = () => {
     return (
         <div className="">
-            <div
+            {/* <div
             className="relative h-[450px] bg-cover bg-center"
             style={{
                 backgroundImage: `url(${logo})`, // Replace with your image URL
@@ -31,8 +32,8 @@ const Home = () => {
                 </p>
                 <Button btnText={"Read More"} center={false}></Button>
             </div>
-        </div>
-
+        </div> */}
+       <Banner></Banner>
         <PopularCamps></PopularCamps>
         <FeedbackRatings></FeedbackRatings>
         
