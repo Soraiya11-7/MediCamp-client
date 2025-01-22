@@ -76,10 +76,10 @@ const Banner = () => {
                                 {slide.title}
                             </motion.h2>
 
-                            <div className="p-0.5 md:p-2 mt-4 md:mt-12 border-2  w-[60%] border-white rounded-lg text-white ">
+                            <div className="p-0.5 md:p-2 mt-4 md:mt-12 border-2  w-[70%] border-white rounded-lg text-white ">
                                 <p className="text-xs md:text-base italic">{slide.positiveOutcome}</p>
                             </div>
-                            
+
                             <div className="mt-2 md:mt-6 w-[50%]  md:w-[60%] mb-2 ">
                                 {/* Achievements */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">

@@ -12,7 +12,6 @@ import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -87,10 +86,9 @@ const FeedbackRatings = () => {
     // };
 
 
-
     return (
         <>
-            <div className='my-10'>
+            <div className='my-10 w-[90%] mx-auto'>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={10}
@@ -99,20 +97,20 @@ const FeedbackRatings = () => {
                 }}
                 breakpoints={{
                     640: {
-                        slidesPerView: 1,
+                        slidesPerView: 2,
                         spaceBetween: 20,
                     },
                     768: {
-                        slidesPerView: 2,
-                        spaceBetween: 40,
+                        slidesPerView: 3,
+                        spaceBetween: 30,
                     },
                     1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 50,
+                        slidesPerView: 4,
+                        spaceBetween: 40,
                     },
                 }}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="mySwiper w-[90%] sm:w-full mx-auto"
             >
 
                 {feedbackData.map((feedback) => (
@@ -137,15 +135,6 @@ const FeedbackRatings = () => {
                         </div>
                     </SwiperSlide>
                 ))}
-                {/* <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide> */}
             </Swiper>
             </div>
         </>
