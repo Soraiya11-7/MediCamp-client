@@ -2,15 +2,18 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddCamp = () => {
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate()
 
     const formatDateTime = (date, startTime, endTime) => {
         const dateObj = new Date(date);
@@ -55,6 +58,7 @@ const AddCamp = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    navigate('/dashboard/manageCamps')
                 }
             }
         } catch (error) {
@@ -69,13 +73,13 @@ const AddCamp = () => {
 
     return (
         <div className="w-[90%] mx-auto">
-            <div className="my-8">
-                <h2 className="text-3xl text-center font-bold text-gray-800 mb-8">
-                    Add a New Camp Event
+            <div className="my-8 overflow-hidden">
+                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-center my-8">
+                    Add a New Camp 
                 </h2>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="space-y-6 bg-slate-100 rounded-lg shadow-lg px-4 py-8"
+                    className="space-y-6 bg-slate-100 rounded-lg shadow-lg px-2 py-8 "
                 >
                 
 
@@ -83,7 +87,7 @@ const AddCamp = () => {
                         {/* Camp Name */}
                         <div className="form-control md:w-1/2 mb-4 md:mb-0">
                         <label className="label">
-                            <span className="label-text">Camp Name*</span>
+                            <span className="label-text text-sm sm:text-base">Camp Name*</span>
                         </label>
                         <input
                             type="text"
@@ -97,7 +101,7 @@ const AddCamp = () => {
                     {/* Location */}
                     <div className="form-control md:w-1/2 md:ml-4">
                         <label className="label">
-                            <span className="label-text">Location*</span>
+                            <span className="label-text text-sm sm:text-base">Location*</span>
                         </label>
                         <input
                             type="text"
@@ -116,7 +120,7 @@ const AddCamp = () => {
                     {/* Healthcare Professional Name */}
                     <div className="form-control md:w-1/2 mb-4 md:mb-0">
                         <label className="label">
-                            <span className="label-text">Healthcare Professional Name*</span>
+                            <span className="label-text text-sm sm:text-base">Healthcare Professional Name*</span>
                         </label>
                         <input
                             type="text"
@@ -130,7 +134,7 @@ const AddCamp = () => {
                       {/* Camp Fees */}
                       <div className="form-control md:w-1/2 md:ml-4">
                         <label className="label">
-                            <span className="label-text">Camp Fees*</span>
+                            <span className="label-text text-sm sm:text-base">Camp Fees*</span>
                         </label>
                         <input
                             type="number"
@@ -148,7 +152,7 @@ const AddCamp = () => {
                         <div className="form-control md:w-1/2 mb-4 md:mb-0">
                            <div className="form-control w-full">
                            <label className="label">
-                                <span className="label-text">Image*</span>
+                                <span className="label-text text-sm sm:text-base">Image*</span>
                             </label>
                             <input
                                 type="file"
@@ -162,7 +166,7 @@ const AddCamp = () => {
                          {/* Date */}
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text">Date*</span>
+                                <span className="label-text text-sm sm:text-base">Date*</span>
                             </label>
                             <input
                                 type="date"
@@ -178,7 +182,7 @@ const AddCamp = () => {
                         {/* Start Time */}
                         <div className="form-control md:w-1/2 mb-4 md:mb-0">
                             <label className="label">
-                                <span className="label-text">Start Time*</span>
+                                <span className="label-text text-sm sm:text-base">Start Time*</span>
                             </label>
                             <input
                                 type="time"
@@ -191,7 +195,7 @@ const AddCamp = () => {
                         <div className="form-control md:w-1/2 md:ml-4">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">End Time*</span>
+                                    <span className="label-text text-sm sm:text-base">End Time*</span>
                                 </label>
                                 <input
                                     type="time"
@@ -207,7 +211,7 @@ const AddCamp = () => {
                     {/* Description */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Description*</span>
+                            <span className="label-text text-sm sm:text-base">Description*</span>
                         </label>
                         <textarea
                             placeholder="Enter Description"

@@ -105,7 +105,7 @@ const UpdateCamp = () => {
     return (
         <div className="w-[90%] mx-auto">
             <div className="my-8">
-                <h2 className="text-3xl text-center font-bold text-gray-800 mb-8">
+                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-center my-8">
                     Update Camp Event
                 </h2>
                 <form
@@ -115,7 +115,7 @@ const UpdateCamp = () => {
                     <div className="md:flex mb-4 md:mb-8">
                         <div className="form-control md:w-1/2 mb-4 md:mb-0">
                             <label className="label">
-                                <span className="label-text">Camp Name*</span>
+                                <span className="label-text text-sm sm:text-base">Camp Name*</span>
                             </label>
                             <input
                                 type="text"
@@ -127,13 +127,13 @@ const UpdateCamp = () => {
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text">Location*</span>
+                                <span className="label-text text-sm sm:text-base">Location*</span>
                             </label>
                             <input
                                 type="text"
                                 defaultValue={location}
                                 {...register("location", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-sm sm:text-base "
                             />
                             {errors.location && <p className="text-red-500 text-sm">Location is required </p>}
                         </div>
@@ -142,19 +142,19 @@ const UpdateCamp = () => {
                     <div className="md:flex mb-4 md:mb-8">
                         <div className="form-control md:w-1/2 mb-4 md:mb-0">
                             <label className="label">
-                                <span className="label-text">Healthcare Professional Name*</span>
+                                <span className="label-text text-sm sm:text-base">Healthcare Professional Name*</span>
                             </label>
                             <input
                                 type="text"
                                 defaultValue={healthcareProfessional}
                                 {...register("healthcareProfessional", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-sm sm:text-base"
                             />
                              {errors.healthcareProfessional && <p className="text-red-500 text-sm">HealthcareProfessional Name is required </p>}
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text">Camp Fees*</span>
+                                <span className="label-text text-sm sm:text-base">Camp Fees*</span>
                             </label>
                             <input
                                 type="number"
@@ -169,7 +169,7 @@ const UpdateCamp = () => {
                     <div className="md:flex mb-4 md:mb-8">
                         <div className="form-control md:w-1/2 mb-4 md:mb-0">
                             <label className="label">
-                                <span className="label-text">Current Image</span>
+                                <span className="label-text text-sm sm:text-base">Current Image</span>
                             </label>
                             <img src={preview} alt="Preview" className="w-32 h-32 object-cover mb-4" />
                             <input
@@ -182,13 +182,13 @@ const UpdateCamp = () => {
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text">Date*</span>
+                                <span className="label-text text-sm sm:text-base">Date*</span>
                             </label>
                             <input
                                 type="date"
                                 defaultValue={formattedDate}
                                 {...register("date", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-sm sm:text-base"
                             />
                             {errors.date && <p className="text-red-500 text-sm">Date is required </p>}
                         </div>
@@ -197,25 +197,25 @@ const UpdateCamp = () => {
                     <div className="md:flex mb-4 md:mb-8">
                         <div className="form-control md:w-1/2 mb-4 md:mb-0">
                             <label className="label">
-                                <span className="label-text">Start Time*</span>
+                                <span className="label-text text-sm sm:text-base">Start Time*</span>
                             </label>
                             <input
                                 type="time"
                                 defaultValue={dateTime.split(" | ")[1]?.split(" - ")[0]}
                                 {...register("startTime", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-sm sm:text-base"
                             />
                             {errors.startTime && <p className="text-red-500 text-sm">startTime is required </p>}
                         </div>
                         <div className="form-control md:w-1/2 md:ml-4">
                             <label className="label">
-                                <span className="label-text">End Time*</span>
+                                <span className="label-text text-sm sm:text-base">End Time*</span>
                             </label>
                             <input
                                 type="time"
                                 defaultValue={dateTime.split(" | ")[1]?.split(" - ")[1]}
                                 {...register("endTime", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-sm sm:text-base"
                             />
                              {errors.endTime && <p className="text-red-500 text-sm">End Time is required </p>}
                         </div>
@@ -223,12 +223,12 @@ const UpdateCamp = () => {
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Description*</span>
+                            <span className="label-text text-sm sm:text-base">Description*</span>
                         </label>
                         <textarea
                             defaultValue={description}
                             {...register("description", { required: true })}
-                            className="textarea textarea-bordered h-24"
+                            className="textarea textarea-bordered h-24 text-sm sm:text-base"
                         ></textarea>
                         {errors.description && <p className="text-red-500 text-sm">Description is required </p>}
                     </div>
