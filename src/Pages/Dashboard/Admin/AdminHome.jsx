@@ -6,11 +6,11 @@ const AdminHome = () => {
     const {user} = useAuth();
     return (
         <div>
-            <h2 className="text-3xl">
-                <span>Hi Organizer, Welcome!</span>
-                {
+            <h2 className="text-xl md:text-3xl mb-6 ">
+                <span>Hello, {
                     user?.displayName ? user.displayName : 'Back'
-                }
+                }, Welcome!</span>
+               
             </h2>
 
             <OrganizerProfile></OrganizerProfile>

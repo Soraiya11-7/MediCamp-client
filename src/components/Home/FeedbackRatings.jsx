@@ -89,7 +89,7 @@ const FeedbackRatings = () => {
         <>
            <div className='bg-slate-300'>
            <div className='mt-10 py-10 rounded-b-lg w-[90%] mx-auto '>
-            <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-semibold  mb-2">
+            <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-2">
             Feedback and Ratings
         </h2>
         <p className="text-base text-center sm:text-lg text-gray-800 w-[90%] md:w-[50%] mx-auto mb-10">

@@ -81,7 +81,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                 defaultValue={camp.campName}
                                 {...register("campName")}
                                 readOnly
-                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                                className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
                             />
                         </div>
 
@@ -94,7 +94,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                 defaultValue={camp.fees}
                                 {...register("campFees")}
                                 readOnly
-                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                                className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
                             />
                         </div>
 
@@ -107,7 +107,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                 defaultValue={camp.location}
                                 {...register("location")}
                                 readOnly
-                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                                className="input input-bordered w-full  rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
                             />
                         </div>
 
@@ -120,7 +120,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                 defaultValue={camp.healthcareProfessional}
                                 {...register("healthcareProfessional")}
                                 readOnly
-                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                                className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
                             />
                         </div>
 
@@ -133,7 +133,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                 defaultValue={user?.displayName}
                                 {...register("participantName")}
                                 readOnly
-                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                                className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
                             />
                         </div>
 
@@ -148,7 +148,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                 defaultValue={user?.email}
                                 {...register("participantEmail")}
                                 readOnly
-                                className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+                                className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
                             />
                         </div>
 
@@ -160,7 +160,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                 type="number"
                                 placeholder="Enter your age"
                                 {...register("age", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-xs md:text-sm"
                             />
                             {errors.age && <p className="text-red-500 text-sm">Age is required </p>}
                         </div>
@@ -173,7 +173,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                 type="tel"
                                 placeholder="Enter your Phone Number"
                                 {...register("phoneNumber", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-xs md:text-sm"
                             />
                             {errors.phoneNumber && <p className="text-red-500 text-sm">Phone Number is required </p>}
                         </div>
@@ -186,7 +186,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                             <select
 
                                 {...register("gender", { required: true })}
-                                className="w-full mt-1 p-2 border border-gray-300 rounded"
+                                className="w-full mt-1 p-2 text-xs md:text-sm border border-gray-300 rounded"
                                 required
                             >
                                 <option value="">Select Gender</option>
@@ -200,26 +200,27 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">EmergencyContact*</span>
+                                <span className="label-text">Emergency Contact*</span>
                             </label>
                             <input
                                 type="tel"
-                                placeholder="Enter your Emergency Contact"
+                                placeholder="Enter Emergency Contact"
                                 {...register("emergencyContact", { required: true })}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full text-xs md:text-sm"
                             />
                             {errors.emergencyContact && <p className="text-red-500 text-sm">Emergency Contact Number is required </p>}
                         </div>
 
                         <div className="flex justify-end space-x-2 md:space-x-4 mt-4">
+                          
                             <button
-                                onClick={closeModal}
-                                className="btn px-3 py-1 sm:px-6 sm:py-2 rounded-full transition duration-200 shadow-md bg-gray-800 text-white"
+                            onClick={closeModal}
+                                className="bg-gray-900 text-white font-bold mb-5 px-3 py-1.5 sm:px-6 sm:py-2 rounded-full "
                             >
                                 Close
                             </button>
                             <button
-                                className="btn bg-white hover:bg-green-300 text-green-800 font-bold mb-5 px-3 py-1 sm:px-6 sm:py-2 rounded-full transition duration-200 shadow-md"
+                                className="bg-white hover:bg-green-300 text-green-800 font-bold mb-5 px-3 py-1.5 sm:px-6 sm:py-2 rounded-full transition duration-200 shadow-md"
                             >
                                 Register
                             </button>

@@ -92,6 +92,7 @@ const OrganizerProfile = () => {
   
     return (
       <div className=" flex items-center justify-center p-6">
+        
         <div className="bg-white shadow-2xl rounded-lg w-full max-w-md text-center p-8 transform transition hover:scale-105 duration-300">
         <div className="relative">
           <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-md border-4 border-sky-500">
@@ -133,7 +134,7 @@ const OrganizerProfile = () => {
   
       {isModalOpen && (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-      <div className="relative bg-gradient-to-br from-sky-500 to-green-700 rounded-3xl shadow-2xl w-[80%] max-w-2xl p-8">
+      <div className="relative bg-gradient-to-br from-sky-500 to-green-700 rounded-xl shadow-2xl w-[80%] max-w-2xl overflow-y-auto max-h-[600px] p-8">
   
         {/* Close Button........................ */}
         <button
@@ -144,15 +145,15 @@ const OrganizerProfile = () => {
         </button>
   
         
-        <h3 className="text-3xl font-bold text-white text-center">
+        <h3 className="text-xl md:text-2xl mt-2 font-bold text-white text-center">
           Update Profile
         </h3>
   
         {/* Modal Form............................ */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-8">
           {/* Name and Phone Fields ......................*/}
-          <div className="md:flex mb-4 md:mb-8">
-            <div className="form-control md:w-1/2 mb-4 md:mb-0">
+          <div className="md:flex mb-3 md:mb-8">
+            <div className="form-control md:w-1/2 mb-3 md:mb-0">
               <label className="label">
                 <span className="label-text text-white font-semibold">Name*</span>
               </label>
@@ -160,7 +161,7 @@ const OrganizerProfile = () => {
                 type="text"
                 defaultValue={userInfo.name}
                 {...register("name", { required: true })}
-                className="input input-bordered w-full rounded-lg focus:ring-2 focus:ring-blue-400"
+                className="input input-bordered w-full text-xs md:text-sm rounded-lg focus:ring-2 focus:ring-blue-400"
               />
               {errors.name && (
                 <p className="text-red-200 text-sm mt-1">
@@ -178,7 +179,7 @@ const OrganizerProfile = () => {
                 type="text"
                 defaultValue={userInfo.phoneNumber}
                 {...register("phoneNumber", { required: true })}
-                className="input input-bordered w-full rounded-lg focus:ring-2 focus:ring-blue-400"
+                className="input input-bordered w-full text-xs md:text-sm rounded-lg focus:ring-2 focus:ring-blue-400"
               />
               {errors.phoneNumber && (
                 <p className="text-red-200 text-sm mt-1">
@@ -198,7 +199,7 @@ const OrganizerProfile = () => {
               defaultValue={userInfo.email}
               {...register("email")}
               readOnly
-              className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500"
+              className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500 text-xs md:text-sm"
             />
           </div>
   
@@ -209,33 +210,27 @@ const OrganizerProfile = () => {
                 Current Image
               </span>
             </label>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
               <img
                 src={preview}
                 alt="Preview"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
+                className="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg"
               />
               <input
                 type="file"
                 {...register("image")}
                 onChange={handleFileChange}
-                className="file-input file-input-bordered w-full rounded-lg"
+                className="file-input file-input-bordered w-full h-8 sm:h-12 rounded-lg text-xs md:text-sm"
               />
             </div>
           </div>
   
           {/* Modal Actions ......................................*/}
-          <div className="flex justify-end gap-4">
-          <button
-            type="button"
-            onClick={() => setIsModalOpen(false)}
-            className="px-6 py-2 text-white bg-gray-500 hover:bg-gray-600 rounded-full transition duration-200 shadow-md"
-          >
-            Cancel
-          </button>
+          <div className="flex justify-end items-center">
+         
           <button
             type="submit"
-            className="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-full transition duration-200 shadow-md"
+            className="bg-white hover:bg-green-300 text-green-800 font-bold mb-5 px-3 py-1.5 sm:px-6 sm:py-2 rounded-full transition duration-200 shadow-md"
           >
             Save
           </button>
