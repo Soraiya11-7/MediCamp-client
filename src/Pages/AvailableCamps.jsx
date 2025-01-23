@@ -46,13 +46,13 @@ const AvailableCamps = () => {
             <div className=" flex justify-end my-10">
                 <button
                     onClick={toggleLayout}
-                    className="hidden md:block px-4 py-2 bg-green-900 text-white font-semibold rounded hover:bg-green-800 transition duration-200"
+                    className="hidden lg:block px-4 py-2 bg-green-900 text-white font-semibold rounded hover:bg-green-800 transition duration-200"
                 >
                     {isTwoColumn ? "Switch to 3 Columns" : "Switch to 2 Columns"}
                 </button>
             </div>
 
-            <div className={`grid gap-4 ${isTwoColumn ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1 md:grid-cols-3"
+            <div className={`grid gap-4 ${isTwoColumn ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                 } transition-all duration-300 mb-10`}>
                  {camps.map((camp) => (
                     <div

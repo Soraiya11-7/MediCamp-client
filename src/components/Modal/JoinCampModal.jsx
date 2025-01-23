@@ -34,7 +34,6 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
             if (data.message) {
                 reset();
                 
-               
                 // Show alert based on the server message
                 Swal.fire({
                     icon: data.insertedId ? "success" : "warning",
@@ -68,8 +67,8 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
         <div>
             
             {isOpen && <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-                <div className="relative w-[80%] max-w-2xl bg-gradient-to-br from-sky-500 to-green-700 rounded-3xl shadow-2xl overflow-y-auto max-h-[600px] p-6">
-                <h2 className='text-center text-xl my-6'>Register a Camp</h2>
+                <div className="relative w-[80%] max-w-2xl bg-gradient-to-br from-sky-500 to-green-700 rounded-xl shadow-2xl overflow-y-auto max-h-[600px] p-3 md:p-8">
+                <h2 className='text-center text-xl md:text-2xl text-white my-6'>Register a Camp</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-8">
                     <div className="space-y-4">
 
@@ -212,15 +211,15 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                             {errors.emergencyContact && <p className="text-red-500 text-sm">Emergency Contact Number is required </p>}
                         </div>
 
-                        <div className="flex justify-end space-x-4 mt-4">
+                        <div className="flex justify-end space-x-2 md:space-x-4 mt-4">
                             <button
                                 onClick={closeModal}
-                                className="btn px-6 py-2 rounded-full transition duration-200 shadow-md bg-gray-500 text-white"
+                                className="btn px-3 py-1 sm:px-6 sm:py-2 rounded-full transition duration-200 shadow-md bg-gray-800 text-white"
                             >
                                 Close
                             </button>
                             <button
-                                className="btn bg-green-900 hover:bg-green-300 text-white w mb-5 px-6 py-2 rounded-full transition duration-200 shadow-md"
+                                className="btn bg-white hover:bg-green-300 text-green-800 font-bold mb-5 px-3 py-1 sm:px-6 sm:py-2 rounded-full transition duration-200 shadow-md"
                             >
                                 Register
                             </button>
