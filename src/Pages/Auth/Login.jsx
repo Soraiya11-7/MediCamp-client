@@ -54,16 +54,12 @@ const Login = () => {
     return (
         <>
           
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center  lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                       
-                    </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(handleLogin)} 
+            <div className="hero min-h-screen bg-base-200 w-[90%] mx-auto flex justify-center py-8 items-center">
+                <div className="card bg-base-100  w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">
+                <h1 className="text-xl sm:text-3xl font-bold text-center mt-3">Login now!</h1>
+                    
+                <form onSubmit={handleSubmit(handleLogin)} 
                         className="card-body">
-                            <h1 className="text-2xl font-bold my-5 text-center">Login now!</h1>
                             <div className="form-control">
                             <label className="label">
                                     <span className="label-text">Email</span>
@@ -99,7 +95,7 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <input
                                     
-                                    className="btn btn-primary"
+                                    className="btn bg-green-800 text-white hover:bg-green-700"
                                     type="submit"
                                     value="Login"
                                 />
@@ -107,9 +103,7 @@ const Login = () => {
                         </form>
                        
                 <SocialLogin></SocialLogin>
-                        <h2 className='text-sm sm:text-base text-center mb-5'>New here? <Link to='/signup' className='text-blue-500'>Create an account</Link></h2>
-                        {/* <SocialLogin /> */}
-                    </div>
+                        <h2 className='text-sm sm:text-base text-center mb-5'>New here? <Link to='/signup' className='text-green-800'>Create an account</Link></h2>
                 </div>
             </div>
         </>

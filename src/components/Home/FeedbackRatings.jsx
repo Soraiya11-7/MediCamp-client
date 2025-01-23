@@ -85,10 +85,16 @@ const FeedbackRatings = () => {
     //     );
     // };
 
-
     return (
         <>
-            <div className='my-10 w-[90%] mx-auto'>
+           <div className='bg-slate-300'>
+           <div className='mt-10 py-10 rounded-b-lg w-[90%] mx-auto '>
+            <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-semibold  mb-2">
+            Feedback and Ratings
+        </h2>
+        <p className="text-base text-center sm:text-lg text-gray-800 w-[90%] md:w-[50%] mx-auto mb-10">
+        Showcase participant feedback and ratings collected post-payment, offering insights into their camp experiences.
+        </p>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={10}
@@ -106,37 +112,38 @@ const FeedbackRatings = () => {
                     },
                     1024: {
                         slidesPerView: 4,
-                        spaceBetween: 40,
+                        spaceBetween: 20,
                     },
                 }}
                 modules={[Pagination]}
-                className="mySwiper w-[90%] sm:w-full mx-auto"
+                className="mySwiper w-[95%] sm:w-full mx-auto"
             >
 
                 {feedbackData.map((feedback) => (
                     <SwiperSlide key={feedback._id}>
-                        <div className="p-6 flex flex-col items-center bg-purple-400 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+                        <div className="p-4 md:p-6 flex flex-col items-center bg-green-900 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
                             {/* Image */}
                             <img
                                 src={feedback.image}
                                 alt={feedback.name}
-                                className="w-24 h-24 rounded-full object-cover mb-4"
+                                className="w-24 h-24 rounded-full border-2 border-yellow-600 object-cover mb-2"
                             />
-                            <h3 className="text-xl font-semibold mb-2">{feedback.name}</h3>
-                            <div className="mb-4">
+                            <h3 className="text-lg text-white font-semibold mb-3">{feedback.name}</h3>
+                            <div className="mb-2">
                                 <Rating
-                                    style={{ maxWidth: 180 }}
+                                    style={{ maxWidth: 150 }}
                                     value={feedback.rating}
                                     readOnly
                                 />
                             </div>
-                            <p className="text-gray-600 text-center">{feedback.comment}</p>
-                            <p className="text-sm text-gray-500 mt-4">{feedback.email}</p>
+                            <p className="text-gray-100 text-center text-xs">{feedback.comment}</p>
+                            <p className="text-sm text-gray-300 mt-4">{feedback.email}</p>
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
             </div>
+           </div>
         </>
     );
 }

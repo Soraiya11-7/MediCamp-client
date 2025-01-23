@@ -63,17 +63,11 @@ const SignUp = () => {
     return (
         <>
 
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Sign up now!</h1>
-
-                    </div>
-
+            <div className="hero min-h-screen bg-base-200 w-[90%] mx-auto flex justify-center py-8 items-center">
+                <div className="card bg-base-100  w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">
+                <h1 className="text-xl sm:text-3xl font-bold text-center mt-3">Sign up now!</h1>
                     {/* form.............. */}
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                            <h1 className="text-2xl font-bold my-5 text-center">Sign up now!</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
                             {/* Name................... */}
                             <div className="form-control">
@@ -125,13 +119,11 @@ const SignUp = () => {
 
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Sign Up" />
+                                <input className="btn bg-green-800 text-white hover:bg-green-700" type="submit" value="Sign Up" />
                             </div>
                         </form>
                         <SocialLogin></SocialLogin>
-                        <h2 className='text-sm sm:text-base text-center mb-5'>Already have an account? <Link to='/login' className='text-blue-500'>Login Now</Link></h2>
-
-                    </div>
+                        <h2 className='text-sm sm:text-base text-center mb-5'>Already have an account? <Link to='/login' className='text-green-800'>Login Now</Link></h2>
                 </div>
             </div>
         </>
