@@ -71,7 +71,7 @@ const Navbar = () => {
                         <img className="w-full h-full overflow-hidden rounded-full object-cover" src={logo} alt="" />
 
                     </div>
-                    <h2 className="text-2xl font-bold">MediCamp</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold">MediCamp</h2>
                 </div>
 
 

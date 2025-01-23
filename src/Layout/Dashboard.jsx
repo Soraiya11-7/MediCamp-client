@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
-import { FaBars, FaChevronLeft, FaChevronRight, FaHome, FaSignOutAlt } from "react-icons/fa";
+import { useState } from "react";
+import { FaBars, FaHome } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import Skeleton from "react-loading-skeleton";
 import OrganizerMenuItems from "../components/Dashboard/OrganizerMenuItems";
 import UserMenuItems from "../components/Dashboard/UserMenuItems";
-import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
     const [isAdmin, isAdminLoading] = useAdmin();
-    const { signOutUser } = useAuth()
-    const [open, setOpen] = useState(true); // Sidebar toggle state..
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Toggle sidebar for small devices
 
     if (isAdminLoading) {
         return (
@@ -20,75 +18,53 @@ const Dashboard = () => {
         );
     }
 
-    // const handleLogOut = () => {
-    //     signOutUser()
-    //         .then(() => {
-    //             navigate('/')
-    //         })
-    //         .catch((err) => {
-    //             const error = err.message;
-    //         })
-    // }
-
     return (
-        <div className="flex overflow-x-hidden">
-            {/* Sidebar........................ */}
-            <div
-                className={`${open ? "w-64" : "w-20"
-                    } bg-green-950 h-screen p-5 pt-8 relative duration-300`}
+        <div className="flex">
+            {/* Hamburger Button for Small Devices */}
+            <button
+                className={`md:hidden fixed top-5 left-5 text-2xl z-50 ${
+                    isSidebarOpen ? "text-white" : "text-black"
+                }`}
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
-                {/* Sidebar toggle button................. */}
-                <button
-                    className={`absolute -right-3 top-9 border-2 border-green-500 rounded-full bg-white flex items-center justify-center shadow-lg ${open ? "w-10 h-10" : "w-6 h-6 rotate-180"
-                        } transition-transform duration-300`}
-                    onClick={() => setOpen(!open)}
-                >
-                    <FaChevronLeft className="text-green-500 text-lg" />
-                </button>
+                <FaBars />
+            </button>
 
-                <div className="flex items-center justify-center">
-
-                    <h1
-                        className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
-                            }`}
-                    >
+            {/* Sidebar */}
+            <div
+                className={`bg-green-950 h-screen p-5 pt-8 transition-all duration-300 fixed md:relative z-40 ${
+                    isSidebarOpen ? "block w-20" : "hidden"
+                } md:block md:w-64`}
+            >
+                <div className="flex items-center justify-center mb-6">
+                    <h1 className="text-white font-medium text-xl hidden md:block">
                         Dashboard
                     </h1>
                 </div>
-
-                <ul className="pt-6">
-                    {/* Menu items based on admin/user................... */}
+                <ul className="pt-6 space-y-4">
+                    {/* Admin/User menu items */}
                     {isAdmin ? (
-                        <OrganizerMenuItems open={open} />
+                        <OrganizerMenuItems open={isSidebarOpen} />
                     ) : (
-                        <UserMenuItems open={open} />
+                        <UserMenuItems open={isSidebarOpen} />
                     )}
-                    {/* Shared Nav Links ..............................*/}
+
+                    {/* Shared Nav Links */}
                     <div className="divider border-t-2 border-white"></div>
-                    <li className="mb-3">
-                        <NavLink to="/" className="text-gray-300 text-sm flex items-center gap-x-2">
+                    <li>
+                        <NavLink
+                            to="/"
+                            className="text-gray-300 text-sm flex items-center gap-x-4"
+                        >
                             <FaHome className="text-xl" />
-                            <span className={`${!open && "hidden"} origin-left duration-200`}>
-                                Home
-                            </span>
+                            {/* Show text only on md+ devices */}
+                            <span className="hidden md:inline">Home</span>
                         </NavLink>
                     </li>
-                    {/* <li>
-                        <button
-                            onClick={handleLogOut} 
-                            className="text-gray-300 text-sm flex items-center gap-x-2"
-                        >
-                            <FaSignOutAlt className="text-2xl" /> 
-                            <span className={`${!open && "hidden"} origin-left duration-200`}>
-                                Logout
-                            </span>
-                        </button>
-                    </li> */}
-
                 </ul>
             </div>
 
-            {/* Main Content.................................... */}
+            {/* Main Content */}
             <div className="flex-1 p-8 overflow-x-auto">
                 <Outlet />
             </div>

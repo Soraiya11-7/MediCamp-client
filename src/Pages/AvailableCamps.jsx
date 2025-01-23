@@ -17,7 +17,7 @@ const AvailableCamps = () => {
 
     return (
         <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center my-8">Available Camps</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-2 text-center my-8">Available Camps</h2>
 
             {/* Search and Sort Controls................ */}
             <div className="flex flex-col sm:flex-row gap-y-3 sm:gap-y-0 items-start sm:items-center justify-between mt-10 mb-14">
@@ -61,7 +61,7 @@ const AvailableCamps = () => {
                     </div>
                   )
                   : (
-                    <div className={`grid gap-4 w-[90%] mx-auto sm:w-full grid-cols-1 ${isTwoColumn ? "  sm:grid-cols-2" : " sm:grid-cols-2 lg:grid-cols-3"
+                    <div className={`grid gap-4 w-[95%] mx-auto sm:w-full grid-cols-1 ${isTwoColumn ? "  sm:grid-cols-2" : " sm:grid-cols-2 lg:grid-cols-3"
                     } transition-all duration-300 mb-10`}>
                      {camps.map((camp) => (
                         <div

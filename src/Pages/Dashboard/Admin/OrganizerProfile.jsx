@@ -91,11 +91,11 @@ const OrganizerProfile = () => {
     };
   
     return (
-      <div className=" flex items-center justify-center p-6">
+      <div className=" flex items-center justify-center p-2 md:p-4">
         
-        <div className="bg-white shadow-2xl rounded-lg w-full max-w-md text-center p-8 transform transition hover:scale-105 duration-300">
+        <div className="bg-white shadow-2xl rounded-lg w-full max-w-md text-center px-2 md:px-4 py-8 transform transition hover:scale-105 duration-300">
         <div className="relative">
-          <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-md border-4 border-sky-500">
+          <div className="w-28 h-28 md:w-28 md:h-28 mx-auto rounded-full overflow-hidden shadow-md border-4 border-green-800">
             {userInfo.image ? (
               <img
                 src={userInfo.image}
@@ -103,38 +103,40 @@ const OrganizerProfile = () => {
                 className="object-cover w-full h-full"
               />
             ) : (
-              <FaUserCircle className="text-sky-500 w-full h-full" />
+              <FaUserCircle className="text-green-800 w-full h-full" />
             )}
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="absolute -top-2 -right-2 bg-sky-500 text-white p-2 rounded-full shadow hover:bg-sky-600 focus:outline-none"
+            className="sm:hidden absolute -top-2 -right-2 bg-green-800 text-white p-2 rounded-full shadow hover:bg-green-800 focus:outline-none"
           >
             <FiEdit className="text-xl" />
           </button>
         </div>
-        <h2 className="text-2xl font-bold text-gray-800 mt-6">{userInfo.name}</h2>
-        <div className="flex items-center justify-center text-gray-600 mt-3 space-x-2">
-          <MdEmail className="text-sky-500" />
+        <h2 className="text-base sm:text-lg md:text-2xl font-bold text-gray-800 mt-4">{userInfo.name}</h2>
+        <div className="flex items-center justify-center text-gray-600 mt-3 space-x-2 text-xs sm:text-sm">
+          <MdEmail className="text-green-800" />
           <p>{userInfo.email}</p>
         </div>
-        <div className="flex items-center justify-center text-gray-600 mt-2 space-x-2">
-          <MdPhone className="text-sky-500" />
+        <div className="flex items-center justify-center text-gray-600 mt-2 space-x-2  text-xs sm:text-sm">
+          <MdPhone className="text-green-800" />
           <p>{userInfo.phoneNumber || 'N/A'}</p>
         </div>
+        <div className='flex items-center justify-end'>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="mt-6 px-6 py-2 bg-gradient-to-r from-sky-500 to-green-500 text-white rounded-lg shadow hover:from-green-500 hover:to-sky-500 focus:outline-none flex items-center justify-center space-x-2"
+          className="hidden sm:flex mt-6 px-6 py-2 bg-gradient-to-r from-green-800 to-green-500 text-white rounded-lg shadow hover:from-green-500 hover:to-green-800 focus:outline-none  items-center justify-center space-x-2"
         >
           <FiEdit />
           <span>Update Profile</span>
         </button>
+        </div>
       </div>
     
   
       {isModalOpen && (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-      <div className="relative bg-gradient-to-br from-sky-500 to-green-700 rounded-xl shadow-2xl w-[80%] max-w-2xl overflow-y-auto max-h-[600px] p-8">
+      <div className="relative bg-gradient-to-br from-green-800 to-green-700 rounded-xl shadow-2xl w-[80%] max-w-2xl overflow-y-auto max-h-[600px] p-8">
   
         {/* Close Button........................ */}
         <button
@@ -145,7 +147,7 @@ const OrganizerProfile = () => {
         </button>
   
         
-        <h3 className="text-xl md:text-2xl mt-2 font-bold text-white text-center">
+        <h3 className="text-sm md:text-xl mt-2 font-bold text-white text-center">
           Update Profile
         </h3>
   

@@ -28,22 +28,14 @@ const Analytics = () => {
     };
     return (
         <div>
-            <h2 className="text-3xl mb-10">
-            Hi, Welcome 
-                <span className='text-green-600 ml-2'>
-                {
-                    user?.displayName ? user.displayName : 'Back'
-                }
-                </span>
-               
-            </h2>
-
-            <p className="text-lg mb-8">
+            <h2 className='text-2xl md:text-4xl font-bold mt-8 mb-4 text-center my-8'>Camp Fee Analytics</h2>
+            
+            <p className="md:text-lg text-base mb-6  ">
                 The chart below illustrates the fees for the camps you have registered for, with camp names on the X-axis and fees in USD on the Y-axis.
             </p>
 
 
-            <div style={{ width: '100%', height: 450 }}>
+            <div style={{ width: '100%', height: 350 }}>
                 <ResponsiveContainer>
                     <BarChart
                         width={600}
