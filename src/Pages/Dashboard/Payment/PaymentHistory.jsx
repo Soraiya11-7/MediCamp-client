@@ -52,7 +52,7 @@ const PaymentHistory = () => {
 
     return (
         <div>
-            <h2 className="text-4xl font-bold text-center my-8">Manage Registered Camps</h2>
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-center my-8">Payment History</h2>
 
             {/* SearchBar Reusable Component..................... */}
             <div className="flex justify-end mt-10 mb-8">
@@ -63,15 +63,24 @@ const PaymentHistory = () => {
                 />
             </div>
 
-            <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
+            {
+                payments && payments.length === 0 ? (
+                    <div className="text-center">
+                        <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 mt-10">You have not made any payments yet.</h3>
+                       
+                        <p className='text-sm sm:text-base w-[80%] mx-auto'>To participate in camps and make payments, please register and complete your camp registration.</p>
+                    </div>
+                ):
+                (<div>
+                     <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
                 <table className="table w-full table-auto">
-                    <thead className="bg-gray-800 text-white">
+                    <thead className="bg-green-800 text-white">
                         <tr className="text-center">
-                            <th className="py-3 px-4 text-lg">#</th>
-                            <th className="py-3 px-4 text-lg">Camp Name</th>
-                            <th className="py-3 px-4 text-lg">Camp Fees</th>
-                            <th className="py-3 px-4 text-lg">Payment Status</th>
-                            <th className="py-3 px-4 text-lg">Confirmation Status</th>
+                            <th className="py-1 px-2 text-sm md:text-base lg:text-lg">#</th>
+                            <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Camp Name</th>
+                            <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Camp Fees</th>
+                            <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Payment Status</th>
+                            <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Confirmation Status</th>
                         </tr>
                     </thead>
                     <tbody className="text-center bg-slate-200">
@@ -80,11 +89,11 @@ const PaymentHistory = () => {
                                 key={camp._id}
                                 className="border-t hover:bg-gray-50 transition-all duration-300"
                             >
-                                <td className="py-3 px-4">{index + 1}</td>
-                                <td className="py-3 px-4">{camp.campName}</td>
-                                <td className="py-3 px-4">${camp.price}</td>
-                                <td className="py-3 px-4">{camp.paymentStatus}</td>
-                                <td className="py-3 px-4">{camp.confirmationStatus}</td>
+                                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{index + 1}</td>
+                                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.campName}</td>
+                                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">${camp.price}</td>
+                                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.paymentStatus}</td>
+                                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.confirmationStatus}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -96,6 +105,10 @@ const PaymentHistory = () => {
                     totalPages={totalPages}
                     onPageChange={handlePageChange}
                 />
+                </div>)
+            }
+
+           
         </div>
     );
 };

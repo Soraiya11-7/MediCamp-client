@@ -62,7 +62,7 @@ const ManageCamps = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold text-center my-8">Manage Camps</h2>
+      <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-center my-8">Manage Camps</h2>
 
       {/* SearchBar Reusable Component..................... */}
       <div className="flex justify-end mt-10 mb-8">
@@ -73,16 +73,25 @@ const ManageCamps = () => {
         />
       </div>
 
+      {
+        camps && camps.length === 0 ? (
+          <div className="text-center">
+              <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 mt-10">No camps have been added yet.</h3>
+             
+              <p className='text-sm sm:text-base w-[80%] mx-auto'>Please add camps to allow users to register and participate.</p>
+          </div>
+      ): (<div>
+        
       <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
         <table className="table w-full table-auto">
-          <thead className="bg-gray-800 text-white">
+          <thead className="bg-green-800 text-white">
             <tr className="text-center">
-              <th className="py-3 px-4 text-lg">#</th>
-              <th className="py-3 px-4 text-lg">Camp Name</th>
-              <th className="py-3 px-4 text-lg">Date & Time</th>
-              <th className="py-3 px-4 text-lg">Location</th>
-              <th className="py-3 px-4 text-lg">Healthcare Professional</th>
-              <th className="py-3 px-4 text-lg">Action</th>
+              <th className="py-1 px-2 text-sm md:text-base lg:text-lg">#</th>
+              <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Camp Name</th>
+              <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Date & Time</th>
+              <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Location</th>
+              <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Healthcare Professional</th>
+              <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Action</th>
             </tr>
           </thead>
           <tbody className="text-center bg-slate-200">
@@ -91,23 +100,23 @@ const ManageCamps = () => {
                 key={camp._id}
                 className="border-t hover:bg-gray-50 transition-all duration-300"
               >
-                <td className="py-3 px-4">{index + 1}</td>
-                <td className="py-3 px-4">{camp.campName}</td>
-                <td className="py-3 px-4">{camp.dateTime}</td>
-                <td className="py-3 px-4">{camp.location}</td>
-                <td className="py-3 px-4">{camp.healthcareProfessional}</td>
-                <td className="py-3 px-4">
+                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{index + 1}</td>
+                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.campName}</td>
+                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.dateTime}</td>
+                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.location}</td>
+                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.healthcareProfessional}</td>
+                <td className="py-1 px-2 text-xs sm:text-sm md:text-base">
                   <div className="flex justify-center gap-2">
                     {/* Update Button..................... */}
                     <Link to={`/dashboard/update-camp/${camp._id}`}>
-                      <button className="btn btn-ghost btn-lg text-blue-600 hover:bg-blue-200 rounded-md transition-all">
+                      <button className="btn btn-sm text-green-800 hover:bg-blue-200 rounded-md transition-all">
                         <FaEdit />
                       </button>
                     </Link>
                     {/* Delete Button .........................*/}
                     <button
                       onClick={() => handleDeleteCamp(camp)}
-                      className="btn btn-ghost btn-lg text-red-600 hover:bg-red-200 rounded-md transition-all"
+                      className="btn btn-sm text-red-600 hover:bg-red-200 rounded-md transition-all"
                     >
                       <FaTrashAlt />
                     </button>
@@ -125,6 +134,9 @@ const ManageCamps = () => {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
+      </div>)
+      }
+
     </div>
   );
 };

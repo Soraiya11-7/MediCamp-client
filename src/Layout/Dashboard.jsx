@@ -32,7 +32,7 @@ const Dashboard = () => {
 
             {/* Sidebar */}
             <div
-                className={`bg-green-950 h-screen p-5 pt-8 transition-all duration-300 fixed md:relative z-40 ${
+                className={`bg-green-950 min-h-screen p-5 pt-8 transition-all duration-300 fixed md:relative z-40 ${
                     isSidebarOpen ? "block w-20" : "hidden"
                 } md:block md:w-64`}
             >

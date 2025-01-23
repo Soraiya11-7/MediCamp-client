@@ -6,6 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useRegisteredCampById from "../../../hooks/useRegisteredCampById";
+import { div } from "framer-motion/client";
 
 
 const CheckoutForm = ({ id }) => {
@@ -96,17 +97,17 @@ const CheckoutForm = ({ id }) => {
                 }
 
                 const res = await axiosSecure.post('/payments', payment);
-                // console.log('payment saved', res.data);
+                console.log('payment saved', res.data,transactionId);
                 refetch();
-                if (res.data?.paymentResult?.insertedId) {
+                if (res.data?.insertedId) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Thank you for the taka paisa",
+                        title: `Thank you for the payment! Your transaction id is ${transactionId}`,
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 5000
                     });
-                    // navigate('/dashboard/paymentHistory')
+                    navigate('/dashboard/paymentHistory')
                 }
 
             }
@@ -115,33 +116,38 @@ const CheckoutForm = ({ id }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div>
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">Complete Your Payment</h2>
+            <form onSubmit={handleSubmit} className="">
 
-            <div className="border border-gray-300 rounded-lg p-3 hover:border-blue-500 focus-within:border-blue-500 transition duration-150">
-                <CardElement
-                    options={{
-                        style: {
-                            base: {
-                                fontSize: '16px',
-                                color: '#2D3748',
-                                '::placeholder': {
-                                    color: '#A0AEC0',
+                <div className="border border-gray-300 rounded-lg p-3 hover:border-green-800 focus-within:border-green-800 transition duration-150 max-w-xl overflow-hidden ">
+                    <CardElement
+                        options={{
+                            style: {
+                                base: {
+                                    fontSize: '16px',
+                                    color: '#2D3748',
+                                    '::placeholder': {
+                                        color: '#A0AEC0',
+                                    },
+                                },
+                                invalid: {
+                                    color: '#E53E3E',
                                 },
                             },
-                            invalid: {
-                                color: '#E53E3E',
-                            },
-                        },
-                    }}
-                />
-            </div>
+                        }}
+                    />
+                </div>
 
-            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe || !clientSecret}>
-                Pay
-            </button>
-            <p className="text-red-600">{error}</p>
-            {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
-        </form>
+                <button className="btn btn-sm bg-green-800 hover:bg-green-300 text-white my-4" type="submit" disabled={!stripe || !clientSecret}>
+                    Pay
+                </button>
+                <p className="text-red-600">{error}</p>
+                {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
+            </form>
+
+        </div>
+
     );
 };
 
