@@ -11,7 +11,7 @@ const ErrorPage = () => {
                 <i>{error.statusText || error.message}</i>
             </p>
             <h5 className="mb-5 text-xl sm:text-3xl">Go back where you from</h5>
-             <Link to="/"><button className="btn bg-sky-400 text-white ">Home</button></Link>
+             <Link to="/"><button className="btn bg-green-800 text-white ">Home</button></Link>
           
         </div>
     );

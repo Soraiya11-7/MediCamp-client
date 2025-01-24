@@ -105,8 +105,8 @@ const UpdateCamp = () => {
     return (
         <div className="w-[90%] mx-auto">
             <div className="my-8">
-                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-center my-8">
-                    Update Camp Event
+                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">
+                    Update Camp
                 </h2>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
@@ -139,8 +139,8 @@ const UpdateCamp = () => {
                         </div>
                     </div>
 
-                    <div className="md:flex mb-4 md:mb-8">
-                        <div className="form-control md:w-1/2 mb-4 md:mb-0">
+                    <div className="lg:flex mb-4 lg:mb-8">
+                        <div className="form-control lg:w-1/2 mb-4 lg:mb-0">
                             <label className="label">
                                 <span className="label-text text-sm sm:text-base">Healthcare Professional Name*</span>
                             </label>
@@ -152,7 +152,7 @@ const UpdateCamp = () => {
                             />
                              {errors.healthcareProfessional && <p className="text-red-500 text-sm">HealthcareProfessional Name is required </p>}
                         </div>
-                        <div className="form-control md:w-1/2 md:ml-4">
+                        <div className="form-control lg:w-1/2 lg:ml-4">
                             <label className="label">
                                 <span className="label-text text-sm sm:text-base">Camp Fees*</span>
                             </label>
@@ -165,22 +165,45 @@ const UpdateCamp = () => {
                             {errors.fees && <p className="text-red-500 text-sm">Fees are required </p>}
                         </div>
                     </div>
-
-                    <div className="md:flex mb-4 md:mb-8">
-                        <div className="form-control md:w-1/2 mb-4 md:mb-0">
+                     
+                    {/* <div className="form-control">
+            <label className="label">
+              <span className="label-text text-white font-semibold">
+                Current Image
+              </span>
+            </label>
+            <div className="flex items-center gap-2">
+              <img
+                src={preview}
+                alt="Preview"
+                className="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg"
+              />
+              <input
+                type="file"
+                {...register("image")}
+                onChange={handleFileChange}
+                className="file-input file-input-bordered w-full h-8 sm:h-12 rounded-lg text-xs md:text-sm"
+              />
+            </div>
+          </div> */}
+                   
+                        <div className="form-control mb-4">
                             <label className="label">
                                 <span className="label-text text-sm sm:text-base">Current Image</span>
                             </label>
-                            <img src={preview} alt="Preview" className="w-32 h-32 object-cover mb-4" />
+                            <div  className="flex items-center gap-2">
+                            <img src={preview} alt="Preview" className="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg" />
                             <input
                                 type="file"
                                 {...register("image")}
-                                className="file-input w-full text-sm sm:text-base"
+                                className="file-input file-input-bordered w-full h-8 sm:h-12 rounded-lg text-xs md:text-sm"
                                 onChange={handleFileChange}
                             />
+                            </div>
+                            
                              {errors.image && <p className="text-red-500 text-sm">Image is required </p>}
                         </div>
-                        <div className="form-control md:w-1/2 md:ml-4">
+                        <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-sm sm:text-base">Date*</span>
                             </label>
@@ -192,7 +215,7 @@ const UpdateCamp = () => {
                             />
                             {errors.date && <p className="text-red-500 text-sm">Date is required </p>}
                         </div>
-                    </div>
+                    
 
                     <div className="md:flex mb-4 md:mb-8">
                         <div className="form-control md:w-1/2 mb-4 md:mb-0">

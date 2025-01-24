@@ -74,7 +74,7 @@ const AddCamp = () => {
     return (
         <div className="w-[90%] mx-auto">
             <div className="my-8 overflow-hidden">
-                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-center my-8">
+                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">
                     Add a New Camp 
                 </h2>
                 <form

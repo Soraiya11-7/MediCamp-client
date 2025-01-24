@@ -47,7 +47,7 @@ const Banner = () => {
 
     return (
         <Carousel
-            className='w-[90%] mx-auto  mb-10'
+            className='w-[90%] mx-auto'
         >
             {slides.map((slide) => (
                 <div key={slide.id} className="relative h-[250px] sm:h-[300px] md:h-[450px]">

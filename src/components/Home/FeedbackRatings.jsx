@@ -29,67 +29,12 @@ const FeedbackRatings = () => {
         }
     });
 
-    //     return (
-    //         <section className="relative bg-gray-100 overflow-hidden py-10 md:py-20">
-    //             <div className="container mx-auto px-6">
-    //                 <div className="text-center mb-12">
-    //                     <h2 className="text-4xl font-semibold text-blue-800 mb-4">Feedback and Ratings</h2>
-    //                     <p className="text-lg text-gray-700">
-    //                         Explore participant feedback and ratings derived from the participant dashboard after payment.
-    //                         Gain insights into their camp experiences.
-    //                     </p>
-    //                 </div>
-
-    //                 {/* Swiper Slider for Feedback */}
-    //                 <Swiper
-    //                     effect="coverflow"
-    //                     grabCursor={true}
-    //                     centeredSlides={true}
-    //                     slidesPerView="auto"
-    //                     coverflowEffect={{
-    //                         rotate: 80,
-    //                         stretch: 0,
-    //                         depth: 100,
-    //                         modifier: 1,
-    //                         slideShadows: true,
-    //                     }}
-    //                     pagination={true}
-    //                     modules={[EffectCoverflow, Pagination]}
-    //                     className="mySwiper w-full md:w-[80%] mx-auto"
-    //                 >
-    //                     {feedbackData.map((feedback) => (
-    //                         <SwiperSlide key={feedback._id}>
-    //                             <div className="p-6 flex flex-col items-center bg-purple-400 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
-    //                                 {/* Image */}
-    //                                 <img
-    //                                     src={feedback.image}
-    //                                     alt={feedback.name}
-    //                                     className="w-24 h-24 rounded-full object-cover mb-4"
-    //                                 />
-    //                                 <h3 className="text-xl font-semibold mb-2">{feedback.name}</h3>
-    //                                 <div className="mb-4">
-    //                                     <Rating
-    //                                         style={{ maxWidth: 180 }}
-    //                                         value={feedback.rating}
-    //                                         readOnly
-    //                                     />
-    //                                 </div>
-    //                                 <p className="text-gray-600 text-center">{feedback.comment}</p>
-    //                                 <p className="text-sm text-gray-500 mt-4">{feedback.email}</p>
-    //                             </div>
-    //                         </SwiperSlide>
-    //                     ))}
-    //                 </Swiper>
-    //             </div>
-    //         </section>
-    //     );
-    // };
 
     return (
         <>
-           <div className='bg-slate-300'>
-           <div className='mt-10 py-10 rounded-b-lg w-[90%] mx-auto '>
-            <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-2">
+           <div className=''>
+           <div className=' py-12  w-[90%] mx-auto bg-slate-100 rounded-t-md '>
+            <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-2 text-green-800">
             Feedback and Ratings
         </h2>
         <p className="text-base text-center sm:text-lg text-gray-800 w-[90%] md:w-[50%] mx-auto mb-10">

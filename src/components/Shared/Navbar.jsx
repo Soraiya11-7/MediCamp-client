@@ -23,10 +23,10 @@ const Navbar = () => {
 
         <li><NavLink to='/'
             className={({ isActive }) =>
-                `flex items-center gap-x-1  ${isActive ? 'text-yellow-400 font-bold' : 'text-white '}`
+                `flex items-center gap-x-1  ${isActive ? 'text-yellow-500 font-bold' : 'text-white '}`
             }>Home</NavLink></li>
         <li><NavLink className={({ isActive }) =>
-            `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-400 font-bold' : 'text-white'}`
+            `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
         } to='/allCamps'>Available Camps</NavLink></li>
     </>
 
@@ -42,10 +42,10 @@ const Navbar = () => {
 
     }
     return (
-        <div className={`navbar bg-sky-500 w-[90%] mx-auto p-2 md:p-4`}>
+        <div className={`navbar bg-green-950 w-[90%] mx-auto p-2 md:p-4`}>
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 md:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 text-white md:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -71,7 +71,7 @@ const Navbar = () => {
                         <img className="w-full h-full overflow-hidden rounded-full object-cover" src={logo} alt="" />
 
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-bold">MediCamp</h2>
+                    <h2 className="text-xl text-white sm:text-2xl font-bold">MediCamp</h2>
                 </div>
 
 

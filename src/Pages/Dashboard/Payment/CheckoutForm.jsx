@@ -76,6 +76,7 @@ const CheckoutForm = ({ id }) => {
         })
 
         if (confirmError) {
+            setError(confirmError.message)
             // console.log('confirm error')
         }
         else {

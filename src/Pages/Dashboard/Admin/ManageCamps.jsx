@@ -62,7 +62,7 @@ const ManageCamps = () => {
 
   return (
     <div>
-      <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-center my-8">Manage Camps</h2>
+      <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">Manage Camps</h2>
 
       {/* SearchBar Reusable Component..................... */}
       <div className="flex justify-end mt-10 mb-8">
