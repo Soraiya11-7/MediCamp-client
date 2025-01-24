@@ -42,7 +42,7 @@ const Navbar = () => {
 
     }
     return (
-        <div className={`navbar bg-green-950 w-[90%] mx-auto p-2 md:p-4`}>
+        <div className={`navbar bg-green-950 w-[90%] mx-auto p-2 md:p-4 border-b`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 text-white md:hidden">

@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const UserMenuItems = ({ open }) => {
   const menuItems = [
-      { title: "Analytics", icon: <FaChartBar className="text-2xl text-gray-200" />, to: "/dashboard/userHome" },
-      { title: "Participant Profile", icon: <FaUser className="text-2xl text-gray-200" />, to: "/dashboard/userProfile" },
-      { title: "Registered Camps", icon: <FaListAlt className="text-2xl text-gray-200" />, to: "/dashboard/userRegisteredCamps" },
-      { title: "Payment History", icon: <FaCreditCard className="text-2xl text-gray-200" />, to: "/dashboard/paymentHistory" },
+      { title: "Analytics", icon: <FaChartBar className="text-2xl" />, to: "/dashboard/userHome" },
+      { title: "Participant Profile", icon: <FaUser className="text-2xl" />, to: "/dashboard/userProfile" },
+      { title: "Registered Camps", icon: <FaListAlt className="text-2xl" />, to: "/dashboard/userRegisteredCamps" },
+      { title: "Payment History", icon: <FaCreditCard className="text-2xl" />, to: "/dashboard/paymentHistory" },
   ];
 
   return (
@@ -19,7 +19,7 @@ const UserMenuItems = ({ open }) => {
                   <NavLink
                       to={item.to}
                       className={({ isActive }) =>
-                          `flex items-center gap-x-4 ${isActive ? "text-white font-bold" : ""}`
+                          `flex items-center gap-x-4 ${isActive ? "text-yellow-500 font-bold" : "text-gray-200"}`
                       }
                   >
                       {item.icon}

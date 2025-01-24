@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useCamp from "../hooks/useCamp";
 import SearchBar from "../components/Shared/SearchBar";
+import LazyLoad from "react-lazyload";
 
 const AvailableCamps = () => {
     const [search, setSearch] = useState('');
@@ -16,7 +17,7 @@ const AvailableCamps = () => {
 
 
     return (
-        <div className="container mx-auto px-4">
+        <div className="w-[90%] mx-auto py-8 ">
             <h2 className="text-2xl md:text-4xl font-bold mb-2 text-center my-8">Available Camps</h2>
 
             {/* Search and Sort Controls................ */}
@@ -63,9 +64,9 @@ const AvailableCamps = () => {
                   : (
                     <div className={`grid gap-4 w-[95%] mx-auto sm:w-full grid-cols-1 ${isTwoColumn ? "  sm:grid-cols-2" : " sm:grid-cols-2 lg:grid-cols-3"
                     } transition-all duration-300 mb-10`}>
-                     {camps.map((camp) => (
+                     {camps.map((camp,index) => (
+                         <LazyLoad key={index} height={200} once debounce={400} >
                         <div
-                            key={camp._id}
                             className="relative bg-white p-4 rounded-lg shadow-lg overflow-hidden group transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-green-800 border-2 border-green-800"
                             data-aos="zoom-in "
                         >
@@ -116,6 +117,8 @@ const AvailableCamps = () => {
                                 </div>
                             </div>
                         </div>
+                     </LazyLoad>
+                        
                     ))}
                 </div>
                   )
