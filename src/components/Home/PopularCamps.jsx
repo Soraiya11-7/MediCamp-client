@@ -5,7 +5,7 @@ const PopularCamps = () => {
     const [camps] = usePopularCamp();
 
     return (
-        <div className="w-[90%] mx-auto py-8  ">
+        <div id="popular" className="w-[90%] mx-auto py-8  ">
             <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-10 text-green-900">Popular Medical Camps</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {camps.map((camp) => (

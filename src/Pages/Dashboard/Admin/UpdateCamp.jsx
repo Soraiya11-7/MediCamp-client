@@ -165,28 +165,7 @@ const UpdateCamp = () => {
                             {errors.fees && <p className="text-red-500 text-sm">Fees are required </p>}
                         </div>
                     </div>
-                     
-                    {/* <div className="form-control">
-            <label className="label">
-              <span className="label-text text-white font-semibold">
-                Current Image
-              </span>
-            </label>
-            <div className="flex items-center gap-2">
-              <img
-                src={preview}
-                alt="Preview"
-                className="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg"
-              />
-              <input
-                type="file"
-                {...register("image")}
-                onChange={handleFileChange}
-                className="file-input file-input-bordered w-full h-8 sm:h-12 rounded-lg text-xs md:text-sm"
-              />
-            </div>
-          </div> */}
-                   
+                    
                         <div className="form-control mb-4">
                             <label className="label">
                                 <span className="label-text text-sm sm:text-base">Current Image</span>

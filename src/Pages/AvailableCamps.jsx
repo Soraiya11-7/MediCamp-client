@@ -65,10 +65,11 @@ const AvailableCamps = () => {
                     <div className={`grid gap-4 w-[95%] mx-auto sm:w-full grid-cols-1 ${isTwoColumn ? "  sm:grid-cols-2" : " sm:grid-cols-2 lg:grid-cols-3"
                     } transition-all duration-300 mb-10`}>
                      {camps.map((camp,index) => (
-                         <LazyLoad key={index} height={200} once debounce={400} >
-                        <div
+                        <LazyLoad key={index} height={200} once debounce={400} >
+                              <div
+                           
                             className="relative bg-white p-4 rounded-lg shadow-lg overflow-hidden group transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-green-800 border-2 border-green-800"
-                            data-aos="zoom-in "
+                             
                         >
                             {/* Camp Image */}
                             <div className="relative overflow-hidden rounded-lg mb-4 border group-hover:border-yellow-700 h-60 w-full mx-auto shadow-xl">
@@ -117,8 +118,9 @@ const AvailableCamps = () => {
                                 </div>
                             </div>
                         </div>
-                     </LazyLoad>
+                        </LazyLoad>
                         
+                      
                     ))}
                 </div>
                   )

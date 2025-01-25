@@ -4,7 +4,7 @@ import img from "../../assets/flat-design-join-us-message_23-2148954904.jpg"
 const WhyJoinMedicalCamps = () => {
   
     return (
-        <section className="pt-8 w-[90%] mx-auto bg-slate-100" data-aos="fade-right" >
+        <section id="join-us" className="pt-8 w-[90%] mx-auto bg-slate-100" data-aos="fade-right" >
            <div className="py-4 sm:py-10 ">
                
           <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-green-900"> Why Join Our Medical Camps?</h2>
