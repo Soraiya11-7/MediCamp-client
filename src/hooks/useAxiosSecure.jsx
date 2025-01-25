@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
+import { useEffect } from "react";
 
 const axiosSecure = axios.create({
     baseURL: 'https://assignment-12-server-three-lovat.vercel.app'
@@ -21,6 +22,30 @@ const useAxiosSecure = () => {
     });
 
 
+    // useEffect(() => {
+    //     axiosSecure.interceptors.response.use(response =>{
+    //         return response;
+    //     }, error => {
+
+    //         const status = error.response.status;
+    //         // for 401 or 403 logout the user and move the user to the login
+    //         if (status === 401 || status === 403) {
+    //             signOutUser()
+    //             .then(() => {
+    //                 // console.log('logout user');
+    //                 navigate('/login');
+    //             })
+    //             .catch(error => {
+    //                 // console.log(error)
+    //             }
+    //             )
+         
+    //         }
+    //         return Promise.reject(error);
+    //     })
+    // },[signOutUser,navigate])
+
+
     // intercepts 401 and 403 status
     axiosSecure.interceptors.response.use(function (response) {
         return response;
@@ -28,17 +53,17 @@ const useAxiosSecure = () => {
         const status = error.response.status;
         // for 401 or 403 logout the user and move the user to the login
         if (status === 401 || status === 403) {
-            signOutUser()
-            .then(() => {
-                // console.log('logout user');
-                navigate('/login');
-            })
-            .catch(error => {
-                // console.log(error)
-            }
-            )
-            // await signOutUser();
-            // navigate('/login');
+            // signOutUser()
+            // .then(() => {
+            //     // console.log('logout user');
+            //     navigate('/login');
+            // })
+            // .catch(error => {
+            //     // console.log(error)
+            // }
+            // )
+            await signOutUser();
+            navigate('/login');
         }
         return Promise.reject(error);
     })

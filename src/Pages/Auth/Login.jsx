@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import SocialLogin from './SocialLogin';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -39,6 +40,16 @@ const Login = () => {
                     }
                 });
                 navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                const errorMessage = err.message;
+                const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
+                // setError(errorCode);
+                toast.error(errorCode || "An unexpected error occurred", {
+                    position: "top-center",
+                    autoClose: 2000,
+                  });
+                // setError(err.message);
             });
     }
 

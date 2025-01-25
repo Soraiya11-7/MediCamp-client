@@ -96,7 +96,7 @@ const UserProfile = () => {
     <div className=" flex flex-col items-center justify-center p-2 md:p-4 mt-10">
 
       <h2 className="text-lg sm:text-xl md:text-3xl my-8 text-center ">
-      Welcome<span className='text-green-900 font-bold'> {user?.displayName?.split(' ')[0]}!</span> 
+      Welcome<span className='text-green-900 font-bold'> {userInfo?.name?.split(' ')[0]}!</span> 
 
       </h2>
 

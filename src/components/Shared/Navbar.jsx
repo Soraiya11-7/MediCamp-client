@@ -108,7 +108,7 @@ const Navbar = () => {
 
                                             {/* Dashboard Link..... */}
                                             <Link
-                                                to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}
+                                                to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userProfile"}
                                                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
                                             >
                                                 Dashboard

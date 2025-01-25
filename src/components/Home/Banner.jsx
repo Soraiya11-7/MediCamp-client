@@ -58,7 +58,7 @@ const Banner = () => {
                     />
                     {/* Text Content inside the Slide..... */}
                     <div
-                        className="absolute inset-0 bg-green-900 bg-opacity-90"
+                        className="absolute inset-0 bg-green-700 bg-opacity-90"
                         style={{
                             clipPath: "polygon(0 0, 55% 0, 40% 100%, 0% 100%)",
                         }}

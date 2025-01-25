@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 
 const SocialLogin = () => {
@@ -30,6 +31,17 @@ const SocialLogin = () => {
                 navigate(from, { replace: true });
             })
         })
+        .catch((err) => {
+            // setError({ ...error, login: err.code })
+            const errorMessage = err.message;
+            const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
+            // setError(errorCode );
+            toast.error(errorCode || "An unexpected error occurred", {
+                position: "top-center",
+                autoClose: 2000,
+              });
+
+        });
     }
 
     return (
