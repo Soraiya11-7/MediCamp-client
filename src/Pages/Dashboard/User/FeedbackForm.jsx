@@ -3,13 +3,14 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const FeedbackForm = () => {
     const { user } = useAuth();
     const { id } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         try {
@@ -32,6 +33,8 @@ const FeedbackForm = () => {
                     showConfirmButton: false,
                     timer: 1500,
                 });
+
+                navigate('/dashboard/userRegisteredCamps')
             }
             reset();
         } catch (error) {

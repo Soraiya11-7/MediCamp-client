@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
-import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+// import useAuth from '../../../hooks/useAuth';
+// import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useRegisteredCampByEmail from '../../../hooks/useRegisteredCampByEmail';
-import { div } from 'framer-motion/client';
+// import { div } from 'framer-motion/client';
+import Skeleton from 'react-loading-skeleton';
 // import { Tooltip } from '@material-tailwind/react';
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const Analytics = () => {
 
-    const { user } = useAuth();
+    // const { user } = useAuth();
     const [search, setSearch] = useState('');
-    const [camps, , refetch] = useRegisteredCampByEmail(search);
-    const axiosSecure = useAxiosSecure();
+    const [camps, loading, refetch] = useRegisteredCampByEmail(search);
+    // const axiosSecure = useAxiosSecure();
 
     // custom shape for the bar chart
     const getPath = (x, y, width, height) => {
@@ -27,6 +28,15 @@ const Analytics = () => {
 
         return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
     };
+
+    
+      if (loading) {
+        return (
+          <div className="flex items-center min-h-screen justify-center">
+            <Skeleton count={3} height={120} width={200} />
+          </div>
+        );
+      }
     return (
         <div>
             <h2 className='text-2xl md:text-4xl font-bold mt-8 mb-4 text-center my-8'>Camp Fee Analytics</h2>

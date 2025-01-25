@@ -107,7 +107,7 @@ const RegisteredCamps = () => {
                                 <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.participantName}</td>
                                 <td className="py-1 px-2 text-xs sm:text-sm md:text-base">
                                     {camp.paymentStatus === 'Paid' ? (
-                                        <span className="text-green-700 font-bold">Paid</span>
+                                        <span className="text-gray-400 font-bold ">Paid</span>
                                     ) : (
                                        <Link to={`/dashboard/payment/${camp._id}`}>
                                         <button
@@ -127,10 +127,10 @@ const RegisteredCamps = () => {
                                     <button
                                         onClick={() => handleDeleteCamp(camp)}
                                         disabled={camp.paymentStatus === 'Paid'}
-                                        className={`btn btn-ghost btn-sm text-red-600 hover:bg-red-200 rounded-md transition-all ${camp.paymentStatus === 'Paid' && 'cursor-not-allowed opacity-50'
+                                        className={`btn btn-sm text-red-600 hover:bg-red-200 rounded-md transition-all ${camp.paymentStatus === 'Paid' && 'cursor-not-allowed opacity-50'
                                             }`}
                                     >
-                                        <FaTrashAlt />
+                                        Cancel
                                     </button>
                                 </td>
                                 <td className="py-1 px-2 text-xs sm:text-sm md:text-base">

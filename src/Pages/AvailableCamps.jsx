@@ -3,17 +3,26 @@ import { Link } from "react-router-dom";
 import useCamp from "../hooks/useCamp";
 import SearchBar from "../components/Shared/SearchBar";
 import LazyLoad from "react-lazyload";
+import Skeleton from "react-loading-skeleton";
 
 const AvailableCamps = () => {
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState('');
 
-    const [camps, , refetch] = useCamp(search, sort);
+    const [camps, loading, refetch] = useCamp(search, sort);
     const [isTwoColumn, setIsTwoColumn] = useState(false);
 
     const toggleLayout = () => {
         setIsTwoColumn(!isTwoColumn);
     };
+
+   
+
+     if (loading) {
+            return <div className="flex items-center min-h-screen justify-center">
+                <Skeleton count={3} height={120} width={200} />
+            </div>
+        }
 
 
     return (
@@ -93,9 +102,7 @@ const AvailableCamps = () => {
                                 <p className=" group-hover:text-white transition-colors duration-300 text-xs sm:text-sm font-semibold text-gray-800 mb-2">
                                     <strong>Location:</strong> {camp.location}
                                 </p>
-                                <p className="group-hover:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800">
-                                    <strong>Fees:</strong> ${camp.fees}
-                                </p>
+                              
                                 <p className="group-hover:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800">
                                     <strong>Healthcare Professional:</strong> {camp.healthcareProfessional}
                                 </p>

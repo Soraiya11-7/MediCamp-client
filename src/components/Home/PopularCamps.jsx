@@ -48,12 +48,10 @@ const PopularCamps = () => {
                                 <strong>Participants:</strong> {camp.participants}
                             </p>
 
-                            <p className="text-gray-700 mb-2 group-hover:text-white transition-colors duration-300 text-sm h-auto sm:min-h-[40px] sm:flex-grow">
-                                {camp.description.slice(0, 100)}...
-                            </p>
+                        
 
                             {/* Button */}
-                            <div className="mt-4 flex justify-end">
+                            <div className="mt-2 flex justify-end">
                                 <Link to={`/camp-details/${camp._id}`}>
                                     <button className="py-2 px-6 border-2 border-green-800 bg-green-900 text-white font-semibold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 group-hover:bg-white group-hover:text-green-900">
                                         Details
