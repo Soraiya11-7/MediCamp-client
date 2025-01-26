@@ -6,6 +6,25 @@ const PopularCamps = () => {
     const [camps, loading, refetch] = usePopularCamp();
 
 
+    
+    const formatDateTime = (dateTime) => {
+        const [datePart, timePart] = dateTime.split(" | ");
+        const [startTime, endTime] = timePart.split(" - ");
+      
+        const formatTime = (time) => {
+          const [hour, minute] = time.split(":").map(Number);
+          const isPM = hour >= 12;
+          const formattedHour = hour % 12 || 12; // Convert 0 to 12 for 12-hour format
+          return `${formattedHour.toString().padStart(2, "0")}:${minute
+            .toString()
+            .padStart(2, "0")} ${isPM ? "PM" : "AM"}`;
+        };
+      
+        return `${datePart} | ${formatTime(startTime)} - ${formatTime(endTime)}`;
+      };
+      
+
+
     if (loading) {
         return <div className="flex items-center min-h-screen justify-center">
             <Skeleton count={3} height={120} width={200} />
@@ -50,7 +69,7 @@ const PopularCamps = () => {
                                         </h3>
 
                                         <p className="group-hover:text-white transition-colors duration-300 text-xs sm:text-sm font-semibold text-gray-800 mb-2">
-                                            <strong>Date & Time:</strong> {camp.dateTime}
+                                            <strong>Date & Time:</strong> {formatDateTime(camp.dateTime)}
                                         </p>
                                         <p className=" group-hover:text-white transition-colors duration-300 text-xs sm:text-sm font-semibold text-gray-800 mb-2">
                                             <strong>Location:</strong> {camp.location}

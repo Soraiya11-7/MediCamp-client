@@ -1,18 +1,33 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import logo from "../../assets/mc2.png"
 import useAdmin from "../../hooks/useAdmin";
+import useProfileData from "../../hooks/useProfileData";
 
 
 const Navbar = () => {
     const { user, signOutUser } = useAuth();
+    const [userInfo, isPending, refetch] = useProfileData();
+     const [preview, setPreview] = useState('');
+     const [name, setName] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
 
     const [isAdmin] = useAdmin();
 
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+          if (userInfo?.image) {
+            setPreview(userInfo.image);
+            setName(userInfo.name)
+          } else {
+            setPreview(user?.photoUR);
+            setName(user?.displayName)
+          }
+        }, [userInfo, user]);
+
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
@@ -90,7 +105,7 @@ const Navbar = () => {
                                 <div className="h-10 w-12 md:h-12 md:w-14  rounded-full px-1 " >
                                     <button onClick={toggleDropdown}
                                         className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border border-gray-300">
-                                        <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={user?.photoURL}
+                                        <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={preview}
                                             alt="image"
                                         />
                                     </button>
@@ -102,7 +117,7 @@ const Navbar = () => {
                                         <div className="py-2">
                                             {/* User Name............ */}
                                             <div className="px-4 py-2 text-gray-700 font-medium">
-                                                {user?.displayName?.split(" ")[0]}
+                                                {name?.split(" ")[0]}
                                             </div>
                                             <hr className="border-gray-500" />
 

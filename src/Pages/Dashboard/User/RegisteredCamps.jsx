@@ -69,13 +69,13 @@ const RegisteredCamps = () => {
         })
     };
 
-    if (loading) {
-        return (
-            <div className="flex items-center min-h-screen justify-center">
-                <Skeleton count={3} height={120} width={200} />
-            </div>
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <div className="flex items-center min-h-screen justify-center">
+    //             <Skeleton count={3} height={120} width={200} />
+    //         </div>
+    //     );
+    // }
     return (
         <div>
             <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-center my-8">Registered Camps</h2>
@@ -89,7 +89,10 @@ const RegisteredCamps = () => {
                 />
             </div>
             {
-                camps && camps.length === 0 ? (
+                loading ? (<div className="flex items-center min-h-screen justify-center">
+                    <Skeleton count={3} height={120} width={200} />
+                </div>) 
+                : camps && camps.length === 0 ? (
                     <div className="text-center">
                         <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 mt-10">You have not registered for any camps.</h3>
 

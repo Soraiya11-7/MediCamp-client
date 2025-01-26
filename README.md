@@ -7,7 +7,7 @@ The **Medical Camp Management System (MCMS)** is a comprehensive and fully respo
 
 
 ## Organizers Information:
-- **Username:** [MediCamp Organizer]
+- **Username:** [Organizer]
 - **Password:** [adMin76#]
 - **Email:** [admin76@gmail.com]
 

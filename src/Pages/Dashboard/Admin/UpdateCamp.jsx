@@ -33,6 +33,8 @@ const UpdateCamp = () => {
         }
       }, [camp]);
 
+      
+
     const formattedDate = dateTime
         ? new Date(dateTime.split(" | ")[0]).toISOString().slice(0, 10)
         : "";
@@ -60,13 +62,19 @@ const UpdateCamp = () => {
                     updatedImage = imageResponse.data.data.display_url;
                 }
             }
+            const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            });
+
 
             const updatedCampDetails = {
                 campName: data.campName,
                 location: data.location,
                 healthcareProfessional: data.healthcareProfessional,
                 fees: parseFloat(data.fees),
-                dateTime: `${data.date} | ${data.startTime} - ${data.endTime}`,
+                dateTime: `${formattedDate} | ${data.startTime} - ${data.endTime}`,
                 description: data.description,
                 image: updatedImage,
             };

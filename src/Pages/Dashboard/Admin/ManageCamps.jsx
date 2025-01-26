@@ -32,6 +32,26 @@ const ManageCamps = () => {
     setCurrentPage(pageNumber);
   };
 
+
+
+  //date time format....
+  const formatDateTime = (dateTime) => {
+    const [datePart, timePart] = dateTime.split(" | ");
+    const [startTime, endTime] = timePart.split(" - ");
+  
+    const formatTime = (time) => {
+      const [hour, minute] = time.split(":").map(Number);
+      const isPM = hour >= 12;
+      const formattedHour = hour % 12 || 12; // Convert 0 to 12 for 12-hour format
+      return `${formattedHour.toString().padStart(2, "0")}:${minute
+        .toString()
+        .padStart(2, "0")} ${isPM ? "PM" : "AM"}`;
+    };
+  
+    return `${datePart} | ${formatTime(startTime)} - ${formatTime(endTime)}`;
+  };
+  
+
   const handleDeleteCamp = (camp) => {
 
     Swal.fire({
@@ -52,7 +72,7 @@ const ManageCamps = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: `${camp.CampName} has been deleted`,
+            title: `Camp has been deleted`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -68,13 +88,13 @@ const ManageCamps = () => {
     })
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center min-h-screen justify-center">
-        <Skeleton count={3} height={120} width={200} />
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="flex items-center min-h-screen justify-center">
+  //       <Skeleton count={3} height={120} width={200} />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
@@ -90,67 +110,70 @@ const ManageCamps = () => {
       </div>
 
       {
-        camps && camps.length === 0 ? (
-          <div className="text-center">
-            <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 mt-10">No camps have been added yet.</h3>
-
-            <p className='text-sm sm:text-base w-[80%] mx-auto'>Please add camps to allow users to register and participate.</p>
-          </div>
-        ) : (<div>
-
-          <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
-            <table className="table w-full table-auto">
-              <thead className="bg-green-800 text-white">
-                <tr className="text-center">
-                  <th className="py-1 px-2 text-sm md:text-base lg:text-lg">#</th>
-                  <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Camp Name</th>
-                  <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Date & Time</th>
-                  <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Location</th>
-                  <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Healthcare Professional</th>
-                  <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Action</th>
-                </tr>
-              </thead>
-              <tbody className="text-center bg-slate-200">
-                {currentTableData.map((camp, index) => (
-                  <tr
-                    key={camp._id}
-                    className="border-t hover:bg-gray-50 transition-all duration-300"
-                  >
-                    <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{index + 1}</td>
-                    <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.campName}</td>
-                    <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.dateTime}</td>
-                    <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.location}</td>
-                    <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.healthcareProfessional}</td>
-                    <td className="py-1 px-2 text-xs sm:text-sm md:text-base">
-                      <div className="flex justify-center gap-2">
-                        {/* Update Button..................... */}
-                        <Link to={`/dashboard/update-camp/${camp._id}`}>
-                          <button className="btn btn-sm text-green-800 hover:bg-blue-200 rounded-md transition-all">
-                            <FaEdit />
-                          </button>
-                        </Link>
-                        {/* Delete Button .........................*/}
-                        <button
-                          onClick={() => handleDeleteCamp(camp)}
-                          className="btn btn-sm text-red-600 hover:bg-red-200 rounded-md transition-all"
-                        >
-                          <FaTrashAlt />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Pagination Footer */}
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
+        loading ? (<div className="flex items-center min-h-screen justify-center">
+          <Skeleton count={3} height={120} width={200} />
         </div>)
+          : camps && camps.length === 0 ? (
+            <div className="text-center">
+              <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 mt-10">No camps have been added yet.</h3>
+
+              <p className='text-sm sm:text-base w-[80%] mx-auto'>Please add camps to allow users to register and participate.</p>
+            </div>
+          ) : (<div>
+
+            <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
+              <table className="table w-full table-auto">
+                <thead className="bg-green-800 text-white">
+                  <tr className="text-center">
+                    <th className="py-1 px-2 text-sm md:text-base lg:text-lg">#</th>
+                    <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Camp Name</th>
+                    <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Date & Time</th>
+                    <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Location</th>
+                    <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Healthcare Professional</th>
+                    <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Action</th>
+                  </tr>
+                </thead>
+                <tbody className="text-center bg-slate-200">
+                  {currentTableData.map((camp, index) => (
+                    <tr
+                      key={camp._id}
+                      className="border-t hover:bg-gray-50 transition-all duration-300"
+                    >
+                      <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{index + 1}</td>
+                      <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.campName}</td>
+                      <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{formatDateTime(camp.dateTime)}</td>
+                      <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.location}</td>
+                      <td className="py-1 px-2 text-xs sm:text-sm md:text-base">{camp.healthcareProfessional}</td>
+                      <td className="py-1 px-2 text-xs sm:text-sm md:text-base">
+                        <div className="flex justify-center gap-2">
+                          {/* Update Button..................... */}
+                          <Link to={`/dashboard/update-camp/${camp._id}`}>
+                            <button className="btn btn-sm text-green-800 hover:bg-blue-200 rounded-md transition-all">
+                              <FaEdit />
+                            </button>
+                          </Link>
+                          {/* Delete Button .........................*/}
+                          <button
+                            onClick={() => handleDeleteCamp(camp)}
+                            className="btn btn-sm text-red-600 hover:bg-red-200 rounded-md transition-all"
+                          >
+                            <FaTrashAlt />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Pagination Footer */}
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          </div>)
       }
 
     </div>
