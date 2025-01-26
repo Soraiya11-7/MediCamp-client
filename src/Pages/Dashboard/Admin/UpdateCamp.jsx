@@ -35,9 +35,11 @@ const UpdateCamp = () => {
 
       
 
-    const formattedDate = dateTime
-        ? new Date(dateTime.split(" | ")[0]).toISOString().slice(0, 10)
-        : "";
+      const formattedDate = dateTime
+      ? new Date(dateTime.split(" | ")[0]).toLocaleDateString("en-CA")
+      : ""; // Returns the date in YYYY-MM-DD format
+  
+
 
     if (isLoading) {
         return <div className="flex items-center min-h-screen justify-center">
@@ -62,11 +64,13 @@ const UpdateCamp = () => {
                     updatedImage = imageResponse.data.data.display_url;
                 }
             }
-            const formattedDate = new Date(data.date).toLocaleDateString("en-US", {
+            const dateFormat = new Date(data.date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
             });
+
+            // console.log(dateFormat);
 
 
             const updatedCampDetails = {
@@ -74,7 +78,7 @@ const UpdateCamp = () => {
                 location: data.location,
                 healthcareProfessional: data.healthcareProfessional,
                 fees: parseFloat(data.fees),
-                dateTime: `${formattedDate} | ${data.startTime} - ${data.endTime}`,
+                dateTime: `${dateFormat} | ${data.startTime} - ${data.endTime}`,
                 description: data.description,
                 image: updatedImage,
             };

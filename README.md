@@ -14,7 +14,8 @@ The **Medical Camp Management System (MCMS)** is a comprehensive and fully respo
 
 ## Live URL
 
-Netlify: [MediCamp Live](#)
+Netlify: [MediCamp Live](https://tranquil-melomakarona-3d0816.netlify.app/)
+
 
 Firebase: [Live Link 1](https://medical-camp-35f0f.web.app/) OR [Live Link 2](https://medical-camp-35f0f.firebaseapp.com/)
 

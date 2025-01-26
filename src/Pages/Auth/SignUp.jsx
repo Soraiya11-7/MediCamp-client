@@ -63,7 +63,7 @@ const SignUp = () => {
                                 }
                             })
                             .catch((err) => {
-                                 console.log(err);
+                                //  console.log(err);
                                 const errorMessage = err.message;
                                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
                                 // setError(errorCode);
@@ -77,7 +77,7 @@ const SignUp = () => {
 
                     })
                     .catch((err) => {
-                    console.log(err);
+                    // console.log(err);
                         const errorMessage = err.message;
                         const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
                         // setError(errorCode);

@@ -64,7 +64,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
             closeModal();
 
         } catch (error) {
-            console.error("Error:", error);
+            // console.error("Error:", error);
             Swal.fire({
                 icon: "error",
                 title: "Error",
