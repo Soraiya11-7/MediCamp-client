@@ -82,7 +82,14 @@ const ManageRegisteredCamps = () => {
                     });
                 }
             }
-        });
+        }).catch((err) =>{
+                // console.error("Error updating profile:", error);
+                Swal.fire({
+                  icon: "error",
+                  title: "Error",
+                  text: "Something went wrong. Please try again later.",
+                });
+              })
     };
 
      if (loading) {

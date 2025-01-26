@@ -4,9 +4,9 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import useRegisteredCampById from "../../../hooks/useRegisteredCampById";
-import { div } from "framer-motion/client";
+// import { div } from "framer-motion/client";
 
 
 const CheckoutForm = ({ id }) => {
@@ -144,7 +144,7 @@ const CheckoutForm = ({ id }) => {
                     Pay
                 </button>
                 <p className="text-red-600">{error}</p>
-                {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
+                {/* {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>} */}
             </form>
 
         </div>
