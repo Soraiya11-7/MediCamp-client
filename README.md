@@ -88,7 +88,7 @@ Before installing and running the project, ensure you have the following install
 
 
 ### Steps
-1️. **Clone the repository**
+1. **Clone the repository**
 
 ```sh
 # Clone the repository
@@ -101,10 +101,6 @@ cd medical-camp-management
 
 ```sh
 npm install
-
-# Create a .env.local file and add the environment variables
-touch .env.local
-
 ```
 3. **Set up environment variables** (see `.env.local.example` below)
 
@@ -175,6 +171,7 @@ The **Participant Dashboard** offers a personalized experience for camp attendee
 ✔ **Payments** are securely processed via **Stripe**.  
 
 ✔ **Admins & Organizers** can monitor user activity, payments, and feedback. 
+
 --- 
 
  🚀Efficiently manage medical camps with **MCMS**! 🏥💉🚑
