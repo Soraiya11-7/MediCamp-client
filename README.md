@@ -1,28 +1,20 @@
 # Medical Camp Management System (MCMS)
 
 
-## Project Purpose
+## 📊  Project Overview
 
 The **Medical Camp Management System (MCMS)** is a **MERN stack** web application designed to help organizers and participants efficiently manage and coordinate medical camps. The system allows **organizers** to create, manage, and track camp registrations, while **participants** can browse, register, and provide feedback. 
 
 It includes **secure JWT authentication**, **payment integration**, **dashboard features**, and **an intuitive user experience**, and is **fully responsive** to ensure accessibility across all devices.
 
+🚀 Live Demo: [MediCamp](https://tranquil-melomakarona-3d0816.netlify.app/)
+
+---
 
 ## 📋 Organizers Information:
 - **Password:** [adMin76#]
 - **Email:** [admin76@gmail.com]
 
-
-## 🌍 Live Demo & Repository
-
-### 🚀 Live URL
-   - Netlify: [MediCamp ](https://tranquil-melomakarona-3d0816.netlify.app/)
-
-   - Firebase: [Live Link 1](https://medical-camp-35f0f.web.app/) OR [Live Link 2](https://medical-camp-35f0f.firebaseapp.com/)
-
-🔗 GitHub Repository: [GitHub Link](https://github.com/Soraiya11-7/MediCamp-client)
-
----
 ---
 ## 📖 Table of Contents
 - [Features](#features)
@@ -30,11 +22,13 @@ It includes **secure JWT authentication**, **payment integration**, **dashboard 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [Dependencies](#dependencies)
 - [Admin/Organizer Dashboard](#-adminorganizer-dashboard-private-route)
 - [Participant Dashboard](#-participant-dashboard-private-route)
 - [Usage](#usage)
+- [Live Demo](#live-demo)
 
----
+
 ---
 
 ## ✨ Features
@@ -50,7 +44,7 @@ It includes **secure JWT authentication**, **payment integration**, **dashboard 
 - **Notifications** – Real-time alerts via React Toastify & SweetAlert2.  
 - **Data Visualization** – Dashboards with analytics and charts (Recharts).  
 
----
+
 ---
 
 
@@ -73,7 +67,7 @@ It includes **secure JWT authentication**, **payment integration**, **dashboard 
 | **Build Tool**     | Vite |
 | **Linting & Formatting** | ESLint, Prettier |
 
----
+
 ---
 
 ## 🛠 Installation
@@ -110,7 +104,7 @@ npm install
 npm run dev
 ```
 
----
+
 ---
 
 ## ⚙️ Configuration (.env.local)
@@ -137,7 +131,129 @@ VITE_Payment_Gateway_PK=your_stripe_payment_public_key
 🚨 Important: Never expose your .env.local file in public repositories. Use .gitignore to keep it secure.
 
 ---
+
+## 📚 Dependencies
+
+The Medical Camp Management System (MCMS) utilizes the following dependencies to implement key features, enhance performance, and improve the overall user experience.
+
+### Main Dependencies
+- `@headlessui/react`: ^2.2.0  
+  A library providing unstyled, fully accessible UI components for building custom user interfaces.
+
+- `@material-tailwind/react`: ^2.1.10  
+  A collection of Material Design components built with Tailwind CSS.
+
+- `@smastrom/react-rating`: ^1.5.0  
+  A React component that implements a rating system.
+
+- `@stripe/react-stripe-js` and `@stripe/stripe-js`: ^3.1.1, ^5.5.0  
+  Integration for secure payment processing through Stripe.
+
+- `@tanstack/react-query`: ^5.64.1  
+  A library for managing server-side data fetching, caching, and synchronization.
+
+- `aos`: ^2.3.4  
+  A library for scroll-triggered animations to enhance the UI's visual appeal.
+
+- `axios`: ^1.7.9  
+  A promise-based HTTP client used for making requests.
+
+- `firebase`: ^11.1.0  
+  A suite of Firebase services for authentication and real-time data storage.
+
+- `framer-motion`: ^12.0.0  
+  A library for adding smooth animations and transitions to React components.
+
+- `localforage`: ^1.10.0  
+  A local storage solution for persisting data.
+
+- `match-sorter`: ^8.0.0  
+  A utility for sorting and filtering data efficiently.
+
+- `react`: ^18.3.1, `react-dom`: ^18.3.1  
+  The core React library and the DOM renderer.
+
+- `react-hook-form`: ^7.54.2  
+  A library that simplifies form state management and validation in React.
+
+- `react-icons`: ^5.4.0  
+  A collection of customizable icons for use in React applications.
+
+- `react-lazyload`: ^3.2.1  
+  A library that enables lazy loading for images and components.
+
+- `react-loading-skeleton`: ^3.5.0  
+  A library providing skeleton loaders for improving loading states.
+
+- `react-responsive-carousel`: ^3.2.23  
+  A responsive carousel component for displaying images and content.
+
+- `react-router-dom`: ^7.1.1  
+  A library that enables routing and navigation in React applications.
+
+- `react-simple-captcha`: ^9.3.1  
+  A simple CAPTCHA solution for form validation.
+
+- `react-toastify`: ^11.0.3  
+  A library for displaying toast notifications.
+
+- `recharts`: ^2.15.0  
+  A charting library used to visualize data.
+
+- `sort-by`: ^1.2.0  
+  A utility for sorting arrays of objects.
+
+- `sweetalert2`: ^11.15.10  
+  A library for creating customizable and responsive alert dialogs.
+
+- `swiper`: ^11.2.1  
+  A touch-enabled library for implementing carousels and sliders.
+
+### Development Dependencies
+- `@eslint/js`: ^9.17.0  
+  A linting tool that helps maintain code quality and consistency.
+
+- `@types/react`: ^18.3.18, `@types/react-dom`: ^18.3.5  
+  TypeScript type definitions for React and React DOM.
+
+- `@vitejs/plugin-react`: ^4.3.4  
+  A Vite plugin that optimizes React development.
+
+- `autoprefixer`: ^10.4.20  
+  A tool for adding vendor prefixes to CSS automatically.
+
+- `daisyui`: ^4.12.23  
+  A component library built on top of Tailwind CSS.
+
+- `eslint`: ^9.17.0  
+  A JavaScript linting tool for identifying and fixing errors.
+
+- `eslint-plugin-react`: ^7.37.2  
+  A set of linting rules for React applications.
+
+- `eslint-plugin-react-hooks`: ^5.0.0  
+  Ensures best practices in the usage of React hooks.
+
+- `eslint-plugin-react-refresh`: ^0.4.16  
+  A plugin that ensures React Fast Refresh during development.
+
+- `globals`: ^15.14.0  
+  A package that provides global variables to ESLint.
+
+- `postcss`: ^8.4.49  
+  A tool that allows transforming CSS with JavaScript plugins.
+
+- `tailwindcss`: ^3.4.17  
+  A utility-first CSS framework used for building custom designs.
+
+- `vite`: ^6.0.5  
+  A build tool that provides fast and optimized development and production workflows.
+
+
+These dependencies are essential to the implementation and operation of MCMS, helping to ensure a seamless user experience, smooth performance, and integration with third-party services.
+
 ---
+
 ## 📊 Admin/Organizer Dashboard 
 The **Organizer Dashboard** provides a structured interface for managing medical camps. It includes:
 
@@ -158,7 +274,7 @@ The **Participant Dashboard** offers a personalized experience for camp attendee
 - **Registered Camps** – View enrolled camps, payment status, feedback, and cancellations.  
 - **Payment History** – Track transaction details for past and current camp payments.  
 
----
+
 ---
 
 
@@ -173,6 +289,18 @@ The **Participant Dashboard** offers a personalized experience for camp attendee
 ✔ **Admins & Organizers** can monitor user activity, payments, and feedback. 
 
 --- 
+
+
+## 🌍 Live Demo & Repository
+
+### 🚀 Live URL
+   - Netlify: [MediCamp](https://tranquil-melomakarona-3d0816.netlify.app/)
+
+   - Firebase: [Live Link 1](https://medical-camp-35f0f.web.app/) OR [Live Link 2](https://medical-camp-35f0f.firebaseapp.com/)
+
+🔗 GitHub Repository: [GitHub Link](https://github.com/Soraiya11-7/MediCamp-client)
+
+---
 
  🚀Efficiently manage medical camps with **MCMS**! 🏥💉🚑
 
