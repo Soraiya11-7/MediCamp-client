@@ -88,7 +88,7 @@ Before installing and running the project, ensure you have the following install
 git clone https://github.com/Soraiya11-7/MediCamp-client.git
 
 # Navigate to the project directory
-cd medical-camp-management
+cd MediCamp-client
 ```
 2. **Install dependencies**
 

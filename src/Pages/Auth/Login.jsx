@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import SocialLogin from './SocialLogin';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -64,6 +65,9 @@ const Login = () => {
 
     return (
         <>
+           <Helmet>
+                <title>Medical Camp | Login</title>
+            </Helmet>
           
             <div className="hero min-h-screen bg-base-200 w-[90%] mx-auto flex justify-center py-8 items-center">
                 <div className="card bg-base-100  w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">

@@ -7,6 +7,7 @@ import Banner from "../components/Home/Banner";
 import WhyJoinMedicalCamps from "../components/Home/WhyJoinMedicalCamps";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Helmet } from "react-helmet-async";
 
 
 const Home = () => {
@@ -18,6 +19,9 @@ const Home = () => {
       },[]);
     return (
         <div className="">
+            <Helmet>
+                <title>Medical Camp | Home</title>
+            </Helmet>
        <Banner></Banner>
         <PopularCamps></PopularCamps>
         <FeedbackRatings></FeedbackRatings>

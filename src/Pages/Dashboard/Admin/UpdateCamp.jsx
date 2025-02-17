@@ -1,4 +1,4 @@
-import {useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -6,6 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useCampById from "../../../hooks/useCampById";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -25,20 +26,20 @@ const UpdateCamp = () => {
     // console.log(dateTime);
 
     const [preview, setPreview] = useState('');
-      useEffect(() => {
+    useEffect(() => {
         if (camp?.image) {
-          setPreview(camp.image);
+            setPreview(camp.image);
         } else {
-          setPreview('');
+            setPreview('');
         }
-      }, [camp]);
+    }, [camp]);
 
-      
 
-      const formattedDate = dateTime
-      ? new Date(dateTime.split(" | ")[0]).toLocaleDateString("en-CA")
-      : ""; // Returns the date in YYYY-MM-DD format
-  
+
+    const formattedDate = dateTime
+        ? new Date(dateTime.split(" | ")[0]).toLocaleDateString("en-CA")
+        : ""; // Returns the date in YYYY-MM-DD format
+
 
 
     if (isLoading) {
@@ -115,84 +116,88 @@ const UpdateCamp = () => {
     };
 
     return (
-        <div className="w-[90%] mx-auto">
-            <div className="my-8">
-                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">
-                    Update Camp
-                </h2>
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="space-y-6 bg-slate-100 rounded-lg shadow-lg px-4 py-8"
-                >
-                    <div className="md:flex mb-4 md:mb-8">
-                        <div className="form-control md:w-1/2 mb-4 md:mb-0">
-                            <label className="label">
-                                <span className="label-text text-sm sm:text-base">Camp Name*</span>
-                            </label>
-                            <input
-                                type="text"
-                                defaultValue={campName}
-                                {...register("campName", { required: true })}
-                                className="input input-bordered w-full text-sm sm:text-base"
-                            />
-                            {errors.campName && <p className="text-red-500 text-sm">Camp Name is required </p>}
+        <>
+            <Helmet>
+                <title>Admin Dashboard | Update Camp</title>
+            </Helmet>
+            <div className="w-[90%] mx-auto">
+                <div className="my-8">
+                    <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">
+                        Update Camp
+                    </h2>
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="space-y-6 bg-slate-100 rounded-lg shadow-lg px-4 py-8"
+                    >
+                        <div className="md:flex mb-4 md:mb-8">
+                            <div className="form-control md:w-1/2 mb-4 md:mb-0">
+                                <label className="label">
+                                    <span className="label-text text-sm sm:text-base">Camp Name*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    defaultValue={campName}
+                                    {...register("campName", { required: true })}
+                                    className="input input-bordered w-full text-sm sm:text-base"
+                                />
+                                {errors.campName && <p className="text-red-500 text-sm">Camp Name is required </p>}
+                            </div>
+                            <div className="form-control md:w-1/2 md:ml-4">
+                                <label className="label">
+                                    <span className="label-text text-sm sm:text-base">Location*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    defaultValue={location}
+                                    {...register("location", { required: true })}
+                                    className="input input-bordered w-full text-sm sm:text-base "
+                                />
+                                {errors.location && <p className="text-red-500 text-sm">Location is required </p>}
+                            </div>
                         </div>
-                        <div className="form-control md:w-1/2 md:ml-4">
-                            <label className="label">
-                                <span className="label-text text-sm sm:text-base">Location*</span>
-                            </label>
-                            <input
-                                type="text"
-                                defaultValue={location}
-                                {...register("location", { required: true })}
-                                className="input input-bordered w-full text-sm sm:text-base "
-                            />
-                            {errors.location && <p className="text-red-500 text-sm">Location is required </p>}
-                        </div>
-                    </div>
 
-                    <div className="lg:flex mb-4 lg:mb-8">
-                        <div className="form-control lg:w-1/2 mb-4 lg:mb-0">
-                            <label className="label">
-                                <span className="label-text text-sm sm:text-base">Healthcare Professional Name*</span>
-                            </label>
-                            <input
-                                type="text"
-                                defaultValue={healthcareProfessional}
-                                {...register("healthcareProfessional", { required: true })}
-                                className="input input-bordered w-full text-sm sm:text-base"
-                            />
-                             {errors.healthcareProfessional && <p className="text-red-500 text-sm">HealthcareProfessional Name is required </p>}
+                        <div className="lg:flex mb-4 lg:mb-8">
+                            <div className="form-control lg:w-1/2 mb-4 lg:mb-0">
+                                <label className="label">
+                                    <span className="label-text text-sm sm:text-base">Healthcare Professional Name*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    defaultValue={healthcareProfessional}
+                                    {...register("healthcareProfessional", { required: true })}
+                                    className="input input-bordered w-full text-sm sm:text-base"
+                                />
+                                {errors.healthcareProfessional && <p className="text-red-500 text-sm">HealthcareProfessional Name is required </p>}
+                            </div>
+                            <div className="form-control lg:w-1/2 lg:ml-4">
+                                <label className="label">
+                                    <span className="label-text text-sm sm:text-base">Camp Fees*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    defaultValue={fees}
+                                    {...register("fees", { required: true })}
+                                    className="input input-bordered w-full text-sm sm:text-base"
+                                />
+                                {errors.fees && <p className="text-red-500 text-sm">Fees are required </p>}
+                            </div>
                         </div>
-                        <div className="form-control lg:w-1/2 lg:ml-4">
-                            <label className="label">
-                                <span className="label-text text-sm sm:text-base">Camp Fees*</span>
-                            </label>
-                            <input
-                                type="number"
-                                defaultValue={fees}
-                                {...register("fees", { required: true })}
-                                className="input input-bordered w-full text-sm sm:text-base"
-                            />
-                            {errors.fees && <p className="text-red-500 text-sm">Fees are required </p>}
-                        </div>
-                    </div>
-                    
+
                         <div className="form-control mb-4">
                             <label className="label">
                                 <span className="label-text text-sm sm:text-base">Current Image</span>
                             </label>
-                            <div  className="flex items-center gap-2">
-                            <img src={preview} alt="Preview" className="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg" />
-                            <input
-                                type="file"
-                                {...register("image")}
-                                className="file-input file-input-bordered w-full h-8 sm:h-12 rounded-lg text-xs md:text-sm"
-                                onChange={handleFileChange}
-                            />
+                            <div className="flex items-center gap-2">
+                                <img src={preview} alt="Preview" className="w-12 h-12 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg" />
+                                <input
+                                    type="file"
+                                    {...register("image")}
+                                    className="file-input file-input-bordered w-full h-8 sm:h-12 rounded-lg text-xs md:text-sm"
+                                    onChange={handleFileChange}
+                                />
                             </div>
-                            
-                             {errors.image && <p className="text-red-500 text-sm">Image is required </p>}
+
+                            {errors.image && <p className="text-red-500 text-sm">Image is required </p>}
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -206,53 +211,55 @@ const UpdateCamp = () => {
                             />
                             {errors.date && <p className="text-red-500 text-sm">Date is required </p>}
                         </div>
-                    
 
-                    <div className="md:flex mb-4 md:mb-8">
-                        <div className="form-control md:w-1/2 mb-4 md:mb-0">
-                            <label className="label">
-                                <span className="label-text text-sm sm:text-base">Start Time*</span>
-                            </label>
-                            <input
-                                type="time"
-                                defaultValue={dateTime.split(" | ")[1]?.split(" - ")[0]}
-                                {...register("startTime", { required: true })}
-                                className="input input-bordered w-full text-sm sm:text-base"
-                            />
-                            {errors.startTime && <p className="text-red-500 text-sm">startTime is required </p>}
+
+                        <div className="md:flex mb-4 md:mb-8">
+                            <div className="form-control md:w-1/2 mb-4 md:mb-0">
+                                <label className="label">
+                                    <span className="label-text text-sm sm:text-base">Start Time*</span>
+                                </label>
+                                <input
+                                    type="time"
+                                    defaultValue={dateTime.split(" | ")[1]?.split(" - ")[0]}
+                                    {...register("startTime", { required: true })}
+                                    className="input input-bordered w-full text-sm sm:text-base"
+                                />
+                                {errors.startTime && <p className="text-red-500 text-sm">startTime is required </p>}
+                            </div>
+                            <div className="form-control md:w-1/2 md:ml-4">
+                                <label className="label">
+                                    <span className="label-text text-sm sm:text-base">End Time*</span>
+                                </label>
+                                <input
+                                    type="time"
+                                    defaultValue={dateTime.split(" | ")[1]?.split(" - ")[1]}
+                                    {...register("endTime", { required: true })}
+                                    className="input input-bordered w-full text-sm sm:text-base"
+                                />
+                                {errors.endTime && <p className="text-red-500 text-sm">End Time is required </p>}
+                            </div>
                         </div>
-                        <div className="form-control md:w-1/2 md:ml-4">
+
+                        <div className="form-control">
                             <label className="label">
-                                <span className="label-text text-sm sm:text-base">End Time*</span>
+                                <span className="label-text text-sm sm:text-base">Description*</span>
                             </label>
-                            <input
-                                type="time"
-                                defaultValue={dateTime.split(" | ")[1]?.split(" - ")[1]}
-                                {...register("endTime", { required: true })}
-                                className="input input-bordered w-full text-sm sm:text-base"
-                            />
-                             {errors.endTime && <p className="text-red-500 text-sm">End Time is required </p>}
+                            <textarea
+                                defaultValue={description}
+                                {...register("description", { required: true })}
+                                className="textarea textarea-bordered h-24 text-sm sm:text-base"
+                            ></textarea>
+                            {errors.description && <p className="text-red-500 text-sm">Description is required </p>}
                         </div>
-                    </div>
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-sm sm:text-base">Description*</span>
-                        </label>
-                        <textarea
-                            defaultValue={description}
-                            {...register("description", { required: true })}
-                            className="textarea textarea-bordered h-24 text-sm sm:text-base"
-                        ></textarea>
-                        {errors.description && <p className="text-red-500 text-sm">Description is required </p>}
-                    </div>
-
-                    <button className="btn bg-green-900 hover:bg-green-300 text-white w-full mb-5">
-                        Update Camp
-                    </button>
-                </form>
+                        <button className="btn bg-green-900 hover:bg-green-300 text-white w-full mb-5">
+                            Update Camp
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
+
     );
 };
 

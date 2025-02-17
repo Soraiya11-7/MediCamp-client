@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -72,7 +73,11 @@ const AddCamp = () => {
     };
 
     return (
-        <div className="w-[90%] mx-auto">
+        <>
+            <Helmet>
+                <title>Admin Dashboard | Launch New Camp</title>
+            </Helmet>
+            <div className="w-[90%] mx-auto">
             <div className="my-8 overflow-hidden">
                 <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">
                     Add a New Camp 
@@ -226,6 +231,8 @@ const AddCamp = () => {
                 </form>
             </div>
         </div>
+        </>
+
     );
 };
 
