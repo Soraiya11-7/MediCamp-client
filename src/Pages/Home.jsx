@@ -8,6 +8,8 @@ import WhyJoinMedicalCamps from "../components/Home/WhyJoinMedicalCamps";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { Helmet } from "react-helmet-async";
+import HowItWorks from "../components/Home/HowItWorks";
+import Newsletter from "../components/Home/Newsletter";
 
 
 const Home = () => {
@@ -23,9 +25,12 @@ const Home = () => {
                 <title>Medical Camp | Home</title>
             </Helmet>
        <Banner></Banner>
+       <HowItWorks></HowItWorks>
+       
         <PopularCamps></PopularCamps>
         <FeedbackRatings></FeedbackRatings>
         <WhyJoinMedicalCamps></WhyJoinMedicalCamps>
+        <Newsletter></Newsletter>
         
         </div>
     );

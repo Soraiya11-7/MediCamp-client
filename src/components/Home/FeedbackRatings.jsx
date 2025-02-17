@@ -16,7 +16,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import Skeleton from 'react-loading-skeleton';
 
 const FeedbackRatings = () => {
@@ -40,8 +40,8 @@ const FeedbackRatings = () => {
 
     return (
         <>
-            <div className=''>
-                <div className=' py-12  w-[90%] mx-auto bg-slate-100 rounded-t-md '>
+            <div className='bg-slate-100 '>
+                <div className=' py-12  w-[90%] mx-auto rounded-t-md '>
                     <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-2 text-green-800">
                         Feedback and Ratings
                     </h2>
@@ -71,7 +71,11 @@ const FeedbackRatings = () => {
                                 spaceBetween: 20,
                             },
                         }}
-                        modules={[Pagination]}
+                        modules={[Pagination, Autoplay]}
+                        autoplay={{
+                            delay: 3000, 
+                            disableOnInteraction: false, 
+                        }}
                         className="mySwiper w-[95%] sm:w-full mx-auto"
                     >
 

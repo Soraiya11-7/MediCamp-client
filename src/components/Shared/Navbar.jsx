@@ -111,7 +111,7 @@ const Navbar = () => {
                 </div>
                
                 <div className="flex gap-1 items-center">
-                    <div className=" w-10 h-10 md:w-12 md:h-12">
+                    <div className=" w-10 h-10 ">
                         <img className="w-full h-full overflow-hidden rounded-full object-cover" src={logo} alt="" />
 
                     </div>
@@ -131,7 +131,7 @@ const Navbar = () => {
                     {
                         user ?
                             <div className="flex items-center">
-                                <div className="h-10 w-12 md:h-12 md:w-14  rounded-full px-1 " >
+                                <div className="h-8 w-10 md:h-10 md:w-12  rounded-full px-1 " >
                                     <button onClick={toggleDropdown}
                                         className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border border-gray-300">
                                         <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={preview}
