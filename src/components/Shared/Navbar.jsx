@@ -4,10 +4,11 @@ import useAuth from "../../hooks/useAuth";
 import logo from "../../assets/mc2.png"
 import useAdmin from "../../hooks/useAdmin";
 import useProfileData from "../../hooks/useProfileData";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 
 const Navbar = () => {
-    const { user, signOutUser } = useAuth();
+    const { user, signOutUser, darkMode,setDarkMode  } = useAuth();
     const [userInfo, isPending, refetch] = useProfileData();
      const [preview, setPreview] = useState('');
      const [name, setName] = useState('');
@@ -31,6 +32,33 @@ const Navbar = () => {
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
+
+    const [theme, setTheme] = useState('light');
+
+    useEffect(() => {
+        if (theme === 'dark') {
+            setDarkMode(true);
+            document.documentElement.classList.add('dark');
+        } else {
+            setDarkMode(false);
+            document.documentElement.classList.remove('dark');
+        }
+
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    };
+
+
+    // Check if the current route is the home page
+    // const isHomePage = location.pathname === "/";
+
+    // Navbar background classes
+    const navbarClass = 
+         darkMode
+            ? "bg-gray-900 text-white"
+            : "bg-green-950 "
 
 
 
@@ -57,10 +85,11 @@ const Navbar = () => {
 
     }
     return (
-        <div className={`navbar bg-green-950 w-[90%] mx-auto p-2 md:p-4 border-b`}>
+        <div className={`${navbarClass} container mx-auto sticky top-0 z-50`}>
+            <div className={`navbar container w-[91%] mx-auto`}>
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 text-white md:hidden">
+                    <div tabIndex={0} role="button" className="btn -ml-4 btn-ghost p-0 sm:p-2  text-white md:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -92,7 +121,7 @@ const Navbar = () => {
 
             </div>
             <div className="navbar-center hidden md:flex">
-                <ul className="menu menu-horizontal px-1 -space-x-1">
+                <ul className="menu menu-horizontal px-1 space-x-2">
                     {links}
 
                 </ul>
@@ -147,10 +176,25 @@ const Navbar = () => {
                     }
 
                 </div>
+                <div className="flex justify-center items-center mt-1">
+                <button
+                    onClick={toggleTheme}
+                    className="flex items-center  bg-white  p-0.5 rounded-full shadow-lg bg-gray-white dark:bg-gray-800 border border-white  transition-all duration-300"
+                >
+                    {theme === 'light' ? (
+                        <FaMoon className="text-yellow-500 text-xs sm:text-base" />
+                    ) : (
+                        <FaSun className="text-orange-400 text-xs sm:text-base" />
+                    )}
+                   
+                </button>
+            </div>
 
             </div>
 
         </div>
+        </div>
+        
     );
 };
 

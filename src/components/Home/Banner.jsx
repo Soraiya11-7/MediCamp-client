@@ -47,10 +47,10 @@ const Banner = () => {
 
     return (
         <Carousel
-            className='w-[90%] mx-auto'
+            className=''
         >
             {slides.map((slide) => (
-                <div key={slide.id} className="relative h-[250px] sm:h-[300px] md:h-[450px]">
+                <div key={slide.id} className="relative h-[250px] sm:h-[300px] md:h-[480px]">
                     <img
                         src={slide.image}
                         alt={slide.title}
@@ -58,38 +58,39 @@ const Banner = () => {
                     />
                     {/* Text Content inside the Slide..... */}
                     <div
-                        className="absolute inset-0 bg-green-700 bg-opacity-90"
+                        className="absolute hidden md:flex inset-0 bg-green-700 bg-opacity-90"
                         style={{
                             clipPath: "polygon(0 0, 55% 0, 40% 100%, 0% 100%)",
                         }}
                     ></div>
-                    <div className="absolute inset-0 bg-black bg-opacity-30">
-                        <div className="absolute left-4 sm:left-6 top-10 md:top-16 text-white max-w-lg z-10">
+                    <div className="absolute inset-0 bg-black bg-opacity-50 md:bg-opacity-40  border border-red-500  ">
+                        <div className='container w-[90%] h-full mx-auto  '>
+                        <div className="absolute   h-full text-white w-[90%] md:max-w-lg mx-auto md:mx-0 z-10 flex flex-col justify-center ">
                             <motion.h2
                                 animate={{
-                                    x: [0, 20, 0],
+                                    x: [0, 15, 0],
                                     color: ["#ecff33", "#33ffe3", "#ff6133", "#ecff33"]
                                 }}
                                 transition={{ duration: 2, ease: "easeOut", repeat: Infinity }}
-                                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white text-left"
+                                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white text-center md:text-left -ml-2 sm:-ml-0"
                             >
                                 {slide.title}
                             </motion.h2>
 
-                            <div className="p-0.5 md:p-2 mt-4 md:mt-12 border-2  w-[70%] border-white rounded-lg text-white ">
+                            <div className="p-0.5 md:p-2 mt-4 md:mt-12 border-2 w-[70%] mx-auto md:mx-0 sm:w-[60%] lg:w-[70%] border-white rounded-lg text-white text-center ">
                                 <p className="text-xs md:text-base italic">{slide.positiveOutcome}</p>
                             </div>
 
-                            <div className="mt-2 md:mt-6 w-[50%]  md:w-[60%] mb-2 ">
+                            <div className="mt-6 w-[70%] mx-auto md:mx-0  md:w-[55%] lg:w-[60%] mb-2 ">
                                 {/* Achievements */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <div className="grid grid-cols-2 gap-2 lg:gap-5">
                                     {slide.achievements.map((achievement, index) => (
                                         <div
                                             key={index}
-                                            className="relative px-2 py-1 sm:p-3 rounded-2xl shadow-lg hover:shadow-xl transform transition duration-300 ease-in-out"
+                                            className="relative px-2 py-1 sm:p-3 rounded-2xl shadow-lg hover:shadow-xl "
                                         >
-                                            <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-400 rounded-2xl opacity-70"></div>
-                                            <div className="relative z-10 text-center">
+                                            <div className="absolute inset-0 bg-gradient-to-r from-green-800 to-green-900 md:bg-gradient-to-r md:from-green-600 md:to-green-500 rounded-2xl opacity-90 md:opacity-70"></div>
+                                            <div className="relative z-10 text-center flex flex-col justify-center items-center">
                                                 <p className="text-base sm:text-xl md:text-2xl font-extrabold text-white">
                                                     {achievement.count}
                                                 </p>
@@ -105,6 +106,9 @@ const Banner = () => {
 
                             </div>
                         </div>
+
+                        </div>
+                       
 
 
                     </div>

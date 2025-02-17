@@ -13,6 +13,7 @@ const AuthProvider = ({children}) => {
 
 const [user,setUser] = useState(null);
 const [loading, setLoading] = useState(true);
+const [darkMode, setDarkMode] = useState(false);
 const axiosPublic = useAxiosPublic();
 
 const  name = 'medical camp';
@@ -73,6 +74,8 @@ useEffect(() => {
 const authInfo = {
     name,
     user,
+    darkMode, 
+    setDarkMode,
     loading,
     setLoading,
     setUser,

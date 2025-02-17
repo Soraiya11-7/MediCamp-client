@@ -52,7 +52,7 @@ const AvailableCamps = () => {
                 <title>Medical Camp | Available Camps</title>
             </Helmet>
 
-            <div className="w-[90%] mx-auto py-8 ">
+            <div className="w-[90%] mx-auto  container py-10">
                 <h2 className="text-2xl md:text-4xl font-bold mb-2 text-center my-8">Available Camps</h2>
 
                 {/* Search and Sort Controls................ */}
@@ -100,12 +100,12 @@ const AvailableCamps = () => {
                         )
                             : (
                                 <div className={`grid gap-4 w-[95%] mx-auto sm:w-full grid-cols-1 ${isTwoColumn ? "  sm:grid-cols-2" : " sm:grid-cols-2 lg:grid-cols-3"
-                                    } transition-all duration-300 mb-10`}>
+                                    } transition-all duration-300 mb-10 `}>
                                     {camps.map((camp, index) => (
                                         <LazyLoad key={index} height={200} once debounce={400} >
                                             <div
 
-                                                className="relative bg-white p-4 rounded-lg shadow-lg overflow-hidden group transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-green-800 border-2 border-green-800"
+                                                className="relative bg-white p-4 rounded-lg shadow-lg overflow-hidden group transform transition-all duration-300 hover:scale-100 hover:shadow-2xl hover:bg-green-800 border-2 border-green-800 w-full h-full "
 
                                             >
                                                 {/* Camp Image */}
@@ -134,16 +134,17 @@ const AvailableCamps = () => {
                                                     <p className="group-hover:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800">
                                                         <strong>Healthcare Professional:</strong> {camp.healthcareProfessional}
                                                     </p>
-                                                    <p className="group-hover:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800">
+                                                    {/* <p className="group-hover:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800">
                                                         <strong>Participants:</strong> {camp.participants}
-                                                    </p>
+                                                    </p> */}
 
-                                                    <p className="text-gray-700 mb-2 group-hover:text-white transition-colors duration-300 text-sm h-auto sm:min-h-[40px] sm:flex-grow">
-                                                        {camp.description.slice(0, 100)}...
+                                                    <p className="text-gray-700 mb-4 group-hover:text-white transition-colors duration-300 text-sm h-auto sm:min-h-[40px] sm:flex-grow">
+                                                        {camp.description.slice(0, 80)}...
                                                     </p>
+                                                    <div className="h-10"></div>
 
                                                     {/* Button */}
-                                                    <div className="mt-4 flex justify-center">
+                                                    <div className="absolute left-0 right-0 bottom-3 flex justify-center">
                                                         <Link to={`/camp-details/${camp._id}`}>
                                                             <button className="py-2 px-6 border-2 border-green-800 bg-green-900 text-white font-semibold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 group-hover:bg-white group-hover:text-green-900">
                                                                 Details

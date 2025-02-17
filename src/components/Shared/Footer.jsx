@@ -5,8 +5,8 @@ import logo from '../../assets/mc2.png'
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-800 text-white pt-10">
-            <div className=" mx-auto text-center w-[80%] pb-10">
+        <footer className="  bg-black  pt-10 container mx-auto">
+            <div className="container mx-auto text-center w-[90%] pb-10 text-white">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-2">
                     {/* About Section */}
                     <div className="text-center md:text-left ">
