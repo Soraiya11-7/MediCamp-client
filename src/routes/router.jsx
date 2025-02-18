@@ -21,6 +21,7 @@ import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
 import FeedbackForm from "../Pages/Dashboard/User/FeedbackForm";
 import OrganizerProfile from "../Pages/Dashboard/Admin/OrganizerProfile";
 import UserProfile from "../Pages/Dashboard/User/UserProfile";
+import ContactUs from "../Pages/ContactUs";
 
 
 
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         {
           path: 'allCamps',
           element: <AvailableCamps></AvailableCamps>
+        },
+        {
+          path: 'contact',
+          element: <ContactUs></ContactUs>
         },
         {
           path:'/camp-details/:campId',

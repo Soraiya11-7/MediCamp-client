@@ -71,6 +71,9 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) =>
             `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
         } to='/allCamps'>Available Camps</NavLink></li>
+         <li><NavLink className={({ isActive }) =>
+            `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
+        } to='/contact'>Contact Us</NavLink></li>
     </>
 
     const handleLogOut = () => {
@@ -126,8 +129,8 @@ const Navbar = () => {
 
                 </ul>
             </div>
-            <div className="navbar-end flex  items-center gap-0.5 md:gap-2">
-                <div className=" flex flex-col items-center relative">
+            <div className="navbar-end flex  items-center gap-1 md:gap-2">
+                <div className=" flex flex-col items-center relative mr-1">
                     {
                         user ?
                             <div className="flex items-center">
