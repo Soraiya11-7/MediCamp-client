@@ -74,6 +74,9 @@ const Navbar = () => {
          <li><NavLink className={({ isActive }) =>
             `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
         } to='/contact'>Contact Us</NavLink></li>
+         <li><NavLink className={({ isActive }) =>
+            `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
+        } to='/about'>About Us</NavLink></li>
     </>
 
     const handleLogOut = () => {

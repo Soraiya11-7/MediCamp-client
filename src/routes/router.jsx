@@ -22,6 +22,7 @@ import FeedbackForm from "../Pages/Dashboard/User/FeedbackForm";
 import OrganizerProfile from "../Pages/Dashboard/Admin/OrganizerProfile";
 import UserProfile from "../Pages/Dashboard/User/UserProfile";
 import ContactUs from "../Pages/ContactUs";
+import AboutUs from "../Pages/AboutUs";
 
 
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         {
           path: 'allCamps',
           element: <AvailableCamps></AvailableCamps>
+        },
+        {
+          path: 'about',
+          element: <AboutUs></AboutUs>
         },
         {
           path: 'contact',
