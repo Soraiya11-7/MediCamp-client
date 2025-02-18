@@ -22,17 +22,20 @@ const Home = () => {
         })
       },[]);
     return (
-        <div className="">
+        <div className="dark:shadow-xl dark:shadow-black dark:bg-gray-700  dark:text-white">
             <Helmet>
                 <title>Medical Camp | Home</title>
             </Helmet>
        <Banner></Banner>
-       <HowItWorks></HowItWorks>
+       <WhyJoinMedicalCamps></WhyJoinMedicalCamps>
+       <PopularCamps></PopularCamps>
+       
        <FAQSection></FAQSection>
-        <PopularCamps></PopularCamps>
+        
         <MeetExpertTeam></MeetExpertTeam>
+        <HowItWorks></HowItWorks>
         <FeedbackRatings></FeedbackRatings>
-        <WhyJoinMedicalCamps></WhyJoinMedicalCamps>
+        
         <Newsletter></Newsletter>
         
         </div>

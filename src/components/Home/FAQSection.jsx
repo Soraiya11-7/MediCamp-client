@@ -31,7 +31,7 @@ const FAQSection = () => {
   ];
 
   return (
-    <div className="px-8 py-12 w-[90%] mx-auto flex flex-col gap-12">
+    <div className="px-8 py-12 w-[90%] mx-auto flex flex-col gap-12 bg-white">
       <div className="flex flex-col text-left ">
         <p className="text-xl sm:text-2xl text-center md:text-3xl font-bold mb-2 text-green-800">
           <FaQuestionCircle className="inline-block mr-1 text-green-800" /> Medical Camp FAQs
@@ -47,7 +47,7 @@ const FAQSection = () => {
             >
               <span className="flex-1 text-base-content">{faq.question}</span>
               <svg
-                className="flex-shrink-0 w-5 h-5 ml-auto fill-current rounded-full p-1 bg-green-800 text-white"
+                className="flex-shrink-0 w-5 h-5 ml-auto fill-current rounded-full p-1 dark:text-white bg-green-800 text-white"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
               >

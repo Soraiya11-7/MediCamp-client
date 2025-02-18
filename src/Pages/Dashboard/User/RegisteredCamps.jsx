@@ -99,9 +99,9 @@ const RegisteredCamps = () => {
                     </div>)
                         : camps && camps.length === 0 ? (
                             <div className="text-center">
-                                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 mt-10">You have not registered for any camps.</h3>
+                                <h3 className="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-3 mt-10">You have not registered for any camps.</h3>
 
-                                <p className='text-sm sm:text-base w-[80%] mx-auto'>To participate in camps, please register by visiting the registration page.</p>
+                                <p className='text-sm sm:text-base w-[80%] mx-auto dark:text-white'>To participate in camps, please register by visiting the registration page.</p>
                             </div>
                         ) :
                             (<div>
@@ -120,7 +120,7 @@ const RegisteredCamps = () => {
                                                 <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Feedback</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="text-center bg-slate-200">
+                                        <tbody className="text-center bg-slate-200 dark:text-black">
                                             {currentTableData.map((camp, index) => (
                                                 <tr
                                                     key={camp._id}
@@ -136,7 +136,7 @@ const RegisteredCamps = () => {
                                                         ) : (
                                                             <Link to={`/dashboard/payment/${camp._id}`}>
                                                                 <button
-                                                                    className="btn btn-ghost btn-lg text-blue-600 hover:bg-blue-200 rounded-md transition-all"
+                                                                    className="btn btn-ghost btn-lg text-green-600 hover:bg-blue-200 rounded-md transition-all"
                                                                 >
                                                                     Pay
                                                                 </button>

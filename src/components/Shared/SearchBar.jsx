@@ -10,7 +10,7 @@ const SearchBar = ({ placeholder, searchTerm, setSearchTerm }) => {
         placeholder={placeholder}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="bg-transparent outline-none flex-grow text-sm text-gray-700"
+        className="bg-transparent outline-none flex-grow text-sm text-gray-700 "
       />
     </div>
   );

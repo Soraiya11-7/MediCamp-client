@@ -139,7 +139,7 @@ const ManageRegisteredCamps = () => {
                                         <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Cancel</th>
                                     </tr>
                                 </thead>
-                                <tbody className="text-center bg-slate-200">
+                                <tbody className="text-center bg-slate-200 dark:text-black">
                                     {currentTableData.map((camp, index) => (
                                         <tr
                                             key={camp._id}

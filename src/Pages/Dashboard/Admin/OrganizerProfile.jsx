@@ -157,7 +157,7 @@ const OrganizerProfile = () => {
               </h3>
 
               {/* Modal Form............................ */}
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-8">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-8 dark:text-black">
                 {/* Name and Phone Fields ......................*/}
                 <div className="md:flex mb-3 md:mb-8">
                   <div className="form-control md:w-1/2 mb-3 md:mb-0">

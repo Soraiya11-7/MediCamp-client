@@ -5,6 +5,8 @@ import logo from "../../assets/mc2.png"
 import useAdmin from "../../hooks/useAdmin";
 import useProfileData from "../../hooks/useProfileData";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { Dropdown } from "antd";
+
 
 
 const Navbar = () => {
@@ -18,6 +20,8 @@ const Navbar = () => {
     const [isAdmin] = useAdmin();
 
     const [isOpen, setIsOpen] = useState(false);
+    
+
 
     useEffect(() => {
           if (userInfo?.image) {
@@ -29,12 +33,14 @@ const Navbar = () => {
           }
         }, [userInfo, user]);
 
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
+    // const toggleDropdown = () => {
+    //     setIsOpen(!isOpen);
+    // };
 
-    const [theme, setTheme] = useState('light');
+   
 
+    // const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
     useEffect(() => {
         if (theme === 'dark') {
             setDarkMode(true);
@@ -43,6 +49,7 @@ const Navbar = () => {
             setDarkMode(false);
             document.documentElement.classList.remove('dark');
         }
+        localStorage.setItem('theme', theme);
 
     }, [theme]);
 
@@ -66,7 +73,7 @@ const Navbar = () => {
 
         <li><NavLink to='/'
             className={({ isActive }) =>
-                `flex items-center gap-x-1  ${isActive ? 'text-yellow-500 font-bold' : 'text-white '}`
+                `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white '}`
             }>Home</NavLink></li>
         <li><NavLink className={({ isActive }) =>
             `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
@@ -75,7 +82,7 @@ const Navbar = () => {
             `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
         } to='/contact'>Contact Us</NavLink></li>
          <li><NavLink className={({ isActive }) =>
-            `flex items-center gap-x-0.5  ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
+            `flex items-center   ${isActive ? 'text-yellow-500 font-bold' : 'text-white'}`
         } to='/about'>About Us</NavLink></li>
     </>
 
@@ -90,6 +97,38 @@ const Navbar = () => {
             setIsOpen(false)
 
     }
+
+    const menuItems = [
+        {
+            label: <span className="font-bold text-gray-700">{name?.split(" ")[0]}</span>,
+            key: "0",
+            disabled: true,
+        },
+        { type: "divider" },
+        {
+            label: (
+                <Link
+                    to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userProfile"}
+                    className="block text-gray-700 hover:text-green-600"
+                >
+                    Dashboard
+                </Link>
+            ),
+            key: "1",
+        },
+        {
+            label: (
+                <button
+                    onClick={handleLogOut}
+                    className="w-full text-left text-gray-700 hover:text-black"
+                >
+                    Logout
+                </button>
+            ),
+            key: "2",
+        },
+    ];
+
     return (
         <div className={`${navbarClass} container mx-auto sticky top-0 z-50`}>
             <div className={`navbar container w-[91%] mx-auto`}>
@@ -116,8 +155,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                
-                <div className="flex gap-1 items-center">
-                    <div className=" w-10 h-10 ">
+                <div className="flex gap-0.5 items-center">
+                    <div className=" w-8 h-8 ">
                         <img className="w-full h-full overflow-hidden rounded-full object-cover" src={logo} alt="" />
 
                     </div>
@@ -127,7 +166,7 @@ const Navbar = () => {
 
             </div>
             <div className="navbar-center hidden md:flex">
-                <ul className="menu menu-horizontal px-1 space-x-2">
+                <ul className="menu menu-horizontal px-1 space-x-1">
                     {links}
 
                 </ul>
@@ -136,49 +175,63 @@ const Navbar = () => {
                 <div className=" flex flex-col items-center relative mr-1">
                     {
                         user ?
-                            <div className="flex items-center">
-                                <div className="h-8 w-10 md:h-10 md:w-12  rounded-full px-1 " >
-                                    <button onClick={toggleDropdown}
-                                        className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border border-gray-300">
-                                        <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={preview}
-                                            alt="image"
+                            // <div className="flex items-center">
+                            //     <div className="h-8 w-10 md:h-10 md:w-12  rounded-full px-1 " >
+                            //         <button onClick={toggleDropdown}
+                            //             className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border border-gray-300">
+                            //             <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={preview}
+                            //                 alt="image"
+                            //             />
+                            //         </button>
+
+                            //     </div>
+                            //     {/* Dropdown Menu ............*/}
+                            //     {isOpen && (
+                            //         <div className=" absolute right-0 mt-44 w-40 bg-white rounded-md shadow-lg z-10">
+                            //             <div className="py-2">
+                            //                 {/* User Name............ */}
+                            //                 <div className="px-4 py-2 text-gray-700 font-medium">
+                            //                     {name?.split(" ")[0]}
+                            //                 </div>
+                            //                 <hr className="border-gray-500" />
+
+                            //                 {/* Dashboard Link..... */}
+                            //                 <Link
+                            //                     to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userProfile"}
+                            //                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+                            //                 >
+                            //                     Dashboard
+                            //                 </Link>
+
+                            //                 {/* Logout Button......... */}
+                            //                 <button
+                            //                     onClick={handleLogOut}
+                            //                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+                            //                 >
+                            //                     Logout
+                            //                 </button>
+                            //             </div>
+                            //         </div>
+                            //     )}
+
+                            // </div>
+                            (
+                                <Dropdown menu={{ items: menuItems }} trigger={["click"] }   placement="bottomRight"
+                                getPopupContainer={(trigger) => trigger.parentElement}
+                                overlayClassName="custom-dropdown"className="">
+                                    <button className="">
+                                        <img
+                                            src={preview}
+                                            alt="User"
+                                            className="w-8 h-8 rounded-full border border-gray-300"
                                         />
+                                        {/* <DownOutlined className="text-white" /> */}
                                     </button>
-
-                                </div>
-                                {/* Dropdown Menu ............*/}
-                                {isOpen && (
-                                    <div className=" absolute right-0 mt-44 w-40 bg-white rounded-md shadow-lg z-10">
-                                        <div className="py-2">
-                                            {/* User Name............ */}
-                                            <div className="px-4 py-2 text-gray-700 font-medium">
-                                                {name?.split(" ")[0]}
-                                            </div>
-                                            <hr className="border-gray-500" />
-
-                                            {/* Dashboard Link..... */}
-                                            <Link
-                                                to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userProfile"}
-                                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
-                                            >
-                                                Dashboard
-                                            </Link>
-
-                                            {/* Logout Button......... */}
-                                            <button
-                                                onClick={handleLogOut}
-                                                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
-                                            >
-                                                Logout
-                                            </button>
-                                        </div>
-                                    </div>
-                                )}
-
-                            </div>
+                                </Dropdown>
+                            )
 
                             :
-                            (<Link to='/login' className="bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl">Join Us</Link>)
+                            (<Link to='/login' className="bg-white text-black  px-2 py-1.5 font-medium md:font-bold text-xs md:text-base rounded-lg  border hover:text-green-800">Join Us</Link>)
                     }
 
                 </div>

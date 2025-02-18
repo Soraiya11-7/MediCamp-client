@@ -5,6 +5,7 @@ import useAdmin from "../hooks/useAdmin";
 import Skeleton from "react-loading-skeleton";
 import OrganizerMenuItems from "../components/Dashboard/OrganizerMenuItems";
 import UserMenuItems from "../components/Dashboard/UserMenuItems";
+import ThemeToggleButton from "../components/Dashboard/ThemeToggleButton";
 
 const Dashboard = () => {
     const [isAdmin, isAdminLoading] = useAdmin();
@@ -19,10 +20,11 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="flex dark:bg-gray-800 container w-full mx-auto border border-red-600">
+        <div className="flex dark:bg-gray-800 dark:text-white container w-full mx-auto border border-red-600">
+             
             {/* Hamburger Button for Small Devices */}
             <button
-                className={`md:hidden fixed top-5 left-5 text-2xl z-50 ${
+                className={`md:hidden absolute top-5   text-2xl z-50 ${
                     isSidebarOpen ? "text-white" : "text-black"
                 }`}
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -65,7 +67,10 @@ const Dashboard = () => {
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 p-8 overflow-x-auto">
+            <div className="flex-1 p-8 overflow-x-auto relative">
+            <div className="absolute top-5 right-5 z-50">
+                <ThemeToggleButton />
+            </div>
                 <Outlet />
             </div>
         </div>

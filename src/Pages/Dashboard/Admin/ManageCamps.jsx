@@ -120,9 +120,9 @@ const ManageCamps = () => {
           </div>)
             : camps && camps.length === 0 ? (
               <div className="text-center">
-                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 mt-10">No camps have been added yet.</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-3 mt-10">No camps have been added yet.</h3>
 
-                <p className='text-sm sm:text-base w-[80%] mx-auto'>Please add camps to allow users to register and participate.</p>
+                <p className='text-sm sm:text-base w-[80%] mx-auto dark:text-white'>Please add camps to allow users to register and participate.</p>
               </div>
             ) : (<div>
 
@@ -138,7 +138,7 @@ const ManageCamps = () => {
                       <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Action</th>
                     </tr>
                   </thead>
-                  <tbody className="text-center bg-slate-200">
+                  <tbody className="text-center bg-slate-200 dark:text-black">
                     {currentTableData.map((camp, index) => (
                       <tr
                         key={camp._id}

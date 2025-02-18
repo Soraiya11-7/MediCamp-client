@@ -84,7 +84,7 @@ const AddCamp = () => {
                 </h2>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="space-y-6 bg-slate-100 rounded-lg shadow-lg px-2 py-8 "
+                    className="space-y-6 bg-slate-100 rounded-lg shadow-lg px-2 py-8 dark:text-black"
                 >
                 
 

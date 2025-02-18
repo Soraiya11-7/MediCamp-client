@@ -12,7 +12,7 @@ const AdminHome = () => {
             </Helmet>
             <div>
                 <h2 className="text-lg sm:text-xl md:text-3xl my-10 text-center ">Welcome
-                    <span className='text-green-900 font-bold'> Organizer!</span>
+                    <span className='text-green-900 font-bold dark:text-white'> Organizer!</span>
 
                 </h2>
 

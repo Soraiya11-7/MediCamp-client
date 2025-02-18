@@ -1,42 +1,66 @@
-
-import img from "../../assets/flat-design-join-us-message_23-2148954904.jpg"
+import { FaHeartbeat, FaUserMd, FaStethoscope, FaFileMedical, FaHospital } from 'react-icons/fa';
+import Marquee from 'react-fast-marquee';
 
 const WhyJoinMedicalCamps = () => {
-  
-    return (
-        <section id="join-us" className="pt-8  bg-slate-100" data-aos="fade-right" >
-           <div className="py-4 sm:py-10 w-[90%] mx-auto">
-               
-          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-green-900"> Why Join Our Medical Camps?</h2>
-          <div className="flex flex-col md:flex-row items-center  gap-8 md:gap-6 border p-4 md:p-8 rounded-lg border-teal-700 bg-green-800 text-white">
-            <div className=" w-full mx-auto sm:w-[95%] md:w-[40%] h-auto md:h-[240px] rounded-xl">
-              <img
-                src={img}
-                alt="Why Join Us"
-                className="rounded-xl shadow w-full h-full object-cover overflow-hidden"
-              />
-            </div> 
-    
-            {/* Right Side...................................... */}
-            <div className="md:w-[55%]">
-              <h3 className="text-lg sm:text-2xl md:text-xl lg:text-2xl font-bold mb-4 ">Discover Exclusive Benefits</h3>
-              <p className="text-sm sm:text-base ">
-              Our medical camps are designed to provide a unique opportunity for
-              individuals to access quality healthcare while participating in
-               community-driven wellness initiatives. Here's why you should join:
-              </p>
-              <ul className="mt-4 list-disc pl-6 space-y-0.5 text-sm sm:text-base md:text-sm lg:text-base italic">
-              <li>Free consultations with certified healthcare professionals.</li>
-              <li>Access to preventive care and health education.</li>
-              <li>Opportunity to contribute to the well-being of your community.</li>
-             <li>On-the-spot diagnostics and free medications.</li>
-              </ul>
+  return (
+    <section id="join-us" className="pt-8 ">
+      <div className="py-4 sm:py-10 w-[90%] mx-auto">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-green-900 dark:text-white">
+          Why Join Our Medical Camps?
+        </h2>
+
+        {/* Marquee Section */}
+        <Marquee speed={60} gradient={false} className="overflow-hidden">
+          <div className="flex gap-8">
+            {/* Card 1 */}
+            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 ml-4">
+              <FaHeartbeat className="text-6xl mb-4 md:mb-8 text-yellow-500" />
+              <div className="">
+                <h3 className="font-bold text-xl mb-8 text-center">Free Consultations</h3>
+                <p className="text-sm text-center">Benefit from free consultations with certified healthcare professionals.</p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <FaUserMd className="text-6xl mb-4 md:mb-8 text-yellow-500" />
+              <div className="">
+                <h3 className="font-bold text-xl mb-2 text-center">Preventive Care & Education</h3>
+                <p className="text-sm text-center">Gain access to preventive healthcare services and educational resources on health management.</p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <FaStethoscope className="text-6xl mb-4 md:mb-8 text-yellow-500" />
+              <div className="">
+                <h3 className="font-bold text-xl  text-center mb-2 md:mb-8">Community Engagement</h3>
+                <p className="text-sm text-center">Contribute to the overall well-being of your community through active participation in healthcare initiatives.</p>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px]  h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 mr-4">
+              <FaFileMedical className="text-6xl mb-4 md:mb-8 text-yellow-500" />
+              <div className="">
+                <h3 className="font-bold text-xl mb-2 text-center">On-the-Spot Diagnostics & Medications</h3>
+                <p className="text-sm text-center">Receive timely diagnostics and essential medications directly at the camp.</p>
+              </div>
+            </div>
+
+            {/* New Related Card */}
+            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 mr-4">
+              <FaHospital className="text-6xl mb-4 md:mb-8 text-yellow-500" />
+              <div className="">
+                <h3 className="font-bold text-xl mb-8 text-center">Hospital Services</h3>
+                <p className="text-sm text-center">Access a variety of hospital services such as laboratory tests, imaging, and other advanced medical services.</p>
+              </div>
             </div>
           </div>
-           </div>
-        </section>
-      );
+        </Marquee>
+      </div>
+    </section>
+  );
 };
-  
-  export default WhyJoinMedicalCamps;
-  
+
+export default WhyJoinMedicalCamps;

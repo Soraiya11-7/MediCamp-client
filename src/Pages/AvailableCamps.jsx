@@ -51,9 +51,9 @@ const AvailableCamps = () => {
             <Helmet>
                 <title>Medical Camp | Available Camps</title>
             </Helmet>
-
-            <div className="w-[90%] mx-auto  container py-10">
-                <h2 className="text-2xl md:text-4xl font-bold mb-2 text-center my-8">Available Camps</h2>
+            <div className="dark:bg-gray-700">
+            <div className="w-[90%] mx-auto  container py-10 ">
+                <h2 className="text-2xl md:text-4xl font-bold mb-2 text-center my-8 dark:text-white">Available Camps</h2>
 
                 {/* Search and Sort Controls................ */}
                 <div className="flex flex-col sm:flex-row gap-y-3 sm:gap-y-0 items-start sm:items-center justify-between mt-10 mb-14">
@@ -82,7 +82,7 @@ const AvailableCamps = () => {
                 <div className=" flex justify-end my-10">
                     <button
                         onClick={toggleLayout}
-                        className="hidden lg:block px-4 py-2 bg-green-900 text-white font-semibold rounded hover:bg-green-800 transition duration-200"
+                        className="hidden lg:block px-4 py-2 bg-green-900 dark:border-2 dark:border-white text-white font-semibold rounded hover:bg-green-800 transition duration-200"
                     >
                         {isTwoColumn ? "Switch to 3 Columns" : "Switch to 2 Columns"}
                     </button>
@@ -91,11 +91,11 @@ const AvailableCamps = () => {
                 {
 
                     loading ? (<div className="flex items-center min-h-screen justify-center">
-                        <Skeleton count={3} height={120} width={200} />
+                        <Skeleton count={3} height={120} width={200} className="dark:text-white dark:bg-white" />
                     </div>)
                         : camps.length === 0 ? (
                             <div className="text-center">
-                                <h3 className="text-xl text-gray-500">No Camps Found.</h3>
+                                <h3 className="text-xl text-gray-500 dark:text-white">No Camps Found.</h3>
                             </div>
                         )
                             : (
@@ -164,6 +164,9 @@ const AvailableCamps = () => {
 
 
             </div>
+            </div>
+
+            
         </>
 
     );

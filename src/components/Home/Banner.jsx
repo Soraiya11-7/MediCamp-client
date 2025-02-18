@@ -4,7 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 // Import images
 import img1 from '../../assets/1480925-medical-camp.png';
-import img2 from '../../assets/c3.png';
+import img2 from '../../assets/home-banner3.jpg';
 import img3 from '../../assets/1600w-PdjF3CCiHLs.png';
 import { easeOut, motion } from "framer-motion";
 

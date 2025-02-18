@@ -3,16 +3,18 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer, 
 // import useAuth from '../../../hooks/useAuth';
 // import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useRegisteredCampByEmail from '../../../hooks/useRegisteredCampByEmail';
+import useAuth from '../../../hooks/useAuth';
 // import { div } from 'framer-motion/client';
 
 // import { Tooltip } from '@material-tailwind/react';
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+const colors = ['green', '#00C49F', '#FFBB28', '#FF8042', 'green', '#FFBB28'];
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const Analytics = () => {
 
     // const { user } = useAuth();
     const [search, setSearch] = useState('');
     const [camps, loading, refetch] = useRegisteredCampByEmail(search);
+    const {darkMode} = useAuth()
     // const axiosSecure = useAxiosSecure();
 
     // custom shape for the bar chart
@@ -50,7 +52,7 @@ const Analytics = () => {
                         </p>
 
 
-                        <div style={{ width: '100%', height: 350 }}>
+                        <div style={{ width: '100%', height: 350 }} >
                             <ResponsiveContainer>
                                 <BarChart
                                     width={600}
@@ -63,18 +65,19 @@ const Analytics = () => {
                                         bottom: 50,
                                     }}
                                 >
-                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <CartesianGrid strokeDasharray="3 3"  stroke={darkMode ? "#444" : "#ddd"}/>
                                     <XAxis
                                         dataKey="campName"
                                         label={{
                                             value: 'Camp Name',
                                             position: 'bottom',
                                             offset: 0,
-                                            style: { textAnchor: 'middle', fontSize: 18, fontWeight: 'bold' }
+                                            style: { textAnchor: 'middle', fontSize: 18, fontWeight: 'bold', fill: darkMode ? "#fff" : "#000", }
                                         }}
+                                        stroke={darkMode ? "#fff" : "#000"}
                                     />
 
-                                    <YAxis label={{ value: 'Fees (in USD)', angle: -90, position: 'left', style: { textAnchor: 'middle', fontSize: 18, fontWeight: 'bold' } }} />
+                                    <YAxis label={{ value: 'Fees (in USD)', angle: -90, position: 'left', style: { textAnchor: 'middle', fontSize: 18, fontWeight: 'bold',  fill: darkMode ? "#fff" : "#000", } }}  stroke={darkMode ? "#fff" : "#000"} />
                                     <Tooltip />
                                     <Bar dataKey="campFees" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
                                         {camps.map((entry, index) => (
@@ -86,7 +89,7 @@ const Analytics = () => {
 
                         </div>
                     </div>
-                ) : (<div className="text-center text-sm sm:text-base text-gray-500 mt-8 w-[80%] mx-auto">
+                ) : (<div className="text-center text-sm sm:text-base text-gray-500 dark:text-white mt-8 w-[80%] mx-auto">
                     <p>No camps registered. Please register for a camp to view the analytics.</p>
                 </div>)}
             </div>

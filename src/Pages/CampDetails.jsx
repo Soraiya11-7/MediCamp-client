@@ -49,7 +49,8 @@ const CampDetails = () => {
             <Helmet>
                 <title>Medical Camp | Camp Details</title>
             </Helmet>
-            <div className=" bg-slate-100  w-[90%] mx-auto pb-10">
+            <div className="dark:bg-gray-700">
+            <div className=" bg-slate-50  w-[90%] mx-auto pb-10">
                 {/* Header Section */}
                 <div className="pt-16  mb-8 ">
                     <div className=" text-center">
@@ -160,12 +161,14 @@ const CampDetails = () => {
                             </>
                         ) : (
                             <div className="text-center py-16">
-                                <h2 className="text-3xl font-bold text-gray-800">Camp not found!</h2>
+                                <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Camp not found!</h2>
                             </div>
                         )}
                     </div>
                 </div>
             </div>
+            </div>
+           
         </>
 
     );

@@ -35,8 +35,8 @@ const PopularCamps = () => {
 
   
     return (
-        <div id="popular" className="w-[90%] mx-auto py-8  ">
-            <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-10 text-green-900">Popular Medical Camps</h2>
+        <div id="popular" className="w-[90%] mx-auto py-8 dark:text-white ">
+            <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-10 dark:text-white text-green-900">Popular Medical Camps</h2>
             {
                  camps.length === 0 ? (
                     <div className="text-center my-6">

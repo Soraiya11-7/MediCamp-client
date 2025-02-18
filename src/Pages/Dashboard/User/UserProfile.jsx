@@ -101,7 +101,7 @@ const UserProfile = () => {
       <div className=" flex flex-col items-center justify-center p-2 md:p-4 mt-10">
 
         <h2 className="text-lg sm:text-xl md:text-3xl my-8 text-center ">
-          Welcome<span className='text-green-900 font-bold'> {userInfo?.name?.split(' ')[0]}!</span>
+          Welcome<span className='text-green-900 font-bold dark:text-white'> {userInfo?.name?.split(' ')[0]}!</span>
 
         </h2>
 
@@ -164,7 +164,7 @@ const UserProfile = () => {
               </h3>
 
               {/* Modal Form............................ */}
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-8">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-8 dark:text-black">
                 {/* Name and Phone Fields ......................*/}
                 <div className="md:flex mb-3 md:mb-8">
                   <div className="form-control md:w-1/2 mb-3 md:mb-0">
