@@ -40,7 +40,7 @@ const FeedbackRatings = () => {
 
     return (
         <>
-            <div className='bg-slate-100 '>
+            <div className='bg-gray-50 '>
                 <div className=' py-12  w-[90%] mx-auto rounded-t-md '>
                     <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-2 text-green-800">
                         Feedback and Ratings
