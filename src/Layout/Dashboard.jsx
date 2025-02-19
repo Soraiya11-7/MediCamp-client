@@ -68,7 +68,7 @@ const Dashboard = () => {
 
             {/* Main Content */}
             <div className="flex-1 p-8 overflow-x-auto relative">
-            <div className="absolute top-5 right-5 z-50">
+            <div className="fixed top-5  z-50">
                 <ThemeToggleButton />
             </div>
                 <Outlet />

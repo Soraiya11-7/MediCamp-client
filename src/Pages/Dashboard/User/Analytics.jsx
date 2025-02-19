@@ -7,7 +7,7 @@ import useAuth from '../../../hooks/useAuth';
 // import { div } from 'framer-motion/client';
 
 // import { Tooltip } from '@material-tailwind/react';
-const colors = ['green', '#00C49F', '#FFBB28', '#FF8042', 'green', '#FFBB28'];
+const colors = ['#166534', '#eab308', '#FFBB28', '#FF8042', '#166534', '#FFBB28'];
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const Analytics = () => {
 

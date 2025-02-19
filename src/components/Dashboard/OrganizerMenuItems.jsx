@@ -1,13 +1,14 @@
 import React from "react";
 import { FaList, FaCog, FaPlusCircle } from "react-icons/fa";
 import { GiForestCamp } from "react-icons/gi";
-import { MdManageAccounts, MdAssignment } from "react-icons/md";
+import { MdManageAccounts, MdAssignment, MdVisibility } from "react-icons/md";
 import { SiManageiq } from "react-icons/si";
 import { NavLink } from "react-router-dom";
 
 const OrganizerMenuItems = ({ open }) => {
   const menuItems = [
     { title: "Organizer Profile", icon: <MdManageAccounts className="text-2xl " /> , to: "/dashboard/adminHome" },
+    { title: "Overview", icon: <MdVisibility className="text-2xl " /> , to: "/dashboard/overview" },
     { title: "Add A Camp", icon: <FaPlusCircle className="text-2xl " /> , to: "/dashboard/addCamp" },
     { title: "Manage Camps", icon: <FaCog className="text-2xl " /> , to: "/dashboard/manageCamps" },
     { title: "Manage Registered Camps", icon: <MdAssignment className="text-2xl " /> , to: "/dashboard/manageRegisteredCamps" },

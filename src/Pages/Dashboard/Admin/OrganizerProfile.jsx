@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { FaUserCircle } from 'react-icons/fa';
 import { FiEdit } from 'react-icons/fi';
-import { MdEmail, MdPhone } from 'react-icons/md';
+import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useProfileData from '../../../hooks/useProfileData';
@@ -60,6 +60,7 @@ const OrganizerProfile = () => {
         email: userInfo.email,
         phoneNumber: data.phoneNumber,
         image: updatedImage,
+        location: data.location
       };
 
       const dbResponse = await axiosSecure.patch(`/update-profile/${userInfo._id}`, updatedProfile);
@@ -127,6 +128,12 @@ const OrganizerProfile = () => {
             <MdPhone className="text-green-800" />
             <p>{userInfo.phoneNumber || 'N/A'}</p>
           </div>
+          <div className="flex items-center justify-center text-gray-600 mt-2 space-x-2 text-xs sm:text-sm">
+            <MdLocationOn className="text-green-800" />
+            <p>{userInfo.location || 'N/A'}</p>
+          </div>
+
+
           <div className='flex items-center justify-end'>
             <button
               onClick={() => setIsModalOpen(true)}
@@ -195,20 +202,40 @@ const OrganizerProfile = () => {
                     )}
                   </div>
                 </div>
-
-                {/* Email Field ReadOnly.................................*/}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text text-white font-semibold">Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    defaultValue={userInfo.email}
-                    {...register("email")}
-                    readOnly
-                    className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500 text-xs md:text-sm"
-                  />
+                <div className='md:flex mb-3 md:mb-8'>
+                  {/* Email Field ReadOnly.................................*/}
+                  <div className="form-control md:w-1/2 mb-3 md:mb-0">
+                    <label className="label">
+                      <span className="label-text text-white font-semibold">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      defaultValue={userInfo.email}
+                      {...register("email")}
+                      readOnly
+                      className="input input-bordered w-full rounded-lg bg-gray-100 cursor-not-allowed text-gray-500 text-xs md:text-sm"
+                    />
+                  </div>
+                  <div className="form-control md:w-1/2 md:ml-4">
+                    <label className="label">
+                      <span className="label-text text-white font-semibold">
+                        Address*
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      defaultValue={userInfo.location}
+                      {...register("location", { required: true })}
+                      className="input input-bordered w-full text-xs md:text-sm rounded-lg focus:ring-2 focus:ring-green-400"
+                    />
+                    {errors.location && (
+                      <p className="text-red-200 text-sm mt-1">
+                        {errors.location.message}
+                      </p>
+                    )}
+                  </div>
                 </div>
+
 
                 {/* Image Field..................................... */}
                 <div className="form-control">

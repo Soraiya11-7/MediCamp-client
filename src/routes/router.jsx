@@ -23,6 +23,7 @@ import OrganizerProfile from "../Pages/Dashboard/Admin/OrganizerProfile";
 import UserProfile from "../Pages/Dashboard/User/UserProfile";
 import ContactUs from "../Pages/ContactUs";
 import AboutUs from "../Pages/AboutUs";
+import Overview from "../Pages/Dashboard/Admin/Overview";
 
 
 
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
           {
             path: 'adminHome',
             element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+          },
+          {
+            path: 'overview',
+            element: <AdminRoute><Overview></Overview></AdminRoute>
           },
           {
             path: 'addCamp',
