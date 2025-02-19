@@ -5,7 +5,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Pagination from '../../../components/Shared/Pagination';
-import Skeleton from 'react-loading-skeleton';
+// import Skeleton from 'react-loading-skeleton';
 import { Helmet } from 'react-helmet-async';
 
 const ManageRegisteredCamps = () => {
@@ -116,10 +116,11 @@ const ManageRegisteredCamps = () => {
                         setSearchTerm={handleSearch}
                     />
                 </div>
-                {loading ? (<div className="flex items-center min-h-screen justify-center">
-                    <Skeleton count={3} height={120} width={200} />
-                </div>)
-                    : registeredCamps && registeredCamps.length === 0 ? (
+                { loading ? (<div className="flex items-center justify-center">
+                        <span className="loading loading-bars loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+                       
+                    </div>)
+                        :  registeredCamps && registeredCamps.length === 0 ? (
                         <div className="text-center">
                             <h3 className="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-3 mt-10">There are no registered camps available at this time.</h3>
 

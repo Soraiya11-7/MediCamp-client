@@ -45,7 +45,11 @@ const Analytics = () => {
             <div className='w-full'>
                 <h2 className='text-2xl md:text-4xl font-bold mt-8 mb-4 text-center my-8'>Camp Fee Analytics</h2>
 
-                {camps && camps.length > 0 ? (
+                { loading ? (<div className="flex items-center justify-center">
+          <span className="loading loading-bars mt-10 loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+         
+      </div>):
+                camps && camps.length > 0 ? (
                     <div>
                         <p className="md:text-lg text-base mb-6  ">
                             The chart below illustrates the fees for the camps you have registered for, with camp names on the X-axis and fees in USD on the Y-axis.

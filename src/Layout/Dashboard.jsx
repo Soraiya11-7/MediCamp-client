@@ -20,7 +20,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="flex dark:bg-gray-800 dark:text-white container w-full mx-auto border border-red-600">
+        <div className="flex dark:bg-gray-800 dark:text-white container w-full mx-auto ">
              
             {/* Hamburger Button for Small Devices */}
             <button

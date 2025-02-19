@@ -98,53 +98,15 @@ const OrganizerProfile = () => {
       <Helmet>
         <title> Admin Dashboard | Profile</title>
       </Helmet>
-      <div className=" w-full   ">
+      {
+        isPending ? (<div className="flex items-center justify-center">
+          <span className="loading loading-bars mt-10 loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+         
+      </div>)
+          
+            :
+            <div className=" w-full   ">
     
-            {/* <div className="bg-white shadow-2xl rounded-lg w-full max-w-md text-center px-2 md:px-4 py-8 transform transition hover:scale-105 duration-300">
-                    <div className="relative">
-                      <div className="w-28 h-28 md:w-28 md:h-28 mx-auto rounded-full overflow-hidden shadow-md border-4 border-green-800">
-                        {userInfo.image ? (
-                          <img
-                            src={userInfo.image}
-                            alt="Profile"
-                            className="object-cover w-full h-full"
-                          />
-                        ) : (
-                          <FaUserCircle className="text-green-800 w-full h-full" />
-                        )}
-                      </div>
-                      <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="sm:hidden absolute -top-2 -right-2 bg-green-800 text-white p-2 rounded-full shadow hover:bg-green-800 focus:outline-none"
-                      >
-                        <FiEdit className="text-xl" />
-                      </button>
-                    </div>
-                    <h2 className="text-base sm:text-lg md:text-2xl font-bold text-gray-800 mt-4">{userInfo.name}</h2>
-                    <div className="flex items-center justify-center text-gray-600 mt-3 space-x-2 text-xs sm:text-sm">
-                      <MdEmail className="text-green-800" />
-                      <p>{userInfo.email}</p>
-                    </div>
-                    <div className="flex items-center justify-center text-gray-600 mt-2 space-x-2  text-xs sm:text-sm">
-                      <MdPhone className="text-green-800" />
-                      <p>{userInfo.phoneNumber || 'N/A'}</p>
-                    </div>
-                    <div className="flex items-center justify-center text-gray-600 mt-2 space-x-2 text-xs sm:text-sm">
-                      <MdLocationOn className="text-green-800" />
-                      <p>{userInfo.location || 'N/A'}</p>
-                    </div>
-          
-          
-                    <div className='flex items-center justify-end'>
-                      <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="hidden sm:flex mt-6 px-6 py-2 bg-gradient-to-r from-green-800 to-green-500 text-white rounded-lg shadow hover:from-green-500 hover:to-green-800 focus:outline-none  items-center justify-center space-x-2"
-                      >
-                        <FiEdit />
-                        <span>Update Profile</span>
-                      </button>
-                    </div>
-                  </div> */}
            
             <div className="flex justify-center w-full ">
     
@@ -348,6 +310,8 @@ const OrganizerProfile = () => {
             )}
     
           </div>
+      }
+  
     </>
 
   );

@@ -52,9 +52,9 @@ const FeedbackForm = () => {
             <Helmet>
                 <title>Medical Camp | Feedback</title>
             </Helmet>
-            <div className="w-full mx-auto bg-white p-8  rounded-xl ">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-center my-8">Provide Your Feedback</h3>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 dark:text-black bg-white my-10 p-6 rounded-xl shadow-lg border border-green-800 sm:border-none">
+            <div className="w-full mx-auto  py-8  rounded-xl ">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-center my-8 text-black dark:text-white">Provide Your Feedback</h3>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 dark:text-black bg-white my-10 p-6 rounded-xl shadow-lg border ">
                     <div className="space-y-2">
                         <label className="block text-sm md:text-lg font-medium text-gray-700">Rating:</label>
                         <input

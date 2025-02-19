@@ -31,13 +31,13 @@ const FAQSection = () => {
   ];
 
   return (
-    <div className="px-8 py-12 w-[90%] mx-auto flex flex-col gap-12 bg-white">
+    <div className=" py-10 w-[90%] mx-auto flex flex-col gap-12 bg-white rounded-lg mt-5">
       <div className="flex flex-col text-left ">
         <p className="text-xl sm:text-2xl text-center md:text-3xl font-bold mb-2 text-green-800">
           <FaQuestionCircle className="inline-block mr-1 text-green-800" /> Medical Camp FAQs
         </p>
       </div>
-      <ul className=" w-full  xl:w-[80%] mx-auto ">
+      <ul className=" w-full  xl:w-[80%] mx-auto px-2 md:px-8 ">
         {faqs.map((faq, index) => (
           <li key={index}>
             <button

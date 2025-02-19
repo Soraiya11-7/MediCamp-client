@@ -15,8 +15,8 @@ const Overview = () => {
   });
 
   // Handling loading and error states
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching data</div>;
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>Error fetching data</div>;
 
   const { totalCamps, totalUsers, totalRegisteredUsers, totalFees, registeredPerCamp } = allData;
 
@@ -34,16 +34,24 @@ const Overview = () => {
 
 
   // Data for Pie and Bar Charts (Participants per Camp)
-  const pieData = registeredPerCamp.map(camp => ({
+  const pieData = registeredPerCamp?.map(camp => ({
     name: camp.campName,
     value: camp.participantsCount
-  }));
+  })) || [];
 
   return (
     <div className=" w-full">
-      <h2 className="text-3xl font-bold text-green-800 my-6 dark:text-white">Admin Overview</h2>
+      <h2 className="text-xl sm:text-2xl lg:text-3xl text-center font-bold text-green-800 my-6 dark:text-white">Admin Overview</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      {
+         isLoading ? (<div className="flex items-center justify-center">
+          <span className="loading loading-bars mt-10 loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+         
+      </div>)
+          
+            :
+            <div>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <Card className="shadow-xl bg-white border p-6 flex flex-col items-center space-y-6 rounded-lg justify-center text-center">
          <div className='flex justify-center items-center'> <FaCampground className="text-green-800 text-6xl " /></div>
           <div>
@@ -83,7 +91,7 @@ const Overview = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white shadow-lg p-6 border rounded-lg">
           <h3 className="text-lg font-semibold text-green-800 mb-4">Camps & Users Analysis</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={280}>
             <BarChart data={barData}>
               <XAxis dataKey="name" />
               <YAxis />
@@ -95,7 +103,7 @@ const Overview = () => {
 
         <div className="bg-white shadow-lg p-6 border rounded-lg">
           <h3 className="text-lg font-semibold text-green-800 mb-4">User & Payment Distribution</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={280}>
             <PieChart>
               <Pie data={barData2} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} label>
                 {barData.map((entry, index) => (
@@ -134,6 +142,13 @@ const Overview = () => {
           </PieChart>
         </ResponsiveContainer>
       </div> */}
+
+            </div>
+      }
+
+     
+
+   
     </div>
   );
 };

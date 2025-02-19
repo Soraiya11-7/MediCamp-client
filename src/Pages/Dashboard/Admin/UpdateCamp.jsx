@@ -42,11 +42,11 @@ const UpdateCamp = () => {
 
 
 
-    if (isLoading) {
-        return <div className="flex items-center min-h-screen justify-center">
-            <Skeleton count={3} height={120} width={200} />
-        </div>
-    }
+    // if (isLoading) {
+    //     return <div className="flex items-center min-h-screen justify-center">
+    //         <Skeleton count={3} height={120} width={200} />
+    //     </div>
+    // }
 
     const onSubmit = async (data) => {
         try {
@@ -125,7 +125,14 @@ const UpdateCamp = () => {
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center my-8">
                         Update Camp
                     </h2>
-                    <form
+                    {
+                        
+                        isLoading ? (<div className="flex items-center justify-center">
+                        <span className="loading loading-bars loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+                       
+                    </div>)
+                        : 
+                        <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="space-y-6 bg-gray-50 rounded-lg shadow-lg px-4 py-8 dark:text-black"
                     >
@@ -252,10 +259,12 @@ const UpdateCamp = () => {
                             {errors.description && <p className="text-red-500 text-sm">Description is required </p>}
                         </div>
 
-                        <button className="btn bg-green-900 hover:bg-green-300 text-white w-full mb-5">
+                        <button className="btn bg-green-900 hover:bg-green-800 text-white w-full mb-5">
                             Update Camp
                         </button>
                     </form>
+                    }
+                 
                 </div>
             </div>
         </>

@@ -6,7 +6,7 @@ import { useState } from "react";
 import SearchBar from "../../../components/Shared/SearchBar";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Pagination from "../../../components/Shared/Pagination";
-import Skeleton from "react-loading-skeleton";
+// import Skeleton from "react-loading-skeleton";
 import { Helmet } from "react-helmet-async";
 
 const ManageCamps = () => {
@@ -115,9 +115,12 @@ const ManageCamps = () => {
         </div>
 
         {
-          loading ? (<div className="flex items-center min-h-screen justify-center">
-            <Skeleton count={3} height={120} width={200} />
-          </div>)
+         
+         loading ? (<div className="flex items-center justify-center">
+          <span className="loading loading-bars mt-10 loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+         
+      </div>)
+          
             : camps && camps.length === 0 ? (
               <div className="text-center">
                 <h3 className="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-3 mt-10">No camps have been added yet.</h3>

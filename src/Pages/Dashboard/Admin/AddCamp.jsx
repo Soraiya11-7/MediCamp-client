@@ -227,7 +227,7 @@ const AddCamp = () => {
                     </div>
 
                     {/* Submit Button */}
-                    <button className="btn bg-green-900 hover:bg-green-300 text-white w-full mb-5">Add Camp</button>
+                    <button className="btn bg-green-900 hover:bg-green-800 text-white w-full mb-5">Add Camp</button>
                 </form>
             </div>
         </div>

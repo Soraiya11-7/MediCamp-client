@@ -9,7 +9,7 @@ const AboutUs = () => {
                 <title>Medical Camp | About Us</title>
             </Helmet>
             <div className='dark:bg-gray-700 dark:text-white'>
-                <section className="flex flex-col justify-center items-center w-[90%] border border-red-500 mx-auto container py-10">
+                <section className="flex flex-col justify-center items-center w-[90%]  mx-auto container py-10">
                     <div className="text-center ">
                         <h1 className="text-2xl md:text-4xl font-bold  mb-6">About Us</h1>
 

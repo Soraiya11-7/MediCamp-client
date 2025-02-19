@@ -3,7 +3,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import SearchBar from '../../../components/Shared/SearchBar';
-import Skeleton from 'react-loading-skeleton';
+// import Skeleton from 'react-loading-skeleton';
 import Pagination from '../../../components/Shared/Pagination';
 import { Helmet } from 'react-helmet-async';
 
@@ -69,10 +69,10 @@ const PaymentHistory = () => {
                 </div>
 
                 {
-                    loading ? (<div className="flex items-center min-h-screen justify-center">
-                        <Skeleton count={3} height={120} width={200} />
-                    </div>)
-                        : payments && payments.length === 0 ? (
+                    loading ? (<div className="flex items-center justify-center">
+                        <span className="loading loading-bars mt-10 loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+                       
+                    </div>): payments && payments.length === 0 ? (
                             <div className="text-center">
                                 <h3 className="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-3 mt-10">You have not made any payments yet.</h3>
 

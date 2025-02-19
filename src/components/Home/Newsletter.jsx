@@ -15,7 +15,7 @@ const Newsletter = () => {
             />
           </div>
           <div className="w-[90%] sm:w-[70%] md:w-[40%] ">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">Stay Updated with Our Latest News</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">Stay Updated with Our Latest News</h2>
             <p className="text-sm md:text-base mb-6 text-center md:text-left">Subscribe to our newsletter to receive the latest updates, promotions, and exclusive content directly to your inbox.</p>
             <div className="flex">
               <input

@@ -36,7 +36,7 @@ const ContactUs = () => {
             <Helmet>
                 <title>Medical Camp | Contact Us</title>
             </Helmet>
-            <div className="dark:bg-gray-700">
+            <div className="dark:bg-gray-700  py-10">
                 <div className="w-[90%] mx-auto container py-10 flex justify-center items-center">
                     <div className="w-full bg-white shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
 

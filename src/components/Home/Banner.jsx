@@ -63,13 +63,14 @@ const Banner = () => {
                             clipPath: "polygon(0 0, 55% 0, 40% 100%, 0% 100%)",
                         }}
                     ></div>
-                    <div className="absolute inset-0 bg-black bg-opacity-50 md:bg-opacity-40  border border-red-500  ">
+                    <div className="absolute inset-0 bg-black bg-opacity-50 md:bg-opacity-40    ">
                         <div className='container w-[90%] h-full mx-auto  '>
                         <div className="absolute   h-full text-white w-[90%] md:max-w-lg mx-auto md:mx-0 z-10 flex flex-col justify-center ">
                             <motion.h2
                                 animate={{
                                     x: [0, 15, 0],
-                                    color: ["#ecff33", "#33ffe3", "#ff6133", "#ecff33"]
+                                    color: ["#ca8a04",  "#ffffff", "#ca8a04"]
+
                                 }}
                                 transition={{ duration: 2, ease: "easeOut", repeat: Infinity }}
                                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white text-center md:text-left -ml-2 sm:-ml-0"

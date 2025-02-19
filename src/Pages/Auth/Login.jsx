@@ -113,7 +113,7 @@ const Login = () => {
                                 }}
                                 className="btn-inline-block mx-auto bg-red-500 text-white py-1 px-2 rounded "
                             >
-                                Reset Fields
+                                Reset 
                             </button>
                          
                         )}

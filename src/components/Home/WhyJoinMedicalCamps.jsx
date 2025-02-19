@@ -3,9 +3,9 @@ import Marquee from 'react-fast-marquee';
 
 const WhyJoinMedicalCamps = () => {
   return (
-    <section id="join-us" className="pt-8 ">
+    <section id="join-us" className=" ">
       <div className="py-4 sm:py-10 w-[90%] mx-auto">
-        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-green-900 dark:text-white">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-12 text-green-900 dark:text-white">
           Why Join Our Medical Camps?
         </h2>
 
