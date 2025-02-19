@@ -77,14 +77,14 @@ const AddCamp = () => {
             <Helmet>
                 <title>Admin Dashboard | Launch New Camp</title>
             </Helmet>
-            <div className="w-[90%] mx-auto">
+            <div className="w-full">
             <div className="my-8 overflow-hidden">
                 <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">
                     Add a New Camp 
                 </h2>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="space-y-6 bg-slate-100 rounded-lg shadow-lg px-2 py-8 dark:text-black"
+                    className="space-y-6 bg-gray-50 rounded-lg shadow-lg px-2 py-8 dark:text-black"
                 >
                 
 

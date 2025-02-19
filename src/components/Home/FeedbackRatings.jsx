@@ -31,25 +31,29 @@ const FeedbackRatings = () => {
     });
 
 
-    if (isPending) {
-        return <div className="flex items-center min-h-screen justify-center">
-            <Skeleton count={3} height={120} width={200} />
-        </div>
-    }
+    // if (isPending) {
+    //     return <div className="flex items-center min-h-screen justify-center">
+    //         <Skeleton count={3} height={120} width={200} />
+    //     </div>
+    // }
 
 
     return (
         <>
-            <div className='bg-gray-50 dark:bg-gray-700 '>
-                <div className=' py-12  w-[90%] mx-auto rounded-t-md dark:bg-gray-50 '>
-                    <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-2 text-green-800">
+            <div className=' dark:bg-gray-700 '>
+                <div className=' py-12  w-[90%] mx-auto rounded-t-md  '>
+                    <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-2 text-green-800 dark:text-white">
                         Feedback and Ratings
                     </h2>
-                    <p className="text-base text-center sm:text-lg text-gray-800 w-[90%] md:w-[50%] mx-auto mb-10">
+                    <p className="text-base text-center sm:text-lg text-gray-800 w-[90%] md:w-[50%] mx-auto mb-10 dark:text-white">
                         Showcase participant feedback and ratings collected post-payment, offering insights into their camp experiences.
                     </p>
 
                     {
+                         isPending ? (<div className="flex items-center justify-center">
+                            <span className="loading loading-bars loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+                           
+                        </div>) : 
                        feedbackData && feedbackData.length > 0 ? (
                         <Swiper
                         slidesPerView={1}
@@ -81,7 +85,7 @@ const FeedbackRatings = () => {
 
                         {feedbackData.map((feedback) => (
                             <SwiperSlide key={feedback._id}>
-                                <div className="p-4 md:p-6 flex flex-col items-center bg-green-900 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+                                <div className="p-4 md:p-6 flex flex-col items-center bg-green-900 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 dark:border-white dark:border-2">
                                     {/* Image */}
                                     <img
                                         src={feedback.image}
@@ -104,7 +108,7 @@ const FeedbackRatings = () => {
                     </Swiper>
                        ) : 
                        (
-                        <div className="text-center text-gray-800 text-lg font-medium mt-8">
+                        <div className="text-center text-gray-800 dark:text-white text-lg font-medium mt-8">
                         No feedback found.
                     </div>
                        )

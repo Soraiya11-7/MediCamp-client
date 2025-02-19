@@ -106,7 +106,7 @@ const ManageRegisteredCamps = () => {
                 <title>Admin Dashboard | All Registered Camps</title>
             </Helmet>
             <div className=''>
-                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold  text-center my-8">Manage Registered Camps</h2>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold  text-center my-8">Manage Registered Camps</h2>
 
                 {/* SearchBar Reusable Component..................... */}
                 <div className="flex justify-end mt-10 mb-8">
@@ -121,12 +121,12 @@ const ManageRegisteredCamps = () => {
                 </div>)
                     : registeredCamps && registeredCamps.length === 0 ? (
                         <div className="text-center">
-                            <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3 mt-10">There are no registered camps available at this time.</h3>
+                            <h3 className="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-3 mt-10">There are no registered camps available at this time.</h3>
 
-                            <p className='text-sm sm:text-base w-[80%] mx-auto'>Once users start registering, their details will appear here.</p>
+                            <p className='text-sm sm:text-base w-[80%] mx-auto dark:text-white '>Once users start registering, their details will appear here.</p>
                         </div>
                     ) : (<div>
-                        <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg ">
+                        <div className="overflow-x-auto shadow-md border border-gray-50 rounded-lg ">
                             <table className="table-auto w-full ">
                                 <thead className="bg-green-800 text-white">
                                     <tr className="text-center">
@@ -139,7 +139,7 @@ const ManageRegisteredCamps = () => {
                                         <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Cancel</th>
                                     </tr>
                                 </thead>
-                                <tbody className="text-center bg-slate-200 dark:text-black">
+                                <tbody className="text-center bg-gray-50 dark:text-black">
                                     {currentTableData.map((camp, index) => (
                                         <tr
                                             key={camp._id}

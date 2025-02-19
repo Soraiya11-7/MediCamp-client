@@ -105,8 +105,8 @@ const RegisteredCamps = () => {
                             </div>
                         ) :
                             (<div>
-                                <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg max-w-5xl mx-auto">
-                                    <table className="table w-full table-auto">
+                                <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg w-full mx-auto">
+                                    <table className="table w-full table-auto ">
                                         <thead className="bg-green-800 text-white">
                                             <tr className="text-center">
                                                 <th className="py-1 px-2 text-sm md:text-base lg:text-lg">#</th>

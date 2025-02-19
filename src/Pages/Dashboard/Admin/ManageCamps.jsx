@@ -138,7 +138,7 @@ const ManageCamps = () => {
                       <th className="py-1 px-2 text-sm md:text-base lg:text-lg">Action</th>
                     </tr>
                   </thead>
-                  <tbody className="text-center bg-slate-200 dark:text-black">
+                  <tbody className="text-center bg-gray-50 dark:text-black">
                     {currentTableData.map((camp, index) => (
                       <tr
                         key={camp._id}

@@ -118,7 +118,7 @@ const CheckoutForm = ({ id }) => {
 
     return (
         <div>
-            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">Complete Your Payment</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center my-8">Complete Your Payment</h2>
             <form onSubmit={handleSubmit} className="dark:text-black mt-6">
 
                 <div className="border border-gray-300 dark:bg-white rounded-lg p-3 hover:border-green-800 focus-within:border-green-800 transition duration-150 max-w-xl overflow-hidden ">

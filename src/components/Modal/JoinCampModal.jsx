@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
+import { AiOutlineClose } from "react-icons/ai";
 // import { useNavigate } from 'react-router-dom';
 
 const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
@@ -79,9 +80,20 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
         <div>
 
             {isOpen && <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-                <div className="relative w-[80%] max-w-2xl bg-gradient-to-br from-sky-500 to-green-700 rounded-xl shadow-2xl overflow-y-auto max-h-[600px] p-3 md:p-8">
-                    <h2 className='text-center text-xl md:text-2xl text-white my-6'>Register a Camp</h2>
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-8">
+                <div className="relative w-[80%] max-w-2xl bg-gradient-to-br from-green-800 to-green-900 rounded-lg shadow-2xl overflow-y-auto max-h-[600px] ">
+
+                    <div className='sticky top-0 z-20 flex justify-between items-center px-3 md:px-8   bg-white font-bold'>
+                        <h2 className='text-center text-xl md:text-2xl text-green-800 my-3'>Register a Camp</h2>
+                        {/* Close Button */}
+                        <button
+                            onClick={closeModal}
+                            className="  text-green-800 text-2xl hover:text-red-500 transition"
+                        >
+                            <AiOutlineClose />
+                        </button>
+
+                    </div>
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4 p-3 md:p-8 ">
                         <div className="space-y-4">
 
                             <div className="form-control">
@@ -93,7 +105,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                     defaultValue={camp.campName}
                                     {...register("campName")}
                                     readOnly
-                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
+                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-800"
                                 />
                             </div>
 
@@ -106,7 +118,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                     defaultValue={camp.fees}
                                     {...register("campFees")}
                                     readOnly
-                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
+                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-800"
                                 />
                             </div>
 
@@ -119,7 +131,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                     defaultValue={camp.location}
                                     {...register("location")}
                                     readOnly
-                                    className="input input-bordered w-full  rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
+                                    className="input input-bordered w-full  rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-800"
                                 />
                             </div>
 
@@ -132,7 +144,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                     defaultValue={camp.healthcareProfessional}
                                     {...register("healthcareProfessional")}
                                     readOnly
-                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
+                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-800"
                                 />
                             </div>
 
@@ -145,7 +157,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                     defaultValue={user?.displayName}
                                     {...register("participantName")}
                                     readOnly
-                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
+                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-800"
                                 />
                             </div>
 
@@ -160,32 +172,32 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
                                     defaultValue={user?.email}
                                     {...register("participantEmail")}
                                     readOnly
-                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-500"
+                                    className="input input-bordered w-full rounded-lg bg-gray-100 text-xs md:text-sm cursor-not-allowed text-gray-800"
                                 />
                             </div>
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Age*</span>
+                                    <span className="label-text text-white">Age*</span>
                                 </label>
                                 <input
                                     type="number"
                                     placeholder="Enter your age"
                                     {...register("age", { required: true })}
-                                    className="input input-bordered w-full text-xs md:text-sm"
+                                    className="input input-bordered w-full text-xs md:text-sm text-gray-800"
                                 />
                                 {errors.age && <p className="text-red-500 text-sm">Age is required </p>}
                             </div>
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Phone Number*</span>
+                                    <span className="label-text text-white">Phone Number*</span>
                                 </label>
                                 <input
                                     type="tel"
                                     placeholder="Enter your Phone Number"
                                     {...register("phoneNumber", { required: true })}
-                                    className="input input-bordered w-full text-xs md:text-sm"
+                                    className="input input-bordered w-full text-xs md:text-sm text-gray-800"
                                 />
                                 {errors.phoneNumber && <p className="text-red-500 text-sm">Phone Number is required </p>}
                             </div>
@@ -193,7 +205,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
 
                             <div className='form-control'>
                                 <label className="label">
-                                    <span className="label-text">Gender*</span>
+                                    <span className="label-text text-white">Gender*</span>
                                 </label>
                                 <select
 
@@ -212,7 +224,7 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
 
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Emergency Contact*</span>
+                                    <span className="label-text text-white">Emergency Contact*</span>
                                 </label>
                                 <input
                                     type="tel"
@@ -227,12 +239,12 @@ const JoinCampModal = ({ isOpen, closeModal, camp, user, refetch }) => {
 
                                 <button
                                     onClick={closeModal}
-                                    className="bg-gray-900 text-white font-bold mb-5 px-3 py-1.5 sm:px-6 sm:py-2 rounded-full "
+                                    className="border-2 border-white text-white font-bold mb-5 px-3 py-1.5 sm:px-6 sm:py-2 rounded-full hover:bg-gray-950 "
                                 >
                                     Close
                                 </button>
                                 <button
-                                    className="bg-white hover:bg-green-300 text-green-800 font-bold mb-5 px-3 py-1.5 sm:px-6 sm:py-2 rounded-full transition duration-200 shadow-md"
+                                    className="border-2 text-white border-white hover:bg-white hover:text-green-800 font-bold mb-5 px-3 py-1.5 sm:px-6 sm:py-2 rounded-full transition duration-200 shadow-md"
                                 >
                                     Register
                                 </button>

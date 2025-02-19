@@ -24,8 +24,8 @@ const Dashboard = () => {
              
             {/* Hamburger Button for Small Devices */}
             <button
-                className={`md:hidden absolute top-5   text-2xl z-50 ${
-                    isSidebarOpen ? "text-white" : "text-black"
+                className={`md:hidden top-5   text-2xl z-50 fixed ${
+                    isSidebarOpen ? "text-white" : "text-black dark:text-white"
                 }`}
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >

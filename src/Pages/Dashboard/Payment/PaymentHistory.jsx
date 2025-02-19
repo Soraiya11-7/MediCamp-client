@@ -80,7 +80,7 @@ const PaymentHistory = () => {
                             </div>
                         ) :
                             (<div>
-                                <div className="overflow-x-auto shadow-md border border-gray-200 rounded-lg">
+                                <div className="overflow-x-auto w-full shadow-md border border-gray-200 rounded-lg">
                                     <table className="table w-full table-auto">
                                         <thead className="bg-green-800 text-white">
                                             <tr className="text-center">

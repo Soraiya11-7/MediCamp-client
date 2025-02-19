@@ -93,9 +93,9 @@ const PopularCamps = () => {
 
 
                                         {/* Button */}
-                                        <div className="absolute left-0 right-2 bottom-3 flex justify-end">
+                                        <div className="absolute left-0 right-2 bottom-5 flex justify-end">
                                             <Link to={`/camp-details/${camp._id}`}>
-                                                <button className="py-2 px-6 border-2 border-green-800 bg-green-900 text-white font-semibold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 group-hover:bg-white group-hover:text-green-900">
+                                                <button className="py-2 px-6 border-2 border-green-800 bg-white text-green-800 font-semibold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 group-hover:border-white group-hover:text-green-900">
                                                     Details
 
                                                 </button>
@@ -108,7 +108,7 @@ const PopularCamps = () => {
 
                         <div className="flex justify-center items-center mt-10">
                             <Link to='/allCamps'>
-                                <button className="py-2 px-6 border-2 border-green-900 bg-white text-green-950 font-bold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 hover:bg-green-900 hover:text-white">
+                                <button className="py-2 px-6 border-2 border-green-900 bg-white text-green-950 font-bold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 hover:bg-green-900 hover:text-white dark:border-white">
                                     See All Camps
 
                                 </button>

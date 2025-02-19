@@ -42,7 +42,7 @@ const Analytics = () => {
     return (
         <>
            
-            <div>
+            <div className='w-full'>
                 <h2 className='text-2xl md:text-4xl font-bold mt-8 mb-4 text-center my-8'>Camp Fee Analytics</h2>
 
                 {camps && camps.length > 0 ? (

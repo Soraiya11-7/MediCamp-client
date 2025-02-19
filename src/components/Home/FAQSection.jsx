@@ -47,7 +47,7 @@ const FAQSection = () => {
             >
               <span className="flex-1 text-base-content">{faq.question}</span>
               <svg
-                className="flex-shrink-0 w-5 h-5 ml-auto fill-current rounded-full p-1 dark:text-white bg-green-800 text-white"
+                className="flex-shrink-0 w-5 h-5 ml-auto fill-current rounded-full p-1  bg-green-800 text-white"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -70,7 +70,7 @@ const FAQSection = () => {
             <div
               className={`transition-all duration-300 ease-in-out overflow-hidden ${expanded[index] ? 'max-h-96' : 'max-h-0'}`}
             >
-              <div className="pb-5">{faq.answer}</div>
+              <div className="pb-5 text-black">{faq.answer}</div>
             </div>
           </li>
         ))}

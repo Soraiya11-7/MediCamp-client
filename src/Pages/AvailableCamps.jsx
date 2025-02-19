@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useCamp from "../hooks/useCamp";
 import SearchBar from "../components/Shared/SearchBar";
 import LazyLoad from "react-lazyload";
-import Skeleton from "react-loading-skeleton";
+// import Skeleton from "react-loading-skeleton";
 import { Helmet } from "react-helmet-async";
 
 const AvailableCamps = () => {
@@ -44,7 +44,12 @@ const AvailableCamps = () => {
     //             <Skeleton count={3} height={120} width={200} />
     //         </div>
     //     }
-
+    // if(loading){
+    //     return <div className="flex items-center min-h-screen justify-center">
+    //         <Skeleton count={3} height={120} width={200} />
+    //         {/* <span className="loading loading-infinity loading-lg flex items-center justify-center"></span> */}
+    //     </div>
+    // }
 
     return (
         <>
@@ -69,7 +74,7 @@ const AvailableCamps = () => {
                         value={sort}
                         id={sort}
                         onChange={(e) => setSort(e.target.value)}
-                        className="p-2 border"
+                        className="p-2 border rounded-lg"
                     >
                         <option value="">Sort By</option>
                         <option value="most-registered">Most Registered</option>
@@ -82,7 +87,7 @@ const AvailableCamps = () => {
                 <div className=" flex justify-end my-10">
                     <button
                         onClick={toggleLayout}
-                        className="hidden lg:block px-4 py-2 bg-green-900 dark:border-2 dark:border-white text-white font-semibold rounded hover:bg-green-800 transition duration-200"
+                        className="hidden lg:block px-4 py-2 bg-green-900 dark:border-2 dark:border-white text-white font-semibold hover:bg-green-800 transition duration-200 rounded-lg"
                     >
                         {isTwoColumn ? "Switch to 3 Columns" : "Switch to 2 Columns"}
                     </button>
@@ -90,8 +95,9 @@ const AvailableCamps = () => {
 
                 {
 
-                    loading ? (<div className="flex items-center min-h-screen justify-center">
-                        <Skeleton count={3} height={120} width={200} className="dark:text-white dark:bg-white" />
+                    loading ? (<div className="flex items-center justify-center">
+                        <span className="loading loading-bars loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+                       
                     </div>)
                         : camps.length === 0 ? (
                             <div className="text-center">
@@ -146,7 +152,7 @@ const AvailableCamps = () => {
                                                     {/* Button */}
                                                     <div className="absolute left-0 right-0 bottom-3 flex justify-center">
                                                         <Link to={`/camp-details/${camp._id}`}>
-                                                            <button className="py-2 px-6 border-2 border-green-800 bg-green-900 text-white font-semibold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 group-hover:bg-white group-hover:text-green-900">
+                                                            <button className="  py-2 px-6 border-2 border-green-800 bg-white text-green-800 font-semibold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 group-hover:border-white group-hover:text-green-900">
                                                                 Details
 
                                                             </button>

@@ -36,35 +36,40 @@ const CampDetails = () => {
         description,
     } = camp || {};
 
-    if (isLoading) {
-        return (
-            <div className="flex items-center justify-center min-h-screen bg-gray-100">
-                <Skeleton count={3} height={120} width={200} />
-            </div>
-        );
-    }
+    // if (isLoading) {
+    //     return (
+    //         <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    //             <Skeleton count={3} height={120} width={200} />
+    //         </div>
+    //     );
+    // }
 
     return (
         <>
             <Helmet>
                 <title>Medical Camp | Camp Details</title>
             </Helmet>
-            <div className="dark:bg-gray-700">
-            <div className=" bg-slate-50  w-[90%] mx-auto pb-10">
+            <div className="dark:bg-gray-700 ">
+            <div className="  w-[90%] mx-auto pb-10">
                 {/* Header Section */}
                 <div className="pt-16  mb-8 ">
                     <div className=" text-center">
-                        <h1 className="text-2xl md:text-4xl font-bold mb-2">Camp Details</h1>
-                        <p className="text-sm w-[80%] mx-auto sm:text-base md:text-lg">
+                        <h1 className="text-2xl md:text-4xl font-bold mb-2 dark:text-white">Camp Details</h1>
+                        <p className="text-sm w-[80%] mx-auto sm:text-base md:text-lg dark:text-white">
                             Comprehensive insights about the camp and its activities
                         </p>
                     </div>
                 </div>
 
 
-                <div className="w-[90%] sm:w-[80%] md:w-[90%] lg:w-[75%] mx-auto rounded-lg shadow-lg overflow-hidden mt-6 px-3 lg:px-10 bg-white ">
+                <div className="w-full px-8 sm:px-10 md:px-12 lg:px-16 mx-auto rounded-lg shadow-lg overflow-hidden mt-6   bg-white ">
                     <div className="pb-10">
-                        {camp ? (
+                        {
+                          isLoading ? (<div className="flex items-center justify-center">
+                            <span className="loading loading-bars loading-lg flex items-center justify-center dark:text-white dark:bg-white text-green-800"></span>
+                           
+                        </div>) :  
+                        camp ? (
                             <>
                                 {/* Image Section */}
                                 <div className="relative mt-8">
@@ -78,7 +83,7 @@ const CampDetails = () => {
                                 {/* Details Section */}
                                 <div className="p-4 space-y-3">
                                     {/* Camp Name */}
-                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-left sm:text-center mb-6 text-green-700">
+                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-left sm:text-center mb-8 text-green-700">
                                         {campName}
                                     </h2>
 
@@ -143,7 +148,7 @@ const CampDetails = () => {
                                     <div className="flex justify-center mt-10">
                                         <button
                                             onClick={openModal}
-                                            className="px-10 py-3 bg-green-700 text-white font-semibold rounded-full shadow-md transition-transform duration-300 hover:scale-105"
+                                            className="px-10 py-3 bg-green-700 text-white font-semibold rounded-xl shadow-md transition-transform duration-300 hover:scale-105"
                                         >
                                             Join Camp
                                         </button>

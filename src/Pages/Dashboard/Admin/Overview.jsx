@@ -40,44 +40,48 @@ const Overview = () => {
   }));
 
   return (
-    <div className=" min-h-screen p-6 ">
-      <h2 className="text-2xl font-bold text-green-800 mb-6 dark:text-white">Admin Overview</h2>
+    <div className=" w-full">
+      <h2 className="text-3xl font-bold text-green-800 my-6 dark:text-white">Admin Overview</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card className="shadow-xl bg-white border p-6 flex items-center space-x-4 rounded-xl">
-          <FaCampground className="text-green-800 text-4xl" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <Card className="shadow-xl bg-white border p-6 flex flex-col items-center space-y-6 rounded-lg justify-center text-center">
+         <div className='flex justify-center items-center'> <FaCampground className="text-green-800 text-6xl " /></div>
           <div>
-            <p className="text-gray-500">Total Camps</p>
-            <h3 className="text-2xl font-bold">{totalCamps}</h3>
+            <p className="text-gray-500 font-semibold text-lg sm:text-xl lg:text-2xl">Total Camps</p>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">{totalCamps}</h3>
           </div>
         </Card>
-        <Card className="shadow-xl bg-white border p-6 flex items-center space-x-4 rounded-xl">
-          <FaUser className="text-green-800 text-4xl" />
-          <div>
-            <p className="text-gray-500">Total Users</p>
-            <h3 className="text-2xl font-bold">{totalUsers}</h3>
-          </div>
-        </Card>
+        <Card className="shadow-xl bg-white border p-6 flex flex-col items-center space-y-6 rounded-lg justify-center text-center">
+          <div className='flex justify-center items-center'><FaUser className="text-green-800 text-6xl " /></div>
 
-        <Card className="shadow-xl bg-white border p-6 flex items-center space-x-4 rounded-xl">
-          <FaUserCheck className="text-green-800 text-4xl" />
+          
           <div>
-            <p className="text-gray-500">Registered Users</p>
-            <h3 className="text-2xl font-bold">{totalRegisteredUsers}</h3>
+            <p className="text-gray-500 font-semibold text-lg sm:text-xl lg:text-2xl">Total Users</p>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">{totalUsers}</h3>
           </div>
         </Card>
 
-        <Card className="shadow-xl bg-white border p-6 flex items-center space-x-4 rounded-xl">
-          <FaMoneyBillWave className="text-green-800 text-4xl" />
+        <Card className="shadow-xl bg-white border p-6 flex flex-col items-center space-y-6 rounded-lg justify-center text-center">
+          <div className='flex justify-center items-center'><FaUserCheck className="text-green-800 text-6xl " /></div>
+          
           <div>
-            <p className="text-gray-500">Total Fees</p>
-            <h3 className="text-2xl font-bold">${totalFees}</h3>
+            <p className="text-gray-500 font-semibold text-lg sm:text-xl lg:text-2xl">Registered Users</p>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">{totalRegisteredUsers}</h3>
+          </div>
+        </Card>
+
+        <Card className="shadow-xl bg-white border p-6 flex flex-col items-center space-y-6 rounded-lg justify-center text-center">
+          <div className='flex justify-center items-center'><FaMoneyBillWave className="text-green-800 text-6xl " /></div>
+          
+          <div>
+            <p className="text-gray-500 font-semibold text-lg sm:text-xl lg:text-2xl">Total Fees</p>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">${totalFees}</h3>
           </div>
         </Card>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white shadow-lg p-6 border rounded-xl">
+        <div className="bg-white shadow-lg p-6 border rounded-lg">
           <h3 className="text-lg font-semibold text-green-800 mb-4">Camps & Users Analysis</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={barData}>
@@ -89,7 +93,7 @@ const Overview = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white shadow-lg p-6 border rounded-xl">
+        <div className="bg-white shadow-lg p-6 border rounded-lg">
           <h3 className="text-lg font-semibold text-green-800 mb-4">User & Payment Distribution</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -105,7 +109,7 @@ const Overview = () => {
       </div>
 
       {/* Participants per Camp Section */}
-      <div className="bg-white shadow-lg p-6 border rounded-xl mt-8">
+      <div className="bg-white shadow-lg p-6 border rounded-lg mt-8">
         <h3 className="text-lg font-semibold text-green-800 mb-4">Participants per Camp (Bar Chart)</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={pieData}>
@@ -117,7 +121,7 @@ const Overview = () => {
         </ResponsiveContainer>
       </div>
 
-      {/* <div className="bg-white shadow-lg p-6 border rounded-xl mt-8">
+      {/* <div className="bg-white shadow-lg p-6 border rounded-lg mt-8">
         <h3 className="text-lg font-semibold text-green-800 mb-4">Participants per Camp (Pie Chart)</h3>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
