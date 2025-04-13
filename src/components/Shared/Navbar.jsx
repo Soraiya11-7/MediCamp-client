@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import logo from "../../assets/mc2.png"
 import useAdmin from "../../hooks/useAdmin";
 import useProfileData from "../../hooks/useProfileData";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { FaMoon, FaSignOutAlt, FaSun, FaThLarge, FaUser,} from "react-icons/fa";
 import { Dropdown } from "antd";
 
 
@@ -98,41 +98,50 @@ const Navbar = () => {
 
     }
 
+    
     const menuItems = [
         {
-            label: <span className="font-bold text-gray-700">{name?.split(" ")[0]}</span>,
-            key: "0",
-            disabled: true,
+          label: (
+            <span className="flex items-center gap-2 text-gray-700 font-bold">
+              <FaUser className="text-green-800" /> {/* User Icon */}
+              {name?.split(" ")[0]}
+            </span>
+          ),
+          key: "0",
+          disabled: true,
         },
         { type: "divider" },
         {
-            label: (
-                <Link
-                    to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userProfile"}
-                    className="block text-gray-700 hover:text-green-600"
-                >
-                    Dashboard
-                </Link>
-            ),
-            key: "1",
+          label: (
+            <Link
+              to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userProfile"}
+              className="flex items-center gap-2 text-gray-700 hover:text-green-600"
+            >
+               <FaThLarge className="text-green-800" />
+              Dashboard
+            </Link>
+          ),
+          key: "1",
         },
         {
-            label: (
-                <button
-                    onClick={handleLogOut}
-                    className="w-full text-left text-gray-700 hover:text-black"
-                >
-                    Logout
-                </button>
-            ),
-            key: "2",
+          label: (
+            <button
+              onClick={handleLogOut}
+              className="flex items-center gap-2 w-full text-left text-gray-700 hover:text-black"
+            >
+              <FaSignOutAlt className="text-green-800" /> 
+              Logout
+            </button>
+          ),
+          key: "2",
         },
-    ];
+      ];
+
 
     return (
         <nav className={`${navbarClass} sticky top-0 z-50 shadow-md`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-            {/* Left Side - Logo */}
+          <div className="w-[90%] container mx-auto  py-3 flex items-center justify-between">
+            {/* Left Side - Logo....... */}
             <Link to="/" className="flex items-center space-x-2">
               <img src={logo} className="h-9 w-9 rounded-full object-cover" alt="logo" />
               <span className="text-xl font-bold text-white">MediCamp</span>
