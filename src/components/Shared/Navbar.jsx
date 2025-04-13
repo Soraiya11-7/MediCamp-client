@@ -130,131 +130,100 @@ const Navbar = () => {
     ];
 
     return (
-        <div className={`${navbarClass} container mx-auto sticky top-0 z-50`}>
-            <div className={`navbar container w-[91%] mx-auto`}>
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn -ml-4 btn-ghost p-0 sm:p-2  text-white md:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow ">
-                        {links}
-                    </ul>
-                </div>
-               
-                <div className="flex gap-0.5 items-center">
-                    <div className=" w-8 h-8 ">
-                        <img className="w-full h-full overflow-hidden rounded-full object-cover" src={logo} alt="" />
-
-                    </div>
-                    <h2 className="text-xl text-white sm:text-2xl font-bold">MediCamp</h2>
-                </div>
-
-
+        <nav className={`${navbarClass} sticky top-0 z-50 shadow-md`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            {/* Left Side - Logo */}
+            <Link to="/" className="flex items-center space-x-2">
+              <img src={logo} className="h-9 w-9 rounded-full object-cover" alt="logo" />
+              <span className="text-xl font-bold text-white">MediCamp</span>
+            </Link>
+      
+            {/* Center - Desktop Links */}
+            <div className="hidden md:flex gap-6 items-center list-none m-0 p-0">
+              {links}
             </div>
-            <div className="navbar-center hidden md:flex">
-                <ul className="menu menu-horizontal px-1 space-x-1">
-                    {links}
-
-                </ul>
-            </div>
-            <div className="navbar-end flex  items-center gap-1 md:gap-2">
-                <div className=" flex flex-col items-center relative mr-1">
-                    {
-                        user ?
-                            // <div className="flex items-center">
-                            //     <div className="h-8 w-10 md:h-10 md:w-12  rounded-full px-1 " >
-                            //         <button onClick={toggleDropdown}
-                            //             className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border border-gray-300">
-                            //             <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={preview}
-                            //                 alt="image"
-                            //             />
-                            //         </button>
-
-                            //     </div>
-                            //     {/* Dropdown Menu ............*/}
-                            //     {isOpen && (
-                            //         <div className=" absolute right-0 mt-44 w-40 bg-white rounded-md shadow-lg z-10">
-                            //             <div className="py-2">
-                            //                 {/* User Name............ */}
-                            //                 <div className="px-4 py-2 text-gray-700 font-medium">
-                            //                     {name?.split(" ")[0]}
-                            //                 </div>
-                            //                 <hr className="border-gray-500" />
-
-                            //                 {/* Dashboard Link..... */}
-                            //                 <Link
-                            //                     to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userProfile"}
-                            //                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
-                            //                 >
-                            //                     Dashboard
-                            //                 </Link>
-
-                            //                 {/* Logout Button......... */}
-                            //                 <button
-                            //                     onClick={handleLogOut}
-                            //                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
-                            //                 >
-                            //                     Logout
-                            //                 </button>
-                            //             </div>
-                            //         </div>
-                            //     )}
-
-                            // </div>
-                            (
-                                <Dropdown menu={{ items: menuItems }} trigger={["click"] }   placement="bottomRight"
-                                getPopupContainer={(trigger) => trigger.parentElement}
-                                overlayClassName="custom-dropdown"className="">
-                                    <button className="">
-                                        <img
-                                            src={preview}
-                                            alt="User"
-                                            className="w-8 h-8 rounded-full border border-gray-300"
-                                        />
-                                        {/* <DownOutlined className="text-white" /> */}
-                                    </button>
-                                </Dropdown>
-                            )
-
-                            :
-                            (<Link to='/login' className="bg-white text-black  px-2 py-1.5 font-medium md:font-bold text-xs md:text-base rounded-lg  border hover:text-green-800">Join Us</Link>)
-                    }
-
-                </div>
-                <div className="flex justify-center items-center mt-1">
-                <button
-                    onClick={toggleTheme}
-                    className="flex items-center  bg-white  p-0.5 rounded-full shadow-lg bg-gray-white dark:bg-gray-800 border border-white  transition-all duration-300"
+      
+            {/* Right Side */}
+            <div className="flex items-center  space-x-1 md:space-x-4">
+              {/* Theme Toggle Button */}
+              <div
+                onClick={toggleTheme}
+                className="w-14 h-8 flex items-center bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 dark:from-gray-600 dark:via-gray-700 dark:to-gray-600 rounded-full px-1 cursor-pointer transition"
+              >
+                <div
+                  className={`w-6 h-6 rounded-full bg-white text-yellow-500 dark:text-white shadow-md flex items-center justify-center text-lg transition-transform duration-300 ${
+                    theme === "dark" ? "translate-x-6" : "translate-x-0"
+                  }`}
                 >
-                    {theme === 'light' ? (
-                        <FaMoon className="text-yellow-500 text-xs sm:text-base" />
-                    ) : (
-                        <FaSun className="text-orange-400 text-xs sm:text-base" />
-                    )}
-                   
-                </button>
+                  {theme === "dark" ? <FaMoon className="text-yellow-500 text-base" /> : <FaSun className="text-base" />}
+                </div>
+              </div>
+      
+              {/* User or Login */}
+              {user ? (
+                <Dropdown
+                  menu={{ items: menuItems }}
+                  trigger={["click"]}
+                  placement="bottomRight"
+                  getPopupContainer={(trigger) => trigger.parentElement}
+                >
+                  <button className="outline-none">
+                    <img
+                      src={preview}
+                      alt="User"
+                      className="w-9 h-9 rounded-full border border-gray-300 object-cover"
+                    />
+                  </button>
+                </Dropdown>
+              ) : (
+                <Link
+                  to="/login"
+                  className="bg-white text-green-800 px-4 py-1.5 rounded-md font-semibold text-sm hover:bg-green-100 transition"
+                >
+                  Join Us
+                </Link>
+              )}
+      
+              {/* Hamburger Icon */}
+              <button
+                className="md:hidden text-white focus:outline-none"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
             </div>
-
+          </div>
+      
+          {/* Mobile Menu */}
+          <div
+            className={`md:hidden fixed top-0 right-0 h-full w-64 bg-green-950 text-white z-40 transform transition-transform duration-300 ease-in-out ${
+              isOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="flex justify-between items-center p-4 border-b border-gray-700">
+              <span className="text-lg font-bold">Menu</span>
+              <button onClick={() => setIsOpen(false)}>
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
-
-        </div>
-        </div>
-        
-    );
+            <ul className="flex flex-col space-y-4 px-4 py-6">{links}</ul>
+          </div>
+      
+          {/* Background overlay */}
+          {isOpen && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+              onClick={() => setIsOpen(false)}
+            />
+          )}
+        </nav>
+      );
+      
+    
 };
 
 export default Navbar;

@@ -19,6 +19,7 @@ const Home = () => {
         Aos.init({
             duration: 1000, 
        easing: "ease-out-cubic", 
+       once: true,
         })
       },[]);
     return (

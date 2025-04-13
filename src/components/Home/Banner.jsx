@@ -12,7 +12,7 @@ const Banner = () => {
     const slides = [
         {
             id: 1,
-            image: img1,
+            image: img2,
             title: "Healthcare Outreach 2023",
             achievements: [
                 { count: "200+", label: "Surgeries" },
@@ -23,7 +23,7 @@ const Banner = () => {
         },
         {
             id: 2,
-            image: img2,
+            image: img1,
             title: "Health Initiative",
             achievements: [
                 { count: "1000+", label: "Medicine Kits" },
