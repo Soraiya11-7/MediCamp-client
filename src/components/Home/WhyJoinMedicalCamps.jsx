@@ -9,8 +9,9 @@ const WhyJoinMedicalCamps = () => {
           Why Join Our Medical Camps?
         </h2>
 
-        {/* Marquee Section */}
-        <Marquee speed={60} gradient={false} className="overflow-hidden">
+        {/* Marquee Section ................*/}
+        <Marquee speed={60} gradient={false} pauseOnHover className="overflow-hidden">
+
           <div className="flex gap-8">
             {/* Card 1 */}
             <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 ml-4">
