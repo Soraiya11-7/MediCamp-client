@@ -56,7 +56,7 @@ const AvailableCamps = () => {
             <Helmet>
                 <title>Medical Camp | Available Camps</title>
             </Helmet>
-            <div className="dark:bg-gray-700">
+            <div className="dark:bg-gray-950">
             <div className="w-[90%] mx-auto  container py-10 ">
                 <h2 className="text-2xl md:text-4xl font-bold mb-2 text-center my-8 dark:text-white">Available Camps</h2>
 
