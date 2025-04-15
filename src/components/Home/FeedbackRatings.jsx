@@ -40,7 +40,7 @@ const FeedbackRatings = () => {
 
     return (
         <>
-            <div className=' dark:bg-gray-700 '>
+            <div className=' dark:bg-gray-950 '>
                 <div className=' py-8  w-[90%] mx-auto rounded-t-md mb-6  '>
                     <h2 className="text-xl sm:text-2xl text-center md:text-3xl font-bold  mb-2 text-green-800 dark:text-white">
                         Feedback and Ratings
@@ -85,7 +85,7 @@ const FeedbackRatings = () => {
 
                         {feedbackData.map((feedback) => (
                             <SwiperSlide key={feedback._id}>
-                                <div className="p-4 md:p-6 flex flex-col items-center bg-green-900 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 dark:border-white dark:border-2">
+                                <div className="p-4 md:p-6 flex flex-col items-center bg-green-950 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 dark:border-white dark:border-2">
                                     {/* Image */}
                                     <img
                                         src={feedback.image}

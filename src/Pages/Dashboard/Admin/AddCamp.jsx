@@ -78,7 +78,7 @@ const AddCamp = () => {
                 <title>Admin Dashboard | Launch New Camp</title>
             </Helmet>
             <div className="w-full">
-            <div className="my-8 overflow-hidden">
+            <div className=" overflow-hidden">
                 <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center my-8">
                     Add a New Camp 
                 </h2>

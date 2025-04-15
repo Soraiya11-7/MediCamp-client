@@ -14,7 +14,7 @@ const WhyJoinMedicalCamps = () => {
 
           <div className="flex gap-8">
             {/* Card 1 */}
-            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 ml-4">
+            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 ml-4">
               <FaHeartbeat className="text-6xl mb-4 md:mb-8 text-yellow-500" />
               <div className="">
                 <h3 className="font-bold text-xl mb-8 text-center">Free Consultations</h3>
@@ -23,7 +23,7 @@ const WhyJoinMedicalCamps = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <FaUserMd className="text-6xl mb-4 md:mb-8 text-yellow-500" />
               <div className="">
                 <h3 className="font-bold text-xl mb-2 text-center">Preventive Care & Education</h3>
@@ -32,7 +32,7 @@ const WhyJoinMedicalCamps = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <FaStethoscope className="text-6xl mb-4 md:mb-8 text-yellow-500" />
               <div className="">
                 <h3 className="font-bold text-xl  text-center mb-2 md:mb-8">Community Engagement</h3>
@@ -41,7 +41,7 @@ const WhyJoinMedicalCamps = () => {
             </div>
 
             {/* Card 4 */}
-            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px]  h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 mr-4">
+            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px]  h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 mr-4">
               <FaFileMedical className="text-6xl mb-4 md:mb-8 text-yellow-500" />
               <div className="">
                 <h3 className="font-bold text-xl mb-2 text-center">On-the-Spot Diagnostics & Medications</h3>
@@ -50,7 +50,7 @@ const WhyJoinMedicalCamps = () => {
             </div>
 
             {/* New Related Card */}
-            <div className="bg-green-800 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 mr-4">
+            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 mr-4">
               <FaHospital className="text-6xl mb-4 md:mb-8 text-yellow-500" />
               <div className="">
                 <h3 className="font-bold text-xl mb-8 text-center">Hospital Services</h3>

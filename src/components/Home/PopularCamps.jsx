@@ -49,43 +49,45 @@ const PopularCamps = () => {
                             {camps.map((camp) => (
                                 <div
                                     key={camp._id}
-                                    className="relative bg-white p-4 rounded-lg shadow-lg overflow-hidden group transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-green-800 border-2 border-green-800 "
+                                    className="relative bg-white dark:bg-gray-950 dark:hover:bg-green-950 p-4 rounded-lg shadow-lg overflow-hidden group transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-green-950 border-2 border-green-900 dark:border-white dark:text-white"
+
+
                                     data-aos="flip-right"
                                     data-aos-easing="ease-out-cubic"
 
                                 >
                                     {/* Camp Image */}
-                                    <div className="relative overflow-hidden rounded-lg mb-4 border group-hover:border-yellow-700 h-60 w-full mx-auto shadow-xl">
+                                    <div className="relative overflow-hidden rounded-lg mb-4  h-60 w-full mx-auto shadow-xl">
                                         <img
                                             src={camp.image}
                                             alt={camp.campName}
-                                            className="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:scale-110 border overflow-hidden group-hover:border-yellow-700"
+                                            className="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:scale-110  overflow-hidden "
                                         />
                                     </div>
 
 
                                     {/* Camp Details */}
                                     <div className="text-left">
-                                        <h3 className=" mb-4 group-hover:text-yellow-500 transition-colors duration-300  text-base md:text-lg font-bold h-auto sm:min-h-[40px] sm:flex-grow">
+                                        <h3 className=" mb-4 text-black dark:text-yellow-500 group-hover:text-yellow-500 transition-colors duration-300  text-base md:text-lg font-bold h-auto sm:min-h-[40px] sm:flex-grow">
                                             {camp.campName}
                                         </h3>
 
-                                        <p className="group-hover:text-white transition-colors duration-300 text-xs sm:text-sm font-semibold text-gray-800 mb-2 flex items-center gap-1">
-                                            <MdDateRange className="text-green-900 group-hover:text-white text-base" /> {formatDateTime(camp.dateTime)}
+                                        <p className="group-hover:text-white dark:text-white transition-colors duration-300 text-xs sm:text-sm font-semibold text-gray-800 mb-2 flex items-center gap-1">
+                                            <MdDateRange className="text-green-900 dark:text-white group-hover:text-white text-base" /> {formatDateTime(camp.dateTime)}
                                         </p>
-                                        <p className=" group-hover:text-white transition-colors duration-300 text-xs sm:text-sm font-semibold text-gray-800 mb-2 flex items-center gap-1">
-                                        <MdOutlineLocationOn className="text-green-900 group-hover:text-white text-lg" /> {camp.location}
+                                        <p className=" group-hover:text-white dark:text-white transition-colors duration-300 text-xs sm:text-sm font-semibold text-gray-800 mb-2 flex items-center gap-1">
+                                        <MdOutlineLocationOn className="text-green-900 group-hover:text-white dark:text-white text-lg" /> {camp.location}
                                         </p>
-                                        {/* <p className="group-hover:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800">
+                                        {/* <p className="group-hover:text-white dark:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800">
                                             <strong>Fees:</strong> ${camp.fees}
                                         </p> */}
-                                        <p className="group-hover:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800 flex items-center gap-1">
-                                        <FaStethoscope className="text-green-900 group-hover:text-white text-sm" /> {camp.healthcareProfessional}
+                                        <p className="group-hover:text-white dark:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800 flex items-center gap-1">
+                                        <FaStethoscope className="text-green-900 group-hover:text-white dark:text-white text-sm" /> {camp.healthcareProfessional}
                                         </p>
-                                        <p className="group-hover:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800 flex items-center gap-1">
-                                        <FaUsers className="text-green-900 group-hover:text-white text-sm" /> {camp.participants}
+                                        <p className="group-hover:text-white dark:text-white transition-colors duration-300 mb-3 text-xs sm:text-sm font-semibold text-gray-800 flex items-center gap-1">
+                                        <FaUsers className="text-green-900 group-hover:text-white dark:text-white text-sm" /> {camp.participants}
                                         </p>
-                                        <p className="text-gray-700 mb-4 group-hover:text-white transition-colors duration-300 text-sm h-auto sm:min-h-[40px] sm:flex-grow">
+                                        <p className="text-gray-700 mb-4 group-hover:text-white dark:text-white transition-colors duration-300 text-sm h-auto sm:min-h-[40px] sm:flex-grow">
                                                         {camp.description.slice(0, 80)}...
                                                     </p>
                                         <div className="h-10"></div>
@@ -95,7 +97,7 @@ const PopularCamps = () => {
                                         {/* Button */}
                                         <div className="absolute left-0 right-2 bottom-5 flex justify-end">
                                             <Link to={`/camp-details/${camp._id}`}>
-                                                <button className="py-2 px-6 border-2 border-green-800 bg-white text-green-800 font-semibold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 group-hover:border-white group-hover:text-green-900">
+                                                <button className="py-2 px-6 border-2 border-green-800 bg-white text-green-800 font-semibold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 group-hover:border-white dark:text-white dark:bg-yellow-700 dark:group-hover:bg-white dark:border-white group-hover:text-green-900">
                                                     Details
 
                                                 </button>

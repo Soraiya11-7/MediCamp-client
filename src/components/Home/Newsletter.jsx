@@ -15,7 +15,7 @@ const Newsletter = () => {
   return (
     <div>
       {/* Newsletter Subscription */}
-      <section className="py-12 bg-green-800 text-white">
+      <section className="py-12 bg-green-950 text-white">
         <div className="flex flex-col md:flex-row items-center justify-center mx-auto gap-8 w-[90%] container ">
           <div className="">
             <img
