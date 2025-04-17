@@ -85,7 +85,7 @@ const FeedbackRatings = () => {
 
                         {feedbackData.map((feedback) => (
                             <SwiperSlide key={feedback._id}>
-                                <div className="p-4 md:p-6 flex flex-col items-center bg-green-950 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 dark:border-white dark:border-2">
+                                <div className="p-4 md:p-6 flex flex-col items-center bg-green-950 dark:bg-gray-950 rounded-lg shadow-lg transform hover:scale-x-105 transition duration-300 dark:border-white dark:border-2">
                                     {/* Image */}
                                     <img
                                         src={feedback.image}

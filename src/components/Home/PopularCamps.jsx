@@ -110,7 +110,7 @@ const PopularCamps = () => {
 
                         <div className="flex justify-center items-center mt-10">
                             <Link to='/allCamps'>
-                                <button className="py-2 px-6 border-2 border-green-900 bg-white text-green-950 font-bold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 hover:bg-green-900 hover:text-white dark:border-white">
+                                <button className="py-2 px-6 border-2 border-green-900 bg-white text-green-950 dark:text-yellow-700 dark:hover:text-white font-bold rounded-full inline-flex items-center justify-center gap-2 transition-all duration-300 hover:bg-green-900 dark:hover:bg-yellow-700 hover:text-white dark:border-white">
                                     See All Camps
 
                                 </button>
