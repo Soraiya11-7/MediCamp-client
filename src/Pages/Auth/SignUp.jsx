@@ -107,7 +107,7 @@ const SignUp = () => {
             <Helmet>
                 <title>Medical Camp | SignUp</title>
             </Helmet>
-            <div className='dark:bg-gray-700'>
+            <div className='dark:bg-gray-950 '>
                 <div className="hero min-h-screen  w-[90%] mx-auto flex justify-center py-8 items-center">
                     <div className="card bg-base-100  w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">
                         <h1 className="text-xl sm:text-3xl font-bold text-center mt-3">Sign up now!</h1>
@@ -164,11 +164,11 @@ const SignUp = () => {
 
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn bg-green-800 text-white hover:bg-green-700" type="submit" value="Sign Up" />
+                                <input className="btn bg-green-950 text-white hover:bg-green-800" type="submit" value="Sign Up" />
                             </div>
                         </form>
                         <SocialLogin></SocialLogin>
-                        <h2 className='text-sm sm:text-base text-center mb-5'>Already have an account? <Link to='/login' className='text-green-800'>Login Now</Link></h2>
+                        <h2 className='text-sm sm:text-base text-center mb-5'>Already have an account? <Link to='/login' className='text-green-800 font-semibold'>Login Now</Link></h2>
                     </div>
                 </div>
             </div>

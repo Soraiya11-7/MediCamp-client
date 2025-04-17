@@ -2,6 +2,50 @@ import { FaHeartbeat, FaUserMd, FaStethoscope, FaFileMedical, FaHospital } from 
 import Marquee from 'react-fast-marquee';
 
 const WhyJoinMedicalCamps = () => {
+
+  const cardClass = `
+  relative group hover:z-10
+  before:content-[''] before:absolute before:inset-0
+  before:rounded-lg before:bg-transparent
+  before:border-r-4 before:border-b-4 before:border-green-800 dark:before:border-yellow-700
+  before:transition-all before:duration-300
+  group-hover:before:border-r-8 group-hover:before:border-b-8 group-hover:before:translate-x-2 group-hover:before:translate-y-2 w-full sm:w-[280px] md:w-[270px] h-[240px]
+
+  bg-white dark:bg-gray-900 dark:text-white
+  rounded-lg shadow-lg p-4 flex flex-col items-center justify-center
+  transition duration-300 transform hover:scale-105
+  group-hover:blur-sm hover:!blur-none
+`;
+
+const cardsData = [
+  {
+    icon: <FaHeartbeat className="text-6xl mb-4 md:mb-6 dark:text-yellow-500 text-green-900" />,
+    title: "Free Consultations",
+    description: "Benefit from free consultations with certified healthcare professionals for guidance, advice, and expert medical insight.",
+    
+  },
+  {
+    icon: <FaUserMd className="text-6xl mb-4 md:mb-8 dark:text-yellow-500 text-green-900" />,
+    title: "Preventive Care & Education",
+    description: "Gain access to preventive healthcare services and educational resources on health management.",
+  },
+  {
+    icon: <FaStethoscope className="text-6xl mb-4 md:mb-6 dark:text-yellow-500 text-green-900" />,
+    title: "Community Engagement",
+    description: "Contribute to the overall well-being of your community through active participation in healthcare initiatives.",
+  },
+  {
+    icon: <FaFileMedical className="text-6xl mb-4 md:mb-8 dark:text-yellow-500 text-green-900" />,
+    title: "On-the-Spot Diagnostics & Medications",
+    description: "Receive timely diagnostics and essential medications directly at the camp.",
+  },
+  {
+    icon: <FaHospital className="text-6xl mb-4 md:mb-6 dark:text-yellow-500 text-green-900" />,
+    title: "Hospital Services",
+    description: "Access a variety of hospital services such as laboratory tests, imaging, and other advanced medical services.",
+  },
+];
+
   return (
     <section id="join-us" className=" ">
       <div className="py-4 sm:py-10 w-[90%] mx-auto">
@@ -12,52 +56,20 @@ const WhyJoinMedicalCamps = () => {
         {/* Marquee Section ................*/}
         <Marquee speed={60} gradient={false} pauseOnHover className="overflow-hidden">
 
-          <div className="flex gap-8">
-            {/* Card 1 */}
-            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 ml-4">
-              <FaHeartbeat className="text-6xl mb-4 md:mb-8 text-yellow-500" />
-              <div className="">
-                <h3 className="font-bold text-xl mb-8 text-center">Free Consultations</h3>
-                <p className="text-sm text-center">Benefit from free consultations with certified healthcare professionals.</p>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <FaUserMd className="text-6xl mb-4 md:mb-8 text-yellow-500" />
-              <div className="">
-                <h3 className="font-bold text-xl mb-2 text-center">Preventive Care & Education</h3>
-                <p className="text-sm text-center">Gain access to preventive healthcare services and educational resources on health management.</p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <FaStethoscope className="text-6xl mb-4 md:mb-8 text-yellow-500" />
-              <div className="">
-                <h3 className="font-bold text-xl  text-center mb-2 md:mb-8">Community Engagement</h3>
-                <p className="text-sm text-center">Contribute to the overall well-being of your community through active participation in healthcare initiatives.</p>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px]  h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 mr-4">
-              <FaFileMedical className="text-6xl mb-4 md:mb-8 text-yellow-500" />
-              <div className="">
-                <h3 className="font-bold text-xl mb-2 text-center">On-the-Spot Diagnostics & Medications</h3>
-                <p className="text-sm text-center">Receive timely diagnostics and essential medications directly at the camp.</p>
-              </div>
-            </div>
-
-            {/* New Related Card */}
-            <div className="bg-green-950 dark:border-2 dark:border-white text-white p-4 rounded-lg w-[240px] md:w-[270px] h-[280px] flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300 mr-4">
-              <FaHospital className="text-6xl mb-4 md:mb-8 text-yellow-500" />
-              <div className="">
-                <h3 className="font-bold text-xl mb-8 text-center">Hospital Services</h3>
-                <p className="text-sm text-center">Access a variety of hospital services such as laboratory tests, imaging, and other advanced medical services.</p>
-              </div>
-            </div>
+        <div className="flex flex-wrap justify-center gap-6 px-4 py-6">
+      {cardsData.map((card, index) => (
+        <div
+          key={index}
+          className={cardClass}
+        >
+          {card.icon}
+          <div className="flex flex-col justify-between h-full">
+            <h3 className="font-bold text-xl mb-2 text-center">{card.title}</h3>
+            <p className="text-sm text-center w-[95%] mx-auto">{card.description}</p>
           </div>
+        </div>
+      ))}
+    </div>
         </Marquee>
       </div>
     </section>

@@ -140,7 +140,7 @@ const Navbar = () => {
 
     return (
         <nav className={`${navbarClass} sticky top-0 z-50 shadow-md`}>
-          <div className="w-[90%] container mx-auto  py-3 flex items-center justify-between">
+          <div className="w-[90%] container mx-auto  py-5 flex items-center justify-between">
             {/* Left Side - Logo....... */}
             <Link to="/" className="flex items-center space-x-2">
               <img src={logo} className="h-9 w-9 rounded-full object-cover" alt="logo" />
@@ -187,7 +187,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   to="/login"
-                  className="bg-white text-green-800 px-4 py-1.5 rounded-md font-semibold text-sm hover:bg-green-100 transition"
+                  className="bg-white text-green-800 px-2 py-1.5 md:px-3 md:py-2 rounded-md font-semibold text-sm hover:bg-green-100 transition"
                 >
                   Join Us
                 </Link>
