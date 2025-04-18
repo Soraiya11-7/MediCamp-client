@@ -58,7 +58,7 @@ const Banner = () => {
                     />
                     {/* Text Content inside the Slide..... */}
                     <div
-                        className="absolute hidden md:flex inset-0 bg-green-700 bg-opacity-90"
+                        className="absolute hidden md:flex inset-0 bg-green-700 dark:bg-gray-900 dark:bg-opacity-70 bg-opacity-90"
                         style={{
                             clipPath: "polygon(0 0, 55% 0, 40% 100%, 0% 100%)",
                         }}
@@ -90,12 +90,12 @@ const Banner = () => {
                                             key={index}
                                             className="relative px-2 py-1 sm:p-3 rounded-2xl shadow-lg hover:shadow-xl "
                                         >
-                                            <div className="absolute inset-0 bg-gradient-to-r from-green-800 to-green-900 md:bg-gradient-to-r md:from-green-600 md:to-green-500 rounded-2xl opacity-90 md:opacity-70"></div>
+                                            <div className="absolute inset-0 bg-green-950 dark:bg-white rounded-2xl opacity-90 md:opacity-90"></div>
                                             <div className="relative z-10 text-center flex flex-col justify-center items-center">
-                                                <p className="text-base sm:text-xl md:text-2xl font-extrabold text-white">
+                                                <p className="text-base sm:text-xl md:text-2xl font-extrabold text-yellow-600 ">
                                                     {achievement.count}
                                                 </p>
-                                                <p className="text-xs sm:text-sm md:text-base font-medium italic text-white opacity-90">
+                                                <p className="text-xs sm:text-sm md:text-base font-medium italic text-white dark:text-black opacity-90">
                                                     {achievement.label}
                                                 </p>
                                             </div>

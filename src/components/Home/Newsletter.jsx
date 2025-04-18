@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 // import img from "../../assets/newsletter.jpg";
 import { toast } from 'react-toastify';
+import bannerImg from '../../assets/home-banner3.jpg';
+
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
@@ -12,12 +14,17 @@ const Newsletter = () => {
   };
 
   const img = "https://i.ibb.co.com/Mxr01wKJ/Emails-amico.jpg";
-
+  const bgImg = "https://i.ibb.co.com/Y7nz5MFY/multiracial-medical-team.jpg";
+  
   return (
     <div>
       {/* Newsletter Subscription */}
-      <section className="py-12 bg-green-950 text-white">
-        <div className="flex flex-col md:flex-row items-center justify-center mx-auto gap-8 w-[90%] container">
+      <section className="py-16 bg-fixed  text-white bg-[url('/../../assets/home-banner3.jpg')] 
+    bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: `url(${bannerImg})` }}
+    
+    >
+        <div className="flex flex-col md:flex-row items-center justify-center mx-auto gap-8 w-[90%] container py-12 dark:bg-gray-900 bg-green-950 bg-opacity-70 dark:bg-opacity-70 rounded-lg">
           {/* Left Image with AOS */}
           <div
             data-aos="fade-right"
@@ -56,7 +63,7 @@ const Newsletter = () => {
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-yellow-600 text-white rounded-r-lg transform transition-all duration-300 ease-in-out hover:bg-yellow-700 hover:scale-105 hover:shadow-lg focus:outline-none"
+                className="px-4 py-2 bg-yellow-700 text-white rounded-r-lg transform transition-all duration-300 ease-in-out hover:bg-yellow-800 hover:scale-105 hover:shadow-lg focus:outline-none"
               >
                 Subscribe
               </button>
