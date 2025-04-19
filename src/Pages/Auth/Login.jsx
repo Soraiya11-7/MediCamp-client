@@ -82,93 +82,102 @@ const Login = () => {
             <Helmet>
                 <title>Medical Camp | Login</title>
             </Helmet>
-            <div className='dark:bg-gray-950 '>
-                <div className="hero min-h-screen  w-[90%] mx-auto flex justify-center py-8 items-center">
-                    <div className="card bg-base-100  w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">
-                        <h1 className="text-xl sm:text-3xl font-bold text-center mt-3">Login now!</h1>
+            <div className='dark:bg-gray-950 bg-opacity-50'>
+  <div className="hero min-h-screen w-[90%] mx-auto flex justify-center py-8 items-center">
+    <div className="card bg-base-100 dark:bg-gray-900 w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">
+      <h1 className="text-xl sm:text-3xl font-bold text-center mt-3 dark:text-white">Login now!</h1>
 
-                        <h3 className='text-green-800 mt-4 ml-4 font-bold'>Credentials</h3>
-                        {/* Credential Buttons */}
-                        <div className="flex gap-2 ml-5">
-                            <button
-                                onClick={() => handleAutoFill("user")}
-                                className="py-1 px-2  text-white text-sm font-medium rounded-lg bg-green-800"
-                            >
-                                User 
-                            </button>
-                            <button
-                                onClick={() => handleAutoFill("admin")}
-                                className="py-1 px-2  text-white text-sm font-medium rounded-lg bg-green-800"
-                            >
-                                Admin 
-                            </button>
-                              {/* Reset form if manually entering credentials */}
-                        {autoFilled && (
-                           
-                             <button
-                                type="button"
-                                onClick={() => {
-                                    reset();
-                                    setAutoFilled(false);
-                                }}
-                                className="btn-inline-block mx-auto bg-red-500 text-white py-1 px-2 rounded "
-                            >
-                                Reset 
-                            </button>
-                         
-                        )}
-                        </div>
-                      
+      <h3 className='text-green-800 dark:text-yellow-500 mt-4 ml-4 font-bold'>Credentials</h3>
 
-                        <form onSubmit={handleSubmit(handleLogin)}
-                            className="card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="email"  {...register("email", { required: true })} name="email" placeholder="Enter your email" className="input input-bordered" />
-                                {errors.email && <span className="text-red-600">Email is required</span>}
+      {/* Credential Buttons */}
+      <div className="flex gap-2 ml-5">
+        <button
+          onClick={() => handleAutoFill("user")}
+          className="py-1 px-2 text-white text-sm font-medium rounded-lg bg-green-900 dark:bg-white dark:text-yellow-700  "
+        >
+          User
+        </button>
+        <button
+          onClick={() => handleAutoFill("admin")}
+          className="py-1 px-2 text-white text-sm font-medium rounded-lg bg-green-900 dark:bg-white dark:text-yellow-700 "
+        >
+          Admin
+        </button>
 
-                            </div>
-                            {/* Password................... */}
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input type="password"  {...register("password", {
-                                    required: true
-                                })} placeholder="password" className="input input-bordered" />
-                                {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+        {autoFilled && (
+          <button
+            type="button"
+            onClick={() => {
+              reset();
+              setAutoFilled(false);
+            }}
+            className="btn-inline-block mx-auto bg-red-500 text-white py-1 px-2 rounded"
+          >
+            Reset
+          </button>
+        )}
+      </div>
 
-                            </div>
-                            {/* <div className="form-control">
-                                <label className="label">
-                                    <LoadCanvasTemplate />
-                                </label>
-                                <input
-                                    onBlur={handleValidateCaptcha}
-                                    type="text"
-                                    name="captcha"
-                                    placeholder="type the captcha above"
-                                    className="input input-bordered"
-                                />
-                            </div>
-                            <button type="button" className="bg-orange-500 w-32 btn">verify Captcha</button> */}
-                            <div className="form-control mt-6">
-                                <input
+      <form onSubmit={handleSubmit(handleLogin)} className="card-body">
+        {/* Email Field */}
+        <div className="relative mb-3">
+          <div className={`relative border-2 rounded-lg p-0.5 md:p-1 transition-colors 
+           border-gray-300 focus-within:border-green-800 dark:border-gray-600 dark:focus-within:border-yellow-500
+          `}>
+            <label className="absolute -top-3 left-3 px-1 text-xs md:text-sm text-green-800 dark:text-yellow-500 bg-white dark:bg-gray-900 z-10">
+              Email
+            </label>
+            <input
+              type="email"
+              {...register("email", { required: true })}
+              name="email"
+              placeholder="Enter your email"
+              className="w-full px-1.5 py-1 text-sm md:text-base bg-transparent focus:outline-none text-gray-800 dark:text-white"
+            />
+          </div>
+          {errors.email && (
+            <span className="text-red-600 text-sm">{errors.email.message}</span>
+          )}
+        </div>
 
-                                    className="btn bg-green-800 text-white hover:bg-green-700"
-                                    type="submit"
-                                    value="Login"
-                                />
-                            </div>
-                        </form>
+        {/* Password Field */}
+        <div className="relative mb-3">
+          <div className={`relative border-2 rounded-lg p-0.5 md:p-1 transition-colors border-gray-300 focus-within:border-green-800 dark:border-gray-600 dark:focus-within:border-yellow-600'
+          `}>
+            <label className="absolute -top-3 left-3 px-1 text-xs md:text-sm text-green-800 dark:text-yellow-500 bg-white dark:bg-gray-900 z-10">
+              Password
+            </label>
+            <input
+              type="password"
+              {...register("password", { required: true })}
+              placeholder="Enter your password"
+              className="w-full px-1.5 py-1 text-sm md:text-base bg-transparent focus:outline-none text-gray-800 dark:text-white"
+            />
+          </div>
+          {errors.password && (
+            <p className="text-red-500 dark:text-red-400 text-sm mt-1">{errors.password.message}</p>
+          )}
+        </div>
 
-                        <SocialLogin></SocialLogin>
-                        <h2 className='text-sm sm:text-base text-center mb-5'>New here? <Link to='/signup' className='text-green-800 font-semibold'>Create an account</Link></h2>
-                    </div>
-                </div>
-            </div>
+        <div className="form-control mt-4">
+          <input
+            className="btn bg-green-900 text-white hover:bg-green-950 dark:bg-yellow-700 dark:hover:bg-yellow-800"
+            type="submit"
+            value="Login"
+          />
+        </div>
+      </form>
+
+      <SocialLogin />
+
+      <h2 className='text-sm sm:text-base text-center mb-5 dark:text-white'>
+        New here? 
+        <Link to='/signup' className='text-green-800 dark:text-yellow-500 font-semibold ml-1'>Create an account</Link>
+      </h2>
+    </div>
+  </div>
+</div>
+
 
 
         </>

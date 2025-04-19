@@ -57,9 +57,14 @@ const SocialLogin = () => {
 
     return (
         <div className="">
-            <div className="divider px-4">OR</div>
+            <div className="flex items-center gap-4 px-8 mb-4">
+                <div className="flex-grow h-px bg-gray-800 dark:bg-gray-600"></div>
+                <span className="text-gray-500 dark:text-gray-300 text-sm">OR</span>
+                <div className="flex-grow h-px bg-gray-800 dark:bg-gray-600"></div>
+            </div>
+
             <div className="flex justify-center items-center mb-3">
-                <button onClick={handleGoogleSignIn} className='p-1 sm:p-2 flex items-center gap-1 rounded-xl border text-base sm:text-lg hover:border-green-700'><FcGoogle className='text-base sm:text-lg'></FcGoogle> Login with Google</button>
+                <button onClick={handleGoogleSignIn} className='dark:text-white p-1 sm:p-2 flex items-center gap-1 rounded-xl border text-base sm:text-lg hover:border-green-700'><FcGoogle className='text-base sm:text-lg'></FcGoogle> Login with Google</button>
             </div>
         </div>
     );
