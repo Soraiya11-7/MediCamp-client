@@ -107,71 +107,97 @@ const SignUp = () => {
             <Helmet>
                 <title>Medical Camp | SignUp</title>
             </Helmet>
-            <div className='dark:bg-gray-950 '>
-                <div className="hero min-h-screen  w-[90%] mx-auto flex justify-center py-8 items-center">
-                    <div className="card bg-base-100  w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">
-                        <h1 className="text-xl sm:text-3xl font-bold text-center mt-3">Sign up now!</h1>
-                        {/* form.............. */}
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+            <div className='dark:bg-gray-950 bg-opacity-50'>
+  <div className="hero min-h-screen w-[90%] mx-auto flex justify-center py-8 items-center">
+    <div className="card bg-base-100 dark:bg-gray-900 w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">
+      <h1 className="text-xl sm:text-3xl font-bold text-center mt-3 dark:text-white">Sign up now!</h1>
 
-                            {/* Name................... */}
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Name</span>
-                                </label>
-                                <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
-                                {errors.name && <span className="text-red-600">Name is required</span>}
-                            </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+        {/* Name Field */}
+        <div className="relative mb-3">
+          <div className={`relative border-2 rounded-lg p-0.5 md:p-1 transition-colors 
+            border-gray-300 focus-within:border-green-800 dark:border-gray-600 dark:focus-within:border-yellow-500`}>
+            <label className="absolute -top-3 left-3 px-1 text-xs md:text-sm text-green-800 dark:text-yellow-500 bg-white dark:bg-gray-900 z-10">
+              Name
+            </label>
+            <input type="text" {...register("name", { required: true })} placeholder="Name"
+              className="w-full px-1.5 py-1 text-sm md:text-base bg-transparent focus:outline-none text-gray-800 dark:text-white" />
+          </div>
+          {errors.name && <span className="text-red-600 text-sm">Name is required</span>}
+        </div>
 
-                            {/* Image................... */}
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Photo URL</span>
-                                </label>
-                                <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
-                                {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
-                            </div>
-                            {/* Email................... */}
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="email"  {...register("email", { required: true })} name="email" placeholder="Enter your email" className="input input-bordered" />
-                                {errors.email && <span className="text-red-600">Email is required</span>}
-                            </div>
+        {/* Photo URL Field */}
+        <div className="relative mb-3">
+          <div className={`relative border-2 rounded-lg p-0.5 md:p-1 transition-colors 
+            border-gray-300 focus-within:border-green-800 dark:border-gray-600 dark:focus-within:border-yellow-500`}>
+            <label className="absolute -top-3 left-3 px-1 text-xs md:text-sm text-green-800 dark:text-yellow-500 bg-white dark:bg-gray-900 z-10">
+              Photo URL
+            </label>
+            <input type="text" {...register("photoURL", { required: true })} placeholder="Photo URL"
+              className="w-full px-1.5 py-1 text-sm md:text-base bg-transparent focus:outline-none text-gray-800 dark:text-white" />
+          </div>
+          {errors.photoURL && <span className="text-red-600 text-sm">Photo URL is required</span>}
+        </div>
 
-                            {/* Password................... */}
-                            <div className="form-control relative">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input type={showSecretKey ? 'text' : 'password'}  {...register("password", {
-                                    required: true,
-                                    minLength: 6,
-                                    maxLength: 20,
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                                })} placeholder="password" className="input input-bordered" />
+        {/* Email Field */}
+        <div className="relative mb-3">
+          <div className={`relative border-2 rounded-lg p-0.5 md:p-1 transition-colors 
+            border-gray-300 focus-within:border-green-800 dark:border-gray-600 dark:focus-within:border-yellow-500`}>
+            <label className="absolute -top-3 left-3 px-1 text-xs md:text-sm text-green-800 dark:text-yellow-500 bg-white dark:bg-gray-900 z-10">
+              Email
+            </label>
+            <input type="email" {...register("email", { required: true })} placeholder="Email"
+              className="w-full px-1.5 py-1 text-sm md:text-base bg-transparent focus:outline-none text-gray-800 dark:text-white" />
+          </div>
+          {errors.email && <span className="text-red-600 text-sm">Email is required</span>}
+        </div>
 
-                                <button type="button" onClick={() => setShowSecretKey(!showSecretKey)} className="absolute btn btn-xs top-12 right-2">
-                                    {
-                                        showSecretKey ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
-                                    }
-                                </button>
-                                {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
-                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+        {/* Password Field */}
+        <div className="relative mb-3">
+          <div className={`relative border-2 rounded-lg p-0.5 md:p-1 transition-colors 
+            border-gray-300 focus-within:border-green-800 dark:border-gray-600 dark:focus-within:border-yellow-500`}>
+            <label className="absolute -top-3 left-3 px-1 text-xs md:text-sm text-green-800 dark:text-yellow-500 bg-white dark:bg-gray-900 z-10">
+              Password
+            </label>
+            <input type={showSecretKey ? 'text' : 'password'}
+              {...register("password", {
+                required: true,
+                minLength: 6,
+                maxLength: 20,
+                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+              })}
+              placeholder="Password"
+              className="w-full px-1.5 py-1 text-sm md:text-base bg-transparent focus:outline-none text-gray-800 dark:text-white" />
+            <button type="button" onClick={() => setShowSecretKey(!showSecretKey)} className="absolute top-2.5 right-2 text-sm">
+              {showSecretKey ? <FaEyeSlash className="dark:text-white" /> : <FaEye className="dark:text-white" />}
+            </button>
+          </div>
 
-                            </div>
-                            <div className="form-control mt-6">
-                                <input className="btn bg-green-950 text-white hover:bg-green-800" type="submit" value="Sign Up" />
-                            </div>
-                        </form>
-                        <SocialLogin></SocialLogin>
-                        <h2 className='text-sm sm:text-base text-center mb-5'>Already have an account? <Link to='/login' className='text-green-800 font-semibold'>Login Now</Link></h2>
-                    </div>
-                </div>
-            </div>
+          {/* Error Messages */}
+          {errors.password?.type === 'required' && <p className="text-red-600 text-sm mt-1">Password is required</p>}
+          {errors.password?.type === 'minLength' && <p className="text-red-600 text-sm mt-1">Password must be at least 6 characters</p>}
+          {errors.password?.type === 'maxLength' && <p className="text-red-600 text-sm mt-1">Password must not exceed 20 characters</p>}
+          {errors.password?.type === 'pattern' && <p className="text-red-600 text-sm mt-1">Password must include uppercase, lowercase, number & special character</p>}
+        </div>
+
+        {/* Submit Button */}
+        <div className="form-control mt-4">
+          <input
+            className="btn bg-green-900 text-white hover:bg-green-950 dark:bg-yellow-700 dark:hover:bg-yellow-800"
+            type="submit"
+            value="Sign Up"
+          />
+        </div>
+      </form>
+
+      <p className="text-sm sm:text-base text-center mb-5 dark:text-white">
+        Already have an account?
+        <Link to="/login" className="text-green-800 dark:text-yellow-500 font-semibold ml-1">Login</Link>
+      </p>
+    </div>
+  </div>
+</div>
+
 
 
         </>
